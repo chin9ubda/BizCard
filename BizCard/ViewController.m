@@ -6,7 +6,7 @@
 //  Copyright (c) 2012년 박 찬기. All rights reserved.
 //
 
-// SJ TEST adfasdasdsad
+// 
 
 #import "ViewController.h"
 
