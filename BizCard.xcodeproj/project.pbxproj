@@ -1,0 +1,286 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		43F9426815E0CC1F005893A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426715E0CC1F005893A9 /* UIKit.framework */; };
+		43F9426A15E0CC1F005893A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426915E0CC1F005893A9 /* Foundation.framework */; };
+		43F9426C15E0CC1F005893A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426B15E0CC1F005893A9 /* CoreGraphics.framework */; };
+		43F9427215E0CC1F005893A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43F9427015E0CC1F005893A9 /* InfoPlist.strings */; };
+		43F9427415E0CC1F005893A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F9427315E0CC1F005893A9 /* main.m */; };
+		43F9427815E0CC1F005893A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F9427715E0CC1F005893A9 /* AppDelegate.m */; };
+		43F9427B15E0CC1F005893A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F9427A15E0CC1F005893A9 /* ViewController.m */; };
+		43F9427E15E0CC1F005893A9 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F9427C15E0CC1F005893A9 /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		43F9426315E0CC1F005893A9 /* BizCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BizCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		43F9426715E0CC1F005893A9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		43F9426915E0CC1F005893A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		43F9426B15E0CC1F005893A9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		43F9426F15E0CC1F005893A9 /* BizCard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BizCard-Info.plist"; sourceTree = "<group>"; };
+		43F9427115E0CC1F005893A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		43F9427315E0CC1F005893A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		43F9427515E0CC1F005893A9 /* BizCard-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BizCard-Prefix.pch"; sourceTree = "<group>"; };
+		43F9427615E0CC1F005893A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		43F9427715E0CC1F005893A9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		43F9427915E0CC1F005893A9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		43F9427A15E0CC1F005893A9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		43F9427D15E0CC1F005893A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		43F9426015E0CC1F005893A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43F9426815E0CC1F005893A9 /* UIKit.framework in Frameworks */,
+				43F9426A15E0CC1F005893A9 /* Foundation.framework in Frameworks */,
+				43F9426C15E0CC1F005893A9 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		43F9425815E0CC1F005893A9 = {
+			isa = PBXGroup;
+			children = (
+				43F9426D15E0CC1F005893A9 /* BizCard */,
+				43F9426615E0CC1F005893A9 /* Frameworks */,
+				43F9426415E0CC1F005893A9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		43F9426415E0CC1F005893A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43F9426315E0CC1F005893A9 /* BizCard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		43F9426615E0CC1F005893A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				43F9426715E0CC1F005893A9 /* UIKit.framework */,
+				43F9426915E0CC1F005893A9 /* Foundation.framework */,
+				43F9426B15E0CC1F005893A9 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		43F9426D15E0CC1F005893A9 /* BizCard */ = {
+			isa = PBXGroup;
+			children = (
+				43F9427615E0CC1F005893A9 /* AppDelegate.h */,
+				43F9427715E0CC1F005893A9 /* AppDelegate.m */,
+				43F9427915E0CC1F005893A9 /* ViewController.h */,
+				43F9427A15E0CC1F005893A9 /* ViewController.m */,
+				43F9427C15E0CC1F005893A9 /* ViewController.xib */,
+				43F9426E15E0CC1F005893A9 /* Supporting Files */,
+			);
+			path = BizCard;
+			sourceTree = "<group>";
+		};
+		43F9426E15E0CC1F005893A9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				43F9426F15E0CC1F005893A9 /* BizCard-Info.plist */,
+				43F9427015E0CC1F005893A9 /* InfoPlist.strings */,
+				43F9427315E0CC1F005893A9 /* main.m */,
+				43F9427515E0CC1F005893A9 /* BizCard-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		43F9426215E0CC1F005893A9 /* BizCard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43F9428115E0CC1F005893A9 /* Build configuration list for PBXNativeTarget "BizCard" */;
+			buildPhases = (
+				43F9425F15E0CC1F005893A9 /* Sources */,
+				43F9426015E0CC1F005893A9 /* Frameworks */,
+				43F9426115E0CC1F005893A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BizCard;
+			productName = BizCard;
+			productReference = 43F9426315E0CC1F005893A9 /* BizCard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		43F9425A15E0CC1F005893A9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "박 찬기";
+			};
+			buildConfigurationList = 43F9425D15E0CC1F005893A9 /* Build configuration list for PBXProject "BizCard" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 43F9425815E0CC1F005893A9;
+			productRefGroup = 43F9426415E0CC1F005893A9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				43F9426215E0CC1F005893A9 /* BizCard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		43F9426115E0CC1F005893A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43F9427215E0CC1F005893A9 /* InfoPlist.strings in Resources */,
+				43F9427E15E0CC1F005893A9 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		43F9425F15E0CC1F005893A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43F9427415E0CC1F005893A9 /* main.m in Sources */,
+				43F9427815E0CC1F005893A9 /* AppDelegate.m in Sources */,
+				43F9427B15E0CC1F005893A9 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		43F9427015E0CC1F005893A9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43F9427115E0CC1F005893A9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		43F9427C15E0CC1F005893A9 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43F9427D15E0CC1F005893A9 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		43F9427F15E0CC1F005893A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		43F9428015E0CC1F005893A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		43F9428215E0CC1F005893A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BizCard/BizCard-Prefix.pch";
+				INFOPLIST_FILE = "BizCard/BizCard-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		43F9428315E0CC1F005893A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BizCard/BizCard-Prefix.pch";
+				INFOPLIST_FILE = "BizCard/BizCard-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		43F9425D15E0CC1F005893A9 /* Build configuration list for PBXProject "BizCard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43F9427F15E0CC1F005893A9 /* Debug */,
+				43F9428015E0CC1F005893A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43F9428115E0CC1F005893A9 /* Build configuration list for PBXNativeTarget "BizCard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43F9428215E0CC1F005893A9 /* Debug */,
+				43F9428315E0CC1F005893A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 43F9425A15E0CC1F005893A9 /* Project object */;
+}
