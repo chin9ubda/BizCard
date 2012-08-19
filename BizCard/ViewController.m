@@ -6,6 +6,8 @@
 //  Copyright (c) 2012년 박 찬기. All rights reserved.
 //
 
+// SJ TEST
+
 #import "ViewController.h"
 
 @interface ViewController ()
