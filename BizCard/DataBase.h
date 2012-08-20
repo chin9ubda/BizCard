@@ -26,4 +26,8 @@
 -(void)insertContents:(int)_id:(int)type:(NSString *)text:
 (float)x:(float)y:(float)h:(float)w;
 -(DataStruct *)getData:(int)_id;
+
+-(void)memberDel:(int)gruop_id;
+-(void)memberUpdate:(int)group_Number:(int)card_Number;
+-(NSMutableArray *)getMemberIds:(int)group_id;
 @end

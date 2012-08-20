@@ -22,6 +22,7 @@
     UIView *loadCardView;
     
     DataStruct *dStruct;
+    UIImage *cardImg;
 }
 - (IBAction)backBtn:(id)sender;
 - (IBAction)okBtn:(id)sender;

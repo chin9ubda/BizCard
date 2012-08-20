@@ -62,6 +62,7 @@
         nameTextField.text = dStruct.name;
         numberTextField.text = dStruct.number;
         emailTextField.text = dStruct.email;
+        cardImage.image = cardImg;
     }
 }
 
@@ -75,7 +76,7 @@
 (float)_numberX:(float)_numberY:(float)_numberW:(float)_numberH:
 (float)_emailX:(float)_emailY:(float)_emailW:(float)_emailH{
     
-    cardImage.image = img;
+    cardImg = img;
     
     dStruct.name = _name;
     dStruct.number = _number;

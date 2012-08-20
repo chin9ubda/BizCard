@@ -426,4 +426,84 @@
 }
 
 
+
+// ---------------- Member Delete ---------------- //
+
+-(void)memberDel:(int)gruop_id{
+    
+    NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE groupNumber = %d",GroupMemberTable_Name,gruop_id];
+    
+    const char *delSql = [query UTF8String];
+    
+    
+    if (sqlite3_exec(database, delSql, nil,nil,nil) != SQLITE_OK) {
+        
+        NSLog(@"Error");
+    }else{
+        NSLog(@"OK");
+    }
+}
+
+
+// ---------------- Member Update ---------------- //
+
+-(void)memberUpdate:(int)group_Number:(int)card_Number{
+    
+    sqlite3_stmt *insertStatement;
+    NSString *query = [NSString stringWithFormat:@"INSERT INTO %@ (groupNumber,businessCardNumber) VALUES(?,?)",GroupMemberTable_Name];
+    
+    NSLog(@"gID = %d , cId = %d",group_Number, card_Number);
+    
+    const char *insertSql = [query UTF8String];
+    
+    //프리페어스테이트먼트를 사용
+    if (sqlite3_prepare_v2(database, insertSql, -1, &insertStatement, NULL) == SQLITE_OK) {
+        
+        //?에 데이터를 바인드
+        sqlite3_bind_int(insertStatement, 1, group_Number);
+        sqlite3_bind_int(insertStatement, 2, card_Number);
+        
+        // sql문 실행
+        if (sqlite3_step(insertStatement) != SQLITE_DONE) {
+            NSLog(@"Error");
+            
+        }
+    }
+    
+    
+    sqlite3_finalize(insertStatement);
+}
+
+
+
+// ---------------- Member Id Return ---------------- //
+
+-(NSMutableArray *)getMemberIds:(int)group_id{
+    NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
+    int count = 0;
+    
+    sqlite3_stmt *selectStatement;
+    NSString *query = [NSString stringWithFormat:@"SELECT businessCardNumber FROM %@ WHERE groupNumber = %d",GroupMemberTable_Name, group_id];
+    
+    const char *selectSql = [query UTF8String];
+    
+    
+    if (sqlite3_prepare_v2(database, selectSql, -1, &selectStatement, NULL) == SQLITE_OK) {
+        
+        // while문을 돌면서 각 레코드의 데이터를 받아서 출력한다.
+        while (sqlite3_step(selectStatement) == SQLITE_ROW) {
+            
+            [array insertObject: [NSNumber numberWithInteger: sqlite3_column_int(selectStatement, 0)] atIndex:count];
+            count++;
+        }
+        
+    }
+    
+    //statement close
+    sqlite3_finalize(selectStatement);
+    
+    return array;
+}
+
+
 @end

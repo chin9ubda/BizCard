@@ -40,7 +40,7 @@
     if (self) {
         db = [DataBase getInstance];
         dStruct = [DataStruct getInstance];
-        [self bcCardReLoad];
+        [self reloadTableView];
     }
     return self;
 }
@@ -69,10 +69,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(void)bcCardReLoad{
-    bcArray = [db getBcIds];
-}
-
 
 // ---------------- bcAddBtn Event ---------------- //
 // --------------- show ActionSheet --------------- //
@@ -92,6 +88,9 @@
 // ---------------- All Group Btn Event ---------------- //
 
 - (IBAction)allGroupBtn:(id)sender {
+    nowGroup = 0;
+    
+    [self reloadTableView];
 }
 
 
@@ -170,7 +169,16 @@
 // ---------------- Group Btn Event ---------------- //
 
 - (void)groupBtnClickEvent:(UIButton *)btn{
-    NSLog(@"%d",btn.tag);
+//    NSLog(@"%d",btn.tag);
+    
+//    if (!edit) {
+        if (nowGroup == btn.tag) {
+            NSLog(@"Double Clikc");
+        }else{
+            nowGroup = btn.tag;
+            [self reloadTableView];
+        }
+//    }
 }
 
 
@@ -216,8 +224,11 @@
 
 -(void)reloadTableView{
     
-    bcArray = [db getBcIds];
-    
+    if (nowGroup == 0) {
+        bcArray = [db getBcIds];
+    }else {
+        bcArray = [db getMemberIds:nowGroup];
+    }
     [businessCardTable reloadData];
 }
 

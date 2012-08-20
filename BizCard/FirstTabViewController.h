@@ -20,6 +20,8 @@
     NSMutableArray *bcArray;
     SelectViewController *selectView;
     EditBcViewController *editBcViewController;
+    
+    int nowGroup;
 }
 - (IBAction)bcAddBtn:(id)sender;
 - (IBAction)allGroupBtn:(id)sender;
