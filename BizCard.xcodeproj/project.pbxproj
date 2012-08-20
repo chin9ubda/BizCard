@@ -37,6 +37,19 @@
 		4366F55015E1D913008E69F6 /* SecondTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F54E15E1D913008E69F6 /* SecondTabViewController.xib */; };
 		4366F55415E1D922008E69F6 /* ThirdTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F55215E1D922008E69F6 /* ThirdTabViewController.m */; };
 		4366F55515E1D922008E69F6 /* ThirdTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F55315E1D922008E69F6 /* ThirdTabViewController.xib */; };
+		4366F55915E1F5BD008E69F6 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F55815E1F5BD008E69F6 /* DataBase.m */; };
+		4366F55B15E1F82A008E69F6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4366F55A15E1F82A008E69F6 /* libsqlite3.dylib */; };
+		4366F56515E20B9B008E69F6 /* BcTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F56415E20B9B008E69F6 /* BcTableCell.m */; };
+		4366F56715E20BAF008E69F6 /* BcTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F56615E20BAF008E69F6 /* BcTableCell.xib */; };
+		4366F57415E214CF008E69F6 /* DataStruct.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F57315E214CF008E69F6 /* DataStruct.m */; };
+		4366F57815E217A1008E69F6 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F57615E217A1008E69F6 /* SelectViewController.m */; };
+		4366F57915E217A1008E69F6 /* SelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F57715E217A1008E69F6 /* SelectViewController.xib */; };
+		4366F57E15E21AD8008E69F6 /* EditBcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F57C15E21AD8008E69F6 /* EditBcViewController.m */; };
+		4366F57F15E21AD8008E69F6 /* EditBcViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F57D15E21AD8008E69F6 /* EditBcViewController.xib */; };
+		4366F58415E2212C008E69F6 /* CardOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F58315E2212C008E69F6 /* CardOne.m */; };
+		4366F58615E22134008E69F6 /* CardOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F58515E22134008E69F6 /* CardOne.xib */; };
+		4366F58A15E22358008E69F6 /* CardTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F58915E22358008E69F6 /* CardTwo.m */; };
+		4366F58C15E22362008E69F6 /* CardTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F58B15E22362008E69F6 /* CardTwo.xib */; };
 		43F9426815E0CC1F005893A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426715E0CC1F005893A9 /* UIKit.framework */; };
 		43F9426A15E0CC1F005893A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426915E0CC1F005893A9 /* Foundation.framework */; };
 		43F9426C15E0CC1F005893A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426B15E0CC1F005893A9 /* CoreGraphics.framework */; };
@@ -83,6 +96,26 @@
 		4366F55115E1D922008E69F6 /* ThirdTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdTabViewController.h; sourceTree = "<group>"; };
 		4366F55215E1D922008E69F6 /* ThirdTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdTabViewController.m; sourceTree = "<group>"; };
 		4366F55315E1D922008E69F6 /* ThirdTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThirdTabViewController.xib; sourceTree = "<group>"; };
+		4366F55715E1F5BD008E69F6 /* DataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
+		4366F55815E1F5BD008E69F6 /* DataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBase.m; sourceTree = "<group>"; };
+		4366F55A15E1F82A008E69F6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		4366F56315E20B9B008E69F6 /* BcTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BcTableCell.h; sourceTree = "<group>"; };
+		4366F56415E20B9B008E69F6 /* BcTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BcTableCell.m; sourceTree = "<group>"; };
+		4366F56615E20BAF008E69F6 /* BcTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BcTableCell.xib; sourceTree = "<group>"; };
+		4366F57215E214CF008E69F6 /* DataStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStruct.h; sourceTree = "<group>"; };
+		4366F57315E214CF008E69F6 /* DataStruct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStruct.m; sourceTree = "<group>"; };
+		4366F57515E217A1008E69F6 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
+		4366F57615E217A1008E69F6 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
+		4366F57715E217A1008E69F6 /* SelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectViewController.xib; sourceTree = "<group>"; };
+		4366F57B15E21AD8008E69F6 /* EditBcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBcViewController.h; sourceTree = "<group>"; };
+		4366F57C15E21AD8008E69F6 /* EditBcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditBcViewController.m; sourceTree = "<group>"; };
+		4366F57D15E21AD8008E69F6 /* EditBcViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditBcViewController.xib; sourceTree = "<group>"; };
+		4366F58215E2212C008E69F6 /* CardOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardOne.h; sourceTree = "<group>"; };
+		4366F58315E2212C008E69F6 /* CardOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardOne.m; sourceTree = "<group>"; };
+		4366F58515E22134008E69F6 /* CardOne.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardOne.xib; sourceTree = "<group>"; };
+		4366F58815E22358008E69F6 /* CardTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTwo.h; sourceTree = "<group>"; };
+		4366F58915E22358008E69F6 /* CardTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTwo.m; sourceTree = "<group>"; };
+		4366F58B15E22362008E69F6 /* CardTwo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardTwo.xib; sourceTree = "<group>"; };
 		43F9426315E0CC1F005893A9 /* BizCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BizCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F9426715E0CC1F005893A9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		43F9426915E0CC1F005893A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -103,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4366F55B15E1F82A008E69F6 /* libsqlite3.dylib in Frameworks */,
 				43F9426815E0CC1F005893A9 /* UIKit.framework in Frameworks */,
 				43F9426A15E0CC1F005893A9 /* Foundation.framework in Frameworks */,
 				43F9426C15E0CC1F005893A9 /* CoreGraphics.framework in Frameworks */,
@@ -139,6 +173,7 @@
 				4366F51C15E1D558008E69F6 /* img */,
 			);
 			name = res;
+			path = BizCard;
 			sourceTree = "<group>";
 		};
 		4366F51C15E1D558008E69F6 /* img */ = {
@@ -191,14 +226,96 @@
 		4366F55615E1F0D9008E69F6 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				4366F55715E1F5BD008E69F6 /* DataBase.h */,
+				4366F55815E1F5BD008E69F6 /* DataBase.m */,
 			);
 			name = DataBase;
+			sourceTree = "<group>";
+		};
+		4366F55C15E1F845008E69F6 /* Liibs */ = {
+			isa = PBXGroup;
+			children = (
+				4366F55A15E1F82A008E69F6 /* libsqlite3.dylib */,
+			);
+			name = Liibs;
+			path = BizCard;
+			sourceTree = "<group>";
+		};
+		4366F56215E20B50008E69F6 /* BcTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				4366F56315E20B9B008E69F6 /* BcTableCell.h */,
+				4366F56415E20B9B008E69F6 /* BcTableCell.m */,
+				4366F56615E20BAF008E69F6 /* BcTableCell.xib */,
+			);
+			name = BcTableCell;
+			sourceTree = "<group>";
+		};
+		4366F56815E20D15008E69F6 /* SelectBCTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				4366F57515E217A1008E69F6 /* SelectViewController.h */,
+				4366F57615E217A1008E69F6 /* SelectViewController.m */,
+				4366F57715E217A1008E69F6 /* SelectViewController.xib */,
+			);
+			name = SelectBCTemplate;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		4366F57115E214B8008E69F6 /* DataStruct */ = {
+			isa = PBXGroup;
+			children = (
+				4366F57215E214CF008E69F6 /* DataStruct.h */,
+				4366F57315E214CF008E69F6 /* DataStruct.m */,
+			);
+			name = DataStruct;
+			sourceTree = "<group>";
+		};
+		4366F57A15E21AA9008E69F6 /* EditBc */ = {
+			isa = PBXGroup;
+			children = (
+				4366F57B15E21AD8008E69F6 /* EditBcViewController.h */,
+				4366F57C15E21AD8008E69F6 /* EditBcViewController.m */,
+				4366F57D15E21AD8008E69F6 /* EditBcViewController.xib */,
+			);
+			name = EditBc;
+			sourceTree = "<group>";
+		};
+		4366F58015E220F6008E69F6 /* CardTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				4366F58115E2211B008E69F6 /* CardOne */,
+				4366F58715E22343008E69F6 /* CardTwo */,
+			);
+			name = CardTemplate;
+			sourceTree = "<group>";
+		};
+		4366F58115E2211B008E69F6 /* CardOne */ = {
+			isa = PBXGroup;
+			children = (
+				4366F58215E2212C008E69F6 /* CardOne.h */,
+				4366F58315E2212C008E69F6 /* CardOne.m */,
+				4366F58515E22134008E69F6 /* CardOne.xib */,
+			);
+			name = CardOne;
+			sourceTree = "<group>";
+		};
+		4366F58715E22343008E69F6 /* CardTwo */ = {
+			isa = PBXGroup;
+			children = (
+				4366F58815E22358008E69F6 /* CardTwo.h */,
+				4366F58915E22358008E69F6 /* CardTwo.m */,
+				4366F58B15E22362008E69F6 /* CardTwo.xib */,
+			);
+			name = CardTwo;
 			sourceTree = "<group>";
 		};
 		43F9425815E0CC1F005893A9 = {
 			isa = PBXGroup;
 			children = (
 				43F9426D15E0CC1F005893A9 /* BizCard */,
+				4366F51B15E1D554008E69F6 /* res */,
+				4366F55C15E1F845008E69F6 /* Liibs */,
 				43F9426615E0CC1F005893A9 /* Frameworks */,
 				43F9426415E0CC1F005893A9 /* Products */,
 			);
@@ -225,8 +342,10 @@
 		43F9426D15E0CC1F005893A9 /* BizCard */ = {
 			isa = PBXGroup;
 			children = (
+				4366F58015E220F6008E69F6 /* CardTemplate */,
+				4366F56215E20B50008E69F6 /* BcTableCell */,
+				4366F57115E214B8008E69F6 /* DataStruct */,
 				4366F55615E1F0D9008E69F6 /* DataBase */,
-				4366F51B15E1D554008E69F6 /* res */,
 				43F9428915E1CFBA005893A9 /* FirstTab */,
 				4366F54A15E1D8E1008E69F6 /* SecondTab */,
 				4366F54B15E1D8ED008E69F6 /* ThirdTab */,
@@ -263,6 +382,8 @@
 		43F9428915E1CFBA005893A9 /* FirstTab */ = {
 			isa = PBXGroup;
 			children = (
+				4366F57A15E21AA9008E69F6 /* EditBc */,
+				4366F56815E20D15008E69F6 /* SelectBCTemplate */,
 				43F9428A15E1CFDF005893A9 /* FirstTabViewController.h */,
 				43F9428B15E1CFDF005893A9 /* FirstTabViewController.m */,
 				43F9428C15E1CFDF005893A9 /* FirstTabViewController.xib */,
@@ -348,6 +469,11 @@
 				4366F54915E1D59F008E69F6 /* TabbarView.xib in Resources */,
 				4366F55015E1D913008E69F6 /* SecondTabViewController.xib in Resources */,
 				4366F55515E1D922008E69F6 /* ThirdTabViewController.xib in Resources */,
+				4366F56715E20BAF008E69F6 /* BcTableCell.xib in Resources */,
+				4366F57915E217A1008E69F6 /* SelectViewController.xib in Resources */,
+				4366F57F15E21AD8008E69F6 /* EditBcViewController.xib in Resources */,
+				4366F58615E22134008E69F6 /* CardOne.xib in Resources */,
+				4366F58C15E22362008E69F6 /* CardTwo.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +492,13 @@
 				4366F54715E1D597008E69F6 /* TabbarView.m in Sources */,
 				4366F54F15E1D913008E69F6 /* SecondTabViewController.m in Sources */,
 				4366F55415E1D922008E69F6 /* ThirdTabViewController.m in Sources */,
+				4366F55915E1F5BD008E69F6 /* DataBase.m in Sources */,
+				4366F56515E20B9B008E69F6 /* BcTableCell.m in Sources */,
+				4366F57415E214CF008E69F6 /* DataStruct.m in Sources */,
+				4366F57815E217A1008E69F6 /* SelectViewController.m in Sources */,
+				4366F57E15E21AD8008E69F6 /* EditBcViewController.m in Sources */,
+				4366F58415E2212C008E69F6 /* CardOne.m in Sources */,
+				4366F58A15E22358008E69F6 /* CardTwo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
