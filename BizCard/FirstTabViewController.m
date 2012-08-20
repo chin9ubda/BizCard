@@ -55,6 +55,10 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+
+// ---------------- bcAddBtn Event ---------------- //
+// --------------- show ActionSheet --------------- //
 - (IBAction)bcAddBtn:(id)sender {
     UIActionSheet *actionsheet = [[UIActionSheet alloc]
                                   initWithTitle:nil
@@ -67,7 +71,7 @@
 
 }
 
-// 설명 : 카드 추가 이벤트 //
+// ---------------- actionSheet Event ---------------- //
 #pragma mark UIActionSheet Delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
