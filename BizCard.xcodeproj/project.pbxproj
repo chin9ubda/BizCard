@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4366F50415E1D2B7008E69F6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F50215E1D2B7008E69F6 /* ViewController.m */; };
-		4366F50515E1D2B7008E69F6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F50315E1D2B7008E69F6 /* ViewController.xib */; };
+		4366F50415E1D2B7008E69F6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F50215E1D2B7008E69F6 /* LoginViewController.m */; };
+		4366F50515E1D2B7008E69F6 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F50315E1D2B7008E69F6 /* LoginViewController.xib */; };
 		4366F51515E1D444008E69F6 /* TabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F51315E1D444008E69F6 /* TabbarViewController.m */; };
 		4366F51615E1D444008E69F6 /* TabbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F51415E1D444008E69F6 /* TabbarViewController.xib */; };
 		4366F53115E1D566008E69F6 /* tabbarbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4366F51D15E1D566008E69F6 /* tabbarbg.png */; };
@@ -50,6 +50,8 @@
 		4366F58615E22134008E69F6 /* CardOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F58515E22134008E69F6 /* CardOne.xib */; };
 		4366F58A15E22358008E69F6 /* CardTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F58915E22358008E69F6 /* CardTwo.m */; };
 		4366F58C15E22362008E69F6 /* CardTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F58B15E22362008E69F6 /* CardTwo.xib */; };
+		4399881A15E4C46900AA7483 /* Group_Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399881915E4C46900AA7483 /* Group_Menu.m */; };
+		4399881C15E4C47300AA7483 /* Group_Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4399881B15E4C47300AA7483 /* Group_Menu.xib */; };
 		43F9426815E0CC1F005893A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426715E0CC1F005893A9 /* UIKit.framework */; };
 		43F9426A15E0CC1F005893A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426915E0CC1F005893A9 /* Foundation.framework */; };
 		43F9426C15E0CC1F005893A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426B15E0CC1F005893A9 /* CoreGraphics.framework */; };
@@ -61,9 +63,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4366F50115E1D2B7008E69F6 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4366F50215E1D2B7008E69F6 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		4366F50315E1D2B7008E69F6 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		4366F50115E1D2B7008E69F6 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		4366F50215E1D2B7008E69F6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		4366F50315E1D2B7008E69F6 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		4366F51215E1D444008E69F6 /* TabbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarViewController.h; sourceTree = "<group>"; };
 		4366F51315E1D444008E69F6 /* TabbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarViewController.m; sourceTree = "<group>"; };
 		4366F51415E1D444008E69F6 /* TabbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabbarViewController.xib; sourceTree = "<group>"; };
@@ -116,6 +118,9 @@
 		4366F58815E22358008E69F6 /* CardTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTwo.h; sourceTree = "<group>"; };
 		4366F58915E22358008E69F6 /* CardTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTwo.m; sourceTree = "<group>"; };
 		4366F58B15E22362008E69F6 /* CardTwo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardTwo.xib; sourceTree = "<group>"; };
+		4399881815E4C46900AA7483 /* Group_Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group_Menu.h; sourceTree = "<group>"; };
+		4399881915E4C46900AA7483 /* Group_Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group_Menu.m; sourceTree = "<group>"; };
+		4399881B15E4C47300AA7483 /* Group_Menu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Group_Menu.xib; sourceTree = "<group>"; };
 		43F9426315E0CC1F005893A9 /* BizCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BizCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F9426715E0CC1F005893A9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		43F9426915E0CC1F005893A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -310,6 +315,24 @@
 			name = CardTwo;
 			sourceTree = "<group>";
 		};
+		4399881515E4C44F00AA7483 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				4399881715E4C45900AA7483 /* Group_Menu */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		4399881715E4C45900AA7483 /* Group_Menu */ = {
+			isa = PBXGroup;
+			children = (
+				4399881815E4C46900AA7483 /* Group_Menu.h */,
+				4399881915E4C46900AA7483 /* Group_Menu.m */,
+				4399881B15E4C47300AA7483 /* Group_Menu.xib */,
+			);
+			name = Group_Menu;
+			sourceTree = "<group>";
+		};
 		43F9425815E0CC1F005893A9 = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +365,7 @@
 		43F9426D15E0CC1F005893A9 /* BizCard */ = {
 			isa = PBXGroup;
 			children = (
+				4399881515E4C44F00AA7483 /* Menu */,
 				4366F58015E220F6008E69F6 /* CardTemplate */,
 				4366F56215E20B50008E69F6 /* BcTableCell */,
 				4366F57115E214B8008E69F6 /* DataStruct */,
@@ -372,9 +396,9 @@
 			children = (
 				43F9427615E0CC1F005893A9 /* AppDelegate.h */,
 				43F9427715E0CC1F005893A9 /* AppDelegate.m */,
-				4366F50115E1D2B7008E69F6 /* ViewController.h */,
-				4366F50215E1D2B7008E69F6 /* ViewController.m */,
-				4366F50315E1D2B7008E69F6 /* ViewController.xib */,
+				4366F50115E1D2B7008E69F6 /* LoginViewController.h */,
+				4366F50215E1D2B7008E69F6 /* LoginViewController.m */,
+				4366F50315E1D2B7008E69F6 /* LoginViewController.xib */,
 			);
 			name = "AppDelegate&Login";
 			sourceTree = "<group>";
@@ -444,7 +468,7 @@
 			files = (
 				43F9427215E0CC1F005893A9 /* InfoPlist.strings in Resources */,
 				43F9428E15E1CFDF005893A9 /* FirstTabViewController.xib in Resources */,
-				4366F50515E1D2B7008E69F6 /* ViewController.xib in Resources */,
+				4366F50515E1D2B7008E69F6 /* LoginViewController.xib in Resources */,
 				4366F51615E1D444008E69F6 /* TabbarViewController.xib in Resources */,
 				4366F53115E1D566008E69F6 /* tabbarbg.png in Resources */,
 				4366F53215E1D566008E69F6 /* tabbar1.png in Resources */,
@@ -474,6 +498,7 @@
 				4366F57F15E21AD8008E69F6 /* EditBcViewController.xib in Resources */,
 				4366F58615E22134008E69F6 /* CardOne.xib in Resources */,
 				4366F58C15E22362008E69F6 /* CardTwo.xib in Resources */,
+				4399881C15E4C47300AA7483 /* Group_Menu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +512,7 @@
 				43F9427415E0CC1F005893A9 /* main.m in Sources */,
 				43F9427815E0CC1F005893A9 /* AppDelegate.m in Sources */,
 				43F9428D15E1CFDF005893A9 /* FirstTabViewController.m in Sources */,
-				4366F50415E1D2B7008E69F6 /* ViewController.m in Sources */,
+				4366F50415E1D2B7008E69F6 /* LoginViewController.m in Sources */,
 				4366F51515E1D444008E69F6 /* TabbarViewController.m in Sources */,
 				4366F54715E1D597008E69F6 /* TabbarView.m in Sources */,
 				4366F54F15E1D913008E69F6 /* SecondTabViewController.m in Sources */,
@@ -499,6 +524,7 @@
 				4366F57E15E21AD8008E69F6 /* EditBcViewController.m in Sources */,
 				4366F58415E2212C008E69F6 /* CardOne.m in Sources */,
 				4366F58A15E22358008E69F6 /* CardTwo.m in Sources */,
+				4399881A15E4C46900AA7483 /* Group_Menu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,10 +594,14 @@
 		43F9428215E0CC1F005893A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lee Sei Jin (Q3GBLJL2A3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lee Sei Jin (Q3GBLJL2A3)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BizCard/BizCard-Prefix.pch";
 				INFOPLIST_FILE = "BizCard/BizCard-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "E7809ECF-CC47-4E1B-83FD-C739BAAC39E6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E7809ECF-CC47-4E1B-83FD-C739BAAC39E6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -579,10 +609,14 @@
 		43F9428315E0CC1F005893A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lee Sei Jin (Q3GBLJL2A3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lee Sei Jin (Q3GBLJL2A3)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BizCard/BizCard-Prefix.pch";
 				INFOPLIST_FILE = "BizCard/BizCard-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "E7809ECF-CC47-4E1B-83FD-C739BAAC39E6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E7809ECF-CC47-4E1B-83FD-C739BAAC39E6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TabbarViewController.h"
 
-@interface ViewController : UIViewController{
+@interface LoginViewController : UIViewController{
     TabbarViewController *tabbarController;
 }
 - (IBAction)loginBtn:(id)sender;

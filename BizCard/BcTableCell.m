@@ -13,6 +13,8 @@
 @synthesize numberLabel;
 @synthesize emailLabel;
 @synthesize cardImg;
+@synthesize cardView;
+@synthesize checkBox;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

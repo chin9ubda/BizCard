@@ -220,6 +220,55 @@
 
 
 
+// ---------------- Group Name Update ---------------- //
+
+-(void)groupUpdate:(int)_id:(NSString *)name{
+    sqlite3_stmt *updateStatement;
+    NSString *query = [NSString stringWithFormat:@"REPLACE INTO %@ (_id,name) VALUES(?,?)",GroupTable_Name];
+    
+    const char *updateSql = [query UTF8String];
+    
+    //프리페어스테이트먼트를 사용
+    if (sqlite3_prepare_v2(database, updateSql, -1, &updateStatement, NULL) == SQLITE_OK) {
+        
+        //?에 데이터를 바인드
+        sqlite3_bind_int(updateStatement, 1, _id);
+        sqlite3_bind_text(updateStatement, 2, [name UTF8String],  -1, SQLITE_TRANSIENT);
+        
+        // sql문 실행
+        if (sqlite3_step(updateStatement) != SQLITE_DONE) {
+            NSLog(@"Error");
+            
+        }
+    }
+    
+    
+    sqlite3_finalize(updateStatement);
+}
+
+
+
+// ---------------- Group Delete ---------------- //
+
+-(void)groupDel:(int)_id{
+    
+    //    sqlite3_stmt *delStatement;
+    NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE _id = %d",GroupTable_Name,_id];
+    
+    const char *delSql = [query UTF8String];
+    
+    
+    if (sqlite3_exec(database, delSql, nil,nil,nil) != SQLITE_OK) {
+        
+        NSLog(@"Error");
+    }else{
+        NSLog(@"OK");
+    }
+    
+}
+
+
+
 // ------------------------------------------------ BusinessCard Table------------------------------------------------ //
 
 

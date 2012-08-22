@@ -6,14 +6,14 @@
 //  Copyright (c) 2012년 박 찬기. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginViewController.h"
 
 
-@interface ViewController ()
+@interface LoginViewController ()
 
 @end
 
-@implementation ViewController
+@implementation LoginViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,6 +61,7 @@
 // ---------------- LoginCheck ---------------- //
 // ------------- 로그인 성공 : true ------------- //
 // ------------- 로그인 실패 : false ------------ //
+// toSJ
 
 - (Boolean)loginCheck{
     

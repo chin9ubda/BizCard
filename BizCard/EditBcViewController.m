@@ -25,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         dStruct = [DataStruct getInstance];
+//        captureView = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 450.0f, 250.0f)];
     }
     return self;
 }
@@ -70,6 +71,7 @@
 
 // ---------------- SetCardImg ---------------- //
 // 이 함수에 사진찍은 이미지 & 데이터 전송
+// toSJ
 
 - (void)setCardImg:(UIImage *)img:(NSString *)_name:(NSString *)_number:(NSString *)_email:
 (float)_nameX:(float)_nameY:(float)_nameW:(float)_nameH:
@@ -109,6 +111,8 @@
 -(void)setCardNum:(int)num{
     NSArray *xibs;
     nowCard = num;
+
+//    UIView *captureView = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 450.0f, 250.0f)];
     
     switch (num) {
         case 1:
@@ -120,8 +124,16 @@
             numberLabel = _cardOne.numberLabel;
             emailLabel = _cardOne.emailLabel;
             loadCardView = [[UIView alloc]initWithFrame:CGRectMake(129, 57, 240, 120)];
+            
             [loadCardView addSubview:_cardOne];
             [self.view addSubview:loadCardView];
+
+            
+//            _cardOne.frame = CGRectMake(0, 0, 450.0f, 250.0f);
+//            captureView = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 450.0f, 250.0f)];
+//            
+//            [captureView addSubview:_cardOne];
+            
             
             break;
         case 2:
@@ -135,6 +147,9 @@
             emailLabel = _cardTwo.emailLabel;
             loadCardView = [[UIView alloc]initWithFrame:CGRectMake(129, 57, 240, 120)];
             [loadCardView addSubview:_cardTwo];
+            
+            [captureView addSubview:_cardOne];
+            
             [self.view addSubview:loadCardView];
             
             break;
@@ -170,6 +185,7 @@
     }
     
     [self saveImg:fileName:[self captureView:loadCardView]];
+//    [self saveImg:fileName:[self captureView:captureView]];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTableView" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"select_remove" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];

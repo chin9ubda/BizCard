@@ -30,14 +30,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backBtn:) name:@"select_remove" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarHide" object:nil];
 
-    [self setCardTemplate];
+//    [self setCardTemplate];
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [self setCardTemplate];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -47,6 +46,10 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)viewWillLayoutSubviews{
+    [self setCardTemplate];
+}
+
 
 // ---------------- SetCardTemplate ---------------- //
 
@@ -54,9 +57,21 @@
     
     
     NSArray *xibs = [[NSBundle mainBundle] loadNibNamed:@"CardOne" owner:self options:nil];
-    _cardOne = (CardOne *)[xibs objectAtIndex:0];
+//    _cardOne = (CardOne *)[xibs objectAtIndex:0];
+    _cardOne = [xibs objectAtIndex:0];
     
-    [_cardOne setFrame:CGRectMake(0, 0, bcTypeOne.frame.size.width, bcTypeOne.frame.size.height)];
+    
+    _cardOne.frame = CGRectMake(0, 0, bcTypeOne.frame.size.width, bcTypeOne.frame.size.height);
+    
+//    _cardOne.nameLabel.frame = CGRectMake(0, 0, bcTypeOne.frame.size.width, bcTypeOne.frame.size.height);
+    
+//    _cardOne.nameLabel = [self reSizeLabel:_cardOne.nameLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
+//    _cardOne.numberLabel = [self reSizeLabel:_cardOne.nameLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
+//    _cardOne.emailLabel = [self reSizeLabel:_cardOne.nameLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
+    
+    [self reSizeLabel:_cardOne.nameLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
+    [self reSizeLabel:_cardOne.numberLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
+    [self reSizeLabel:_cardOne.emailLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
     
     [bcTypeOne addSubview:_cardOne];
     
@@ -82,6 +97,16 @@
     [bcTypeTwo addSubview:btn];
     
     
+}
+
+-(void)reSizeLabel:(UILabel *)label:(float)resize{
+//    float resize = _w /  label.frame.size.width;
+    
+//    NSLog(@"%f",resize);
+    
+    label.frame = CGRectMake(label.frame.origin.x * resize, label.frame.origin.y * resize, label.frame.size.width * resize, label.frame.size.height * resize);
+    
+//    return label;
 }
 
 

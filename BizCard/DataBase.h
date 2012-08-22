@@ -18,8 +18,10 @@
 + (DataBase*) getInstance;
 
 -(NSMutableArray *)getGroupIds;
--(void)groupInsert:(NSString *)group_name;
 -(NSString *)getGroupName:(int)_id;
+-(void)groupInsert:(NSString *)group_name;
+-(void)groupUpdate:(int)_id:(NSString *)name;
+-(void)groupDel:(int)_id;
 
 -(NSMutableArray *)getBcIds;
 -(int)bcInsert;

@@ -20,6 +20,7 @@
     CardTwo *_cardTwo;
     
     UIView *loadCardView;
+    UIView *captureView;
     
     DataStruct *dStruct;
     UIImage *cardImg;
@@ -27,10 +28,18 @@
 - (IBAction)backBtn:(id)sender;
 - (IBAction)okBtn:(id)sender;
 - (void)setCardNum:(int)num;
+
+
+
+// Struct 로 보낼지 .. 전부 보낼지...
+
 - (void)setCardImg:(UIImage *)img:(NSString *)_name:(NSString *)_number:(NSString *)_email:
 (float)_nameX:(float)_nameY:(float)_nameW:(float)_nameH:
 (float)_numberX:(float)_numberY:(float)_numberW:(float)_numberH:
 (float)_emailX:(float)_emailY:(float)_emailW:(float)_emailH;
+
+
+
 @property (strong, nonatomic) IBOutlet UIImageView *cardImage;
 @property int nowCard;
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;

@@ -13,5 +13,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *numberLabel;
 @property (strong, nonatomic) IBOutlet UILabel *emailLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *cardImg;
+@property (strong, nonatomic) IBOutlet UIView *cardView;
+@property (strong, nonatomic) IBOutlet UIButton *checkBox;
+@property int _itemId;
 
 @end
