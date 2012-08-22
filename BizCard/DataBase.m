@@ -555,4 +555,145 @@
 }
 
 
+// ---------------- Msg Id Return ---------------- //
+
+-(NSArray *)getMsgIds{
+    NSString *data;
+    int count = 0;
+    
+    sqlite3_stmt *selectStatement;
+    NSString *query = [NSString stringWithFormat:@"SELECT _id FROM %@",MsgTable_Name];
+    
+    const char *selectSql = [query UTF8String];
+    
+    
+    if (sqlite3_prepare_v2(database, selectSql, -1, &selectStatement, NULL) == SQLITE_OK) {
+        
+        // while문을 돌면서 각 레코드의 데이터를 받아서 출력한다.
+        while (sqlite3_step(selectStatement) == SQLITE_ROW) {
+            
+            int _id = sqlite3_column_int(selectStatement, 0);
+            
+            if (count == 0) {
+                data = [NSString stringWithFormat:@"%d", _id];
+            }else{
+                data = [NSString stringWithFormat:@"%@|,|%d",data, _id];
+            }
+            count++;
+        }
+        
+    }
+    
+    //statement close
+    sqlite3_finalize(selectStatement);
+    
+    
+    NSArray *array =[data componentsSeparatedByString:@"|,|"];
+    
+    return array;
+}
+
+
+// ---------------- Msg Return ---------------- //
+
+-(NSString *)getMsg:(int)_id{
+    NSString *data;
+    sqlite3_stmt *selectStatement;
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT msg FROM %@ WHERE _id = %d",MsgTable_Name,_id];
+    
+    const char *selectSql = [query UTF8String];
+    
+    if (sqlite3_prepare_v2(database, selectSql, -1, &selectStatement, NULL) == SQLITE_OK) {
+        while (sqlite3_step(selectStatement) == SQLITE_ROW) {
+            
+            NSString *msg = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectStatement, 0) ];
+            
+            data = [NSString stringWithFormat:@"%@", msg];
+            
+        }
+    }
+    
+    //statement close
+    sqlite3_finalize(selectStatement);
+    
+    return data;
+    
+}
+
+
+// ---------------- Msg Insert ---------------- //
+
+
+-(void)insertMsg:(NSString *)msg{
+    
+    sqlite3_stmt *insertStatement;
+    
+    NSString *query = [NSString stringWithFormat:@"INSERT INTO %@ (msg) VALUES('%@')",MsgTable_Name,msg];
+    
+    const char *insertSql = [query UTF8String];
+    
+    //프리페어스테이트먼트를 사용
+    if (sqlite3_prepare_v2(database, insertSql, -1, &insertStatement, NULL) == SQLITE_OK) {
+        
+        sqlite3_bind_text(insertStatement, 2, insertSql,  -1, SQLITE_TRANSIENT);
+        
+        // sql문 실행
+        if (sqlite3_step(insertStatement) != SQLITE_DONE) {
+            NSLog(@"Error");
+            
+        }
+    }
+    
+    sqlite3_finalize(insertStatement);
+    
+}
+
+
+// ---------------- Msg Update ---------------- //
+
+-(void)updateMsg:(int)_id:(NSString *)msg{
+    
+    NSLog(@"id ===  %d,  msg === %@",_id, msg);
+    
+    sqlite3_stmt *insertStatement;
+    NSString *query = [NSString stringWithFormat:@"REPLACE INTO %@ (_id,msg) VALUES(?,?)",MsgTable_Name];
+    
+    const char *insertSql = [query UTF8String];
+    
+    //프리페어스테이트먼트를 사용
+    if (sqlite3_prepare_v2(database, insertSql, -1, &insertStatement, NULL) == SQLITE_OK) {
+        
+        //?에 데이터를 바인드
+        sqlite3_bind_int(insertStatement, 1, _id);
+        sqlite3_bind_text(insertStatement, 2, [msg UTF8String],  -1, SQLITE_TRANSIENT);
+        
+        // sql문 실행
+        if (sqlite3_step(insertStatement) != SQLITE_DONE) {
+            NSLog(@"Error");
+            
+        }
+    }
+    
+    
+    sqlite3_finalize(insertStatement);
+}
+
+
+// ---------------- Msg Delete ---------------- //
+
+-(void)deleteMsg:(int)_id{
+    NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE _id = %d",MsgTable_Name,_id];
+    
+    const char *delSql = [query UTF8String];
+    
+    
+    if (sqlite3_exec(database, delSql, nil,nil,nil) != SQLITE_OK) {
+        
+        NSLog(@"Error");
+    }else{
+        NSLog(@"OK");
+    }
+}
+
 @end

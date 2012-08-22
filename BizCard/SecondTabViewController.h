@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataBase.h"
+#import "Msg_Cell.h"
+#import "Add_MsgViewController.h"
 
-@interface SecondTabViewController : UIViewController
-
+@interface SecondTabViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>{
+    
+    NSArray *msgArray;
+    DataBase *db;
+    Msg_Cell *msg_cell;
+    Add_MsgViewController *addMsgBtn;
+}
+@property (strong, nonatomic) IBOutlet UITableView *msgTable;
 @end

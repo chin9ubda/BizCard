@@ -52,6 +52,10 @@
 		4366F58C15E22362008E69F6 /* CardTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F58B15E22362008E69F6 /* CardTwo.xib */; };
 		4399881A15E4C46900AA7483 /* Group_Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399881915E4C46900AA7483 /* Group_Menu.m */; };
 		4399881C15E4C47300AA7483 /* Group_Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4399881B15E4C47300AA7483 /* Group_Menu.xib */; };
+		4399882015E4E5A600AA7483 /* Msg_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399881F15E4E5A600AA7483 /* Msg_Cell.m */; };
+		4399882215E4E5B100AA7483 /* Msg_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4399882115E4E5B100AA7483 /* Msg_Cell.xib */; };
+		4399882715E4E70200AA7483 /* Add_MsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399882515E4E70200AA7483 /* Add_MsgViewController.m */; };
+		4399882815E4E70200AA7483 /* Add_MsgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4399882615E4E70200AA7483 /* Add_MsgViewController.xib */; };
 		43F9426815E0CC1F005893A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426715E0CC1F005893A9 /* UIKit.framework */; };
 		43F9426A15E0CC1F005893A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426915E0CC1F005893A9 /* Foundation.framework */; };
 		43F9426C15E0CC1F005893A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426B15E0CC1F005893A9 /* CoreGraphics.framework */; };
@@ -121,6 +125,12 @@
 		4399881815E4C46900AA7483 /* Group_Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group_Menu.h; sourceTree = "<group>"; };
 		4399881915E4C46900AA7483 /* Group_Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group_Menu.m; sourceTree = "<group>"; };
 		4399881B15E4C47300AA7483 /* Group_Menu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Group_Menu.xib; sourceTree = "<group>"; };
+		4399881E15E4E5A600AA7483 /* Msg_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Msg_Cell.h; sourceTree = "<group>"; };
+		4399881F15E4E5A600AA7483 /* Msg_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Msg_Cell.m; sourceTree = "<group>"; };
+		4399882115E4E5B100AA7483 /* Msg_Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Msg_Cell.xib; sourceTree = "<group>"; };
+		4399882415E4E70200AA7483 /* Add_MsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Add_MsgViewController.h; sourceTree = "<group>"; };
+		4399882515E4E70200AA7483 /* Add_MsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Add_MsgViewController.m; sourceTree = "<group>"; };
+		4399882615E4E70200AA7483 /* Add_MsgViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Add_MsgViewController.xib; sourceTree = "<group>"; };
 		43F9426315E0CC1F005893A9 /* BizCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BizCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F9426715E0CC1F005893A9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		43F9426915E0CC1F005893A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -211,6 +221,8 @@
 		4366F54A15E1D8E1008E69F6 /* SecondTab */ = {
 			isa = PBXGroup;
 			children = (
+				4399882315E4E6ED00AA7483 /* Add_Msg */,
+				4399881D15E4E59400AA7483 /* Msg_Cell */,
 				4366F54C15E1D913008E69F6 /* SecondTabViewController.h */,
 				4366F54D15E1D913008E69F6 /* SecondTabViewController.m */,
 				4366F54E15E1D913008E69F6 /* SecondTabViewController.xib */,
@@ -331,6 +343,26 @@
 				4399881B15E4C47300AA7483 /* Group_Menu.xib */,
 			);
 			name = Group_Menu;
+			sourceTree = "<group>";
+		};
+		4399881D15E4E59400AA7483 /* Msg_Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4399881E15E4E5A600AA7483 /* Msg_Cell.h */,
+				4399881F15E4E5A600AA7483 /* Msg_Cell.m */,
+				4399882115E4E5B100AA7483 /* Msg_Cell.xib */,
+			);
+			name = Msg_Cell;
+			sourceTree = "<group>";
+		};
+		4399882315E4E6ED00AA7483 /* Add_Msg */ = {
+			isa = PBXGroup;
+			children = (
+				4399882415E4E70200AA7483 /* Add_MsgViewController.h */,
+				4399882515E4E70200AA7483 /* Add_MsgViewController.m */,
+				4399882615E4E70200AA7483 /* Add_MsgViewController.xib */,
+			);
+			name = Add_Msg;
 			sourceTree = "<group>";
 		};
 		43F9425815E0CC1F005893A9 = {
@@ -499,6 +531,8 @@
 				4366F58615E22134008E69F6 /* CardOne.xib in Resources */,
 				4366F58C15E22362008E69F6 /* CardTwo.xib in Resources */,
 				4399881C15E4C47300AA7483 /* Group_Menu.xib in Resources */,
+				4399882215E4E5B100AA7483 /* Msg_Cell.xib in Resources */,
+				4399882815E4E70200AA7483 /* Add_MsgViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +559,8 @@
 				4366F58415E2212C008E69F6 /* CardOne.m in Sources */,
 				4366F58A15E22358008E69F6 /* CardTwo.m in Sources */,
 				4399881A15E4C46900AA7483 /* Group_Menu.m in Sources */,
+				4399882015E4E5A600AA7483 /* Msg_Cell.m in Sources */,
+				4399882715E4E70200AA7483 /* Add_MsgViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

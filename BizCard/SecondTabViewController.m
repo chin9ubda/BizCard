@@ -13,12 +13,14 @@
 @end
 
 @implementation SecondTabViewController
+@synthesize msgTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        db = [DataBase getInstance];
+        msgArray = [db getMsgIds];
     }
     return self;
 }
@@ -26,12 +28,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"msgTableReload" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(msgTableReload) name:@"msgTableReload" object:nil];}
 
 - (void)viewDidUnload
 {
+    [self setMsgTable:nil];
     [super viewDidUnload];
+    db = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -39,6 +43,51 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return msgArray.count;
+    
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    int index = [indexPath row];
+    
+    msg_cell = (Msg_Cell *)[tableView dequeueReusableCellWithIdentifier:@"CELL_ID"];
+    
+    if(msg_cell == nil){
+        NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"Msg_Cell" owner:nil options:nil];
+        msg_cell = [array objectAtIndex:0];
+        msg_cell.frame = CGRectMake(0, 0, 0, 0);
+    }
+    
+    msg_cell.msgLabel.text = [db getMsg:[[msgArray objectAtIndex:index]integerValue]];
+    
+    return msg_cell;
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    int index = [indexPath row];
+    //    NSLog(@"%@", [db getMsg:index + 1]);
+    addMsgBtn = [[Add_MsgViewController alloc]init];
+    [addMsgBtn setType:index + 1];
+    [addMsgBtn setTextView:[db getMsg:index + 1]];
+    [self.view insertSubview:addMsgBtn.view aboveSubview:self.view];
+}
+
+
+-(void)msgTableReload{
+    NSLog(@"msgTableReload");
+    msgArray = [db getMsgIds];
+    [msgTable reloadData];
+}
+
+- (IBAction)addMsg:(id)sender {
+    addMsgBtn = [[Add_MsgViewController alloc]init];
+    [addMsgBtn setTextView:@""];
+    
+    [self.view insertSubview:addMsgBtn.view aboveSubview:self.view];
 }
 
 @end

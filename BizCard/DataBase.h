@@ -32,4 +32,11 @@
 -(void)memberDel:(int)gruop_id;
 -(void)memberUpdate:(int)group_Number:(int)card_Number;
 -(NSMutableArray *)getMemberIds:(int)group_id;
+
+
+-(NSArray *)getMsgIds;
+-(NSString *)getMsg:(int)_id;
+-(void)insertMsg:(NSString *)msg;
+-(void)updateMsg:(int)_id:(NSString *)msg;
+-(void)deleteMsg:(int)_id;
 @end
