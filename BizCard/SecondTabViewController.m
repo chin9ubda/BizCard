@@ -45,11 +45,18 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+// --------------- Msg Table Count Return --------------- //
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return msgArray.count;
     
 }
+
+
+// --------------- Msg TableViewCell Setting --------------- //
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     int index = [indexPath row];
     
@@ -67,6 +74,9 @@
     
 }
 
+
+// --------------- Cell Select Event --------------- //
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     int index = [indexPath row];
     //    NSLog(@"%@", [db getMsg:index + 1]);
@@ -77,11 +87,17 @@
 }
 
 
+
+// --------------- Msg TableView Reload --------------- //
+
 -(void)msgTableReload{
     NSLog(@"msgTableReload");
     msgArray = [db getMsgIds];
     [msgTable reloadData];
 }
+
+
+// --------------- Msg Add Btn Event --------------- //
 
 - (IBAction)addMsg:(id)sender {
     addMsgBtn = [[Add_MsgViewController alloc]init];

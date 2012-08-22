@@ -43,6 +43,8 @@
     [self viewSizeSet:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabbarHide) name:@"tabbarHide" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabbarOpen) name:@"tabbarOpen" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabbarControllerRemove) name:@"removeTabbarController" object:nil];
+
 }
 
 - (void)viewDidUnload
@@ -116,9 +118,17 @@
 }
 
 
-// ---------------- Tabbar View ---------------- //
+// ---------------- Tabbar Open ---------------- //
 -(void)tabbarOpen{
     tabbarView.hidden=NO;
 }
+
+
+// ---------------- Tabbar Controller Remove ---------------- //
+-(void)tabbarControllerRemove{
+    [self.view removeFromSuperview];
+    [self removeFromParentViewController];
+}
+
 
 @end

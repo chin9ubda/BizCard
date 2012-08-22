@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    tabbarController = [[TabbarViewController alloc]init];
+//    tabbarController = [[TabbarViewController alloc]init];
 }
 
 - (void)viewDidUnload
@@ -50,6 +50,7 @@
 - (IBAction)loginBtn:(id)sender {
     
     if ([self loginCheck]) {
+        tabbarController = [[TabbarViewController alloc]init];
         [self.view insertSubview:tabbarController.view aboveSubview:self.view];
     }else {
         NSLog(@"로그인 실패");

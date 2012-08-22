@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ThirdTabViewController : UIViewController
+- (IBAction)logOutBtn:(id)sender;
 
 @end

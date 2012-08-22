@@ -41,4 +41,13 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+// --------------- Log Out Btn Event --------------- //
+
+- (IBAction)logOutBtn:(id)sender {
+    [self.view removeFromSuperview];
+    [self removeFromParentViewController];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"removeTabbarController" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarHide" object:nil];
+}
 @end
