@@ -42,14 +42,15 @@
 		4366F56515E20B9B008E69F6 /* BcTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F56415E20B9B008E69F6 /* BcTableCell.m */; };
 		4366F56715E20BAF008E69F6 /* BcTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F56615E20BAF008E69F6 /* BcTableCell.xib */; };
 		4366F57415E214CF008E69F6 /* DataStruct.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F57315E214CF008E69F6 /* DataStruct.m */; };
-		4366F57815E217A1008E69F6 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F57615E217A1008E69F6 /* SelectViewController.m */; };
-		4366F57915E217A1008E69F6 /* SelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F57715E217A1008E69F6 /* SelectViewController.xib */; };
 		4366F57E15E21AD8008E69F6 /* EditBcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F57C15E21AD8008E69F6 /* EditBcViewController.m */; };
 		4366F57F15E21AD8008E69F6 /* EditBcViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F57D15E21AD8008E69F6 /* EditBcViewController.xib */; };
 		4366F58415E2212C008E69F6 /* CardOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F58315E2212C008E69F6 /* CardOne.m */; };
 		4366F58615E22134008E69F6 /* CardOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F58515E22134008E69F6 /* CardOne.xib */; };
 		4366F58A15E22358008E69F6 /* CardTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F58915E22358008E69F6 /* CardTwo.m */; };
 		4366F58C15E22362008E69F6 /* CardTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F58B15E22362008E69F6 /* CardTwo.xib */; };
+		4387204D15E62BBE00CC12B0 /* tabonebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4387204C15E62BBE00CC12B0 /* tabonebg.png */; };
+		4387206615E652DE00CC12B0 /* SelectBCTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4387206415E652DE00CC12B0 /* SelectBCTemplateViewController.m */; };
+		4387206715E652DE00CC12B0 /* SelectBCTemplateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4387206515E652DE00CC12B0 /* SelectBCTemplateViewController.xib */; };
 		4399881A15E4C46900AA7483 /* Group_Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399881915E4C46900AA7483 /* Group_Menu.m */; };
 		4399881C15E4C47300AA7483 /* Group_Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4399881B15E4C47300AA7483 /* Group_Menu.xib */; };
 		4399882015E4E5A600AA7483 /* Msg_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399881F15E4E5A600AA7483 /* Msg_Cell.m */; };
@@ -113,9 +114,6 @@
 		4366F56615E20BAF008E69F6 /* BcTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BcTableCell.xib; sourceTree = "<group>"; };
 		4366F57215E214CF008E69F6 /* DataStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStruct.h; sourceTree = "<group>"; };
 		4366F57315E214CF008E69F6 /* DataStruct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStruct.m; sourceTree = "<group>"; };
-		4366F57515E217A1008E69F6 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
-		4366F57615E217A1008E69F6 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
-		4366F57715E217A1008E69F6 /* SelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectViewController.xib; sourceTree = "<group>"; };
 		4366F57B15E21AD8008E69F6 /* EditBcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBcViewController.h; sourceTree = "<group>"; };
 		4366F57C15E21AD8008E69F6 /* EditBcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditBcViewController.m; sourceTree = "<group>"; };
 		4366F57D15E21AD8008E69F6 /* EditBcViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditBcViewController.xib; sourceTree = "<group>"; };
@@ -125,6 +123,10 @@
 		4366F58815E22358008E69F6 /* CardTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTwo.h; sourceTree = "<group>"; };
 		4366F58915E22358008E69F6 /* CardTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTwo.m; sourceTree = "<group>"; };
 		4366F58B15E22362008E69F6 /* CardTwo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardTwo.xib; sourceTree = "<group>"; };
+		4387204C15E62BBE00CC12B0 /* tabonebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabonebg.png; sourceTree = "<group>"; };
+		4387206315E652DE00CC12B0 /* SelectBCTemplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectBCTemplateViewController.h; path = BizCard/SelectBCTemplateViewController.h; sourceTree = "<group>"; };
+		4387206415E652DE00CC12B0 /* SelectBCTemplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectBCTemplateViewController.m; path = BizCard/SelectBCTemplateViewController.m; sourceTree = "<group>"; };
+		4387206515E652DE00CC12B0 /* SelectBCTemplateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectBCTemplateViewController.xib; path = BizCard/SelectBCTemplateViewController.xib; sourceTree = "<group>"; };
 		4399881815E4C46900AA7483 /* Group_Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group_Menu.h; sourceTree = "<group>"; };
 		4399881915E4C46900AA7483 /* Group_Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group_Menu.m; sourceTree = "<group>"; };
 		4399881B15E4C47300AA7483 /* Group_Menu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Group_Menu.xib; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		4366F51C15E1D558008E69F6 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				4387204C15E62BBE00CC12B0 /* tabonebg.png */,
 				4366F51D15E1D566008E69F6 /* tabbarbg.png */,
 				4366F51E15E1D566008E69F6 /* tabbar1.png */,
 				4366F51F15E1D566008E69F6 /* tabbar2.png */,
@@ -279,9 +282,9 @@
 		4366F56815E20D15008E69F6 /* SelectBCTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				4366F57515E217A1008E69F6 /* SelectViewController.h */,
-				4366F57615E217A1008E69F6 /* SelectViewController.m */,
-				4366F57715E217A1008E69F6 /* SelectViewController.xib */,
+				4387206315E652DE00CC12B0 /* SelectBCTemplateViewController.h */,
+				4387206415E652DE00CC12B0 /* SelectBCTemplateViewController.m */,
+				4387206515E652DE00CC12B0 /* SelectBCTemplateViewController.xib */,
 			);
 			name = SelectBCTemplate;
 			path = ..;
@@ -546,7 +549,6 @@
 				4366F55015E1D913008E69F6 /* SecondTabViewController.xib in Resources */,
 				4366F55515E1D922008E69F6 /* ThirdTabViewController.xib in Resources */,
 				4366F56715E20BAF008E69F6 /* BcTableCell.xib in Resources */,
-				4366F57915E217A1008E69F6 /* SelectViewController.xib in Resources */,
 				4366F57F15E21AD8008E69F6 /* EditBcViewController.xib in Resources */,
 				4366F58615E22134008E69F6 /* CardOne.xib in Resources */,
 				4366F58C15E22362008E69F6 /* CardTwo.xib in Resources */,
@@ -554,6 +556,8 @@
 				4399882215E4E5B100AA7483 /* Msg_Cell.xib in Resources */,
 				4399882815E4E70200AA7483 /* Add_MsgViewController.xib in Resources */,
 				4399882E15E5C98500AA7483 /* BCViewController.xib in Resources */,
+				4387204D15E62BBE00CC12B0 /* tabonebg.png in Resources */,
+				4387206715E652DE00CC12B0 /* SelectBCTemplateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,7 +579,6 @@
 				4366F55915E1F5BD008E69F6 /* DataBase.m in Sources */,
 				4366F56515E20B9B008E69F6 /* BcTableCell.m in Sources */,
 				4366F57415E214CF008E69F6 /* DataStruct.m in Sources */,
-				4366F57815E217A1008E69F6 /* SelectViewController.m in Sources */,
 				4366F57E15E21AD8008E69F6 /* EditBcViewController.m in Sources */,
 				4366F58415E2212C008E69F6 /* CardOne.m in Sources */,
 				4366F58A15E22358008E69F6 /* CardTwo.m in Sources */,
@@ -583,6 +586,7 @@
 				4399882015E4E5A600AA7483 /* Msg_Cell.m in Sources */,
 				4399882715E4E70200AA7483 /* Add_MsgViewController.m in Sources */,
 				4399882D15E5C98500AA7483 /* BCViewController.m in Sources */,
+				4387206615E652DE00CC12B0 /* SelectBCTemplateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

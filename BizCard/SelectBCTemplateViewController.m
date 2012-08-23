@@ -1,18 +1,18 @@
 //
-//  SelectViewController.m
+//  SelectBCTemplateViewController.m
 //  BizCard
 //
-//  Created by 박 찬기 on 12. 8. 20..
+//  Created by 박 찬기 on 12. 8. 23..
 //  Copyright (c) 2012년 박 찬기. All rights reserved.
 //
 
-#import "SelectViewController.h"
+#import "SelectBCTemplateViewController.h"
 
-@interface SelectViewController ()
+@interface SelectBCTemplateViewController ()
 
 @end
 
-@implementation SelectViewController
+@implementation SelectBCTemplateViewController
 @synthesize bcTypeOne, bcTypeTwo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,21 +29,17 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backBtn:) name:@"select_remove" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarHide" object:nil];
-
-//    [self setCardTemplate];
-    // Do any additional setup after loading the view from its nib.
+    
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 -(void)viewWillLayoutSubviews{
@@ -58,13 +54,13 @@
     
     NSArray *xibs = [[NSBundle mainBundle] loadNibNamed:@"CardOne" owner:self options:nil];
     _cardOne = [xibs objectAtIndex:0];
- 
+    
     [self reSizeLabel:_cardOne.nameLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
     [self reSizeLabel:_cardOne.numberLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
     [self reSizeLabel:_cardOne.emailLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
     [self reSizeLabel:_cardOne.nameTitleLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
     [self reSizeLabel:_cardOne.numberTitleLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
-    [self reSizeLabel:_cardOne.emailTitleLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width]; 
+    [self reSizeLabel:_cardOne.emailTitleLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
     
     _cardOne.frame = CGRectMake(0, 0, bcTypeOne.frame.size.width, _cardOne.frame.size.height);
     
@@ -80,7 +76,7 @@
     xibs = [[NSBundle mainBundle] loadNibNamed:@"CardTwo" owner:self options:nil];
     _cardTwo= (CardTwo *)[xibs objectAtIndex:0];
     [_cardTwo awakeFromNib];
-        
+    
     [self reSizeLabel:_cardTwo.nameLabel:bcTypeTwo.frame.size.width / _cardTwo.frame.size.width];
     [self reSizeLabel:_cardTwo.numberLabel:bcTypeTwo.frame.size.width / _cardTwo.frame.size.width];
     [self reSizeLabel:_cardTwo.emailLabel:bcTypeTwo.frame.size.width / _cardTwo.frame.size.width];

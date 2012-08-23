@@ -25,7 +25,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         dStruct = [DataStruct getInstance];
-//        captureView = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 450.0f, 250.0f)];
     }
     return self;
 }
@@ -244,14 +243,7 @@
         [db insertContents:_id :2 :numberLabel.text :numberLabel.frame.origin.x :numberLabel.frame.origin.y :numberLabel.frame.size.height :numberLabel.frame.size.width];
         [db insertContents:_id :3 :emailLabel.text :emailLabel.frame.origin.x :emailLabel.frame.origin.y :emailLabel.frame.size.height :emailLabel.frame.size.width];
         [self saveImg:fileName:[self captureView:loadCardView]];
-//        
-//        [self saveImg:fileName:[self captureView:loadCardView]];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTableView" object:nil];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"select_remove" object:nil];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
-//        
-//        [self.view removeFromSuperview];
-//        [self removeFromParentViewController];
+        
     }
     
     

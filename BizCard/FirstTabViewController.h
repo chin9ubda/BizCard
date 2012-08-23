@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DataBase.h"
 #import "DataStruct.h"
-#import "SelectViewController.h"
+#import "SelectBCTemplateViewController.h"
 #import "EditBcViewController.h"
 #import "Group_Menu.h"
 #import "BCViewController.h"
@@ -24,7 +24,7 @@
     NSMutableArray *bcArray;
     NSMutableArray *bcCheckArray;
     
-    SelectViewController *selectView;
+    SelectBCTemplateViewController *selectView;
     EditBcViewController *editBcViewController;
     BCViewController *bcView;
     
@@ -44,6 +44,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *addGroupBtn;
 @property (strong, nonatomic) IBOutlet UIScrollView *groupScrollView;
 @property (strong, nonatomic) IBOutlet UITableView *businessCardTable;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *editBtn;
+@property (strong, nonatomic) IBOutlet UIButton *editBtn;
 
 @end

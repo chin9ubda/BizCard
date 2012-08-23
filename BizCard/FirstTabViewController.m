@@ -7,7 +7,7 @@
 //
 
 #import "FirstTabViewController.h"
-#import "SelectViewController.h"
+#import "SelectBCTemplateViewController.h"
 #import "BcTableCell.h"
 
 #define CardEdit 1
@@ -119,12 +119,12 @@
             gMenu = nil;
         }
         edit = false;
-        editBtn.title = @"편집";
+        [editBtn setTitle:@"편집" forState:UIControlStateNormal];
         [self reloadTableView];
 
     }else{
         if (bcArray.count != 0) {
-            editBtn.title = @"완료";
+            [editBtn setTitle:@"완료" forState:UIControlStateNormal];
             edit = true;
             nowState = CardEdit;
             [self reloadTableView];
@@ -301,7 +301,8 @@
 
 -(void)groupMember{
     if (!edit) {
-        [editBtn setTitle:@"완료"];
+        [editBtn setTitle:@"완료" forState:UIControlStateNormal];
+
         nowState = MemberEdit;
         edit = true;
         
@@ -442,13 +443,12 @@
         bcTableCell.emailLabel.text = dStruct.email;
         [self loadImg:[bcArray objectAtIndex:index] :bcTableCell.cardImg];
 
-        if (nowState == MemberEdit) {
-            if([[bcCheckArray objectAtIndex: index] integerValue] == 1){
-                [bcTableCell.checkBox setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateNormal];
-            }else if([[bcCheckArray objectAtIndex: index] integerValue] == 0){
-                [bcTableCell.checkBox setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
-            }
+        if([[bcCheckArray objectAtIndex: index] integerValue] == 1){
+            [bcTableCell.checkBox setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateNormal];
+        }else if([[bcCheckArray objectAtIndex: index] integerValue] == 0){
+            [bcTableCell.checkBox setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
         }
+        
     }else {
         bcTableCell = [tableView dequeueReusableCellWithIdentifier:@"CELL_ID"];
         if(bcTableCell == nil){
@@ -613,7 +613,7 @@
             NSLog(@"주소록에서 가져오기");
         }else if(buttonIndex == 3){
           NSLog(@"직접 입력하기");
-            selectView = [[SelectViewController alloc]init];
+            selectView = [[SelectBCTemplateViewController alloc]init];
             [self.view insertSubview:selectView.view aboveSubview:self.view];
         }
     }
