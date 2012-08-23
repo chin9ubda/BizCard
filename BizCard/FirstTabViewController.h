@@ -12,6 +12,7 @@
 #import "SelectViewController.h"
 #import "EditBcViewController.h"
 #import "Group_Menu.h"
+#import "BCViewController.h"
 
 
 @interface FirstTabViewController : UIViewController
@@ -25,6 +26,7 @@
     
     SelectViewController *selectView;
     EditBcViewController *editBcViewController;
+    BCViewController *bcView;
     
     int nowGroup;
     int nowState;
@@ -37,6 +39,7 @@
 - (IBAction)allGroupBtn:(id)sender;
 - (IBAction)addGroupBtn:(id)sender;
 - (IBAction)editBCBtn:(id)sender;
+
 @property (strong, nonatomic) IBOutlet UIButton *allGroupBtn;
 @property (strong, nonatomic) IBOutlet UIButton *addGroupBtn;
 @property (strong, nonatomic) IBOutlet UIScrollView *groupScrollView;

@@ -56,6 +56,9 @@
 		4399882215E4E5B100AA7483 /* Msg_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4399882115E4E5B100AA7483 /* Msg_Cell.xib */; };
 		4399882715E4E70200AA7483 /* Add_MsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399882515E4E70200AA7483 /* Add_MsgViewController.m */; };
 		4399882815E4E70200AA7483 /* Add_MsgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4399882615E4E70200AA7483 /* Add_MsgViewController.xib */; };
+		4399882D15E5C98500AA7483 /* BCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399882B15E5C98500AA7483 /* BCViewController.m */; };
+		4399882E15E5C98500AA7483 /* BCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4399882C15E5C98500AA7483 /* BCViewController.xib */; };
+		4399883015E5CDDF00AA7483 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4399882F15E5CDDF00AA7483 /* MessageUI.framework */; };
 		43F9426815E0CC1F005893A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426715E0CC1F005893A9 /* UIKit.framework */; };
 		43F9426A15E0CC1F005893A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426915E0CC1F005893A9 /* Foundation.framework */; };
 		43F9426C15E0CC1F005893A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426B15E0CC1F005893A9 /* CoreGraphics.framework */; };
@@ -131,6 +134,10 @@
 		4399882415E4E70200AA7483 /* Add_MsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Add_MsgViewController.h; sourceTree = "<group>"; };
 		4399882515E4E70200AA7483 /* Add_MsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Add_MsgViewController.m; sourceTree = "<group>"; };
 		4399882615E4E70200AA7483 /* Add_MsgViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Add_MsgViewController.xib; sourceTree = "<group>"; };
+		4399882A15E5C98500AA7483 /* BCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCViewController.h; sourceTree = "<group>"; };
+		4399882B15E5C98500AA7483 /* BCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCViewController.m; sourceTree = "<group>"; };
+		4399882C15E5C98500AA7483 /* BCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BCViewController.xib; sourceTree = "<group>"; };
+		4399882F15E5CDDF00AA7483 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		43F9426315E0CC1F005893A9 /* BizCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BizCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F9426715E0CC1F005893A9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		43F9426915E0CC1F005893A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -151,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4399883015E5CDDF00AA7483 /* MessageUI.framework in Frameworks */,
 				4366F55B15E1F82A008E69F6 /* libsqlite3.dylib in Frameworks */,
 				43F9426815E0CC1F005893A9 /* UIKit.framework in Frameworks */,
 				43F9426A15E0CC1F005893A9 /* Foundation.framework in Frameworks */,
@@ -365,6 +373,16 @@
 			name = Add_Msg;
 			sourceTree = "<group>";
 		};
+		4399882915E5C95C00AA7483 /* BCView */ = {
+			isa = PBXGroup;
+			children = (
+				4399882A15E5C98500AA7483 /* BCViewController.h */,
+				4399882B15E5C98500AA7483 /* BCViewController.m */,
+				4399882C15E5C98500AA7483 /* BCViewController.xib */,
+			);
+			name = BCView;
+			sourceTree = "<group>";
+		};
 		43F9425815E0CC1F005893A9 = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +405,7 @@
 		43F9426615E0CC1F005893A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4399882F15E5CDDF00AA7483 /* MessageUI.framework */,
 				43F9426715E0CC1F005893A9 /* UIKit.framework */,
 				43F9426915E0CC1F005893A9 /* Foundation.framework */,
 				43F9426B15E0CC1F005893A9 /* CoreGraphics.framework */,
@@ -438,6 +457,7 @@
 		43F9428915E1CFBA005893A9 /* FirstTab */ = {
 			isa = PBXGroup;
 			children = (
+				4399882915E5C95C00AA7483 /* BCView */,
 				4366F57A15E21AA9008E69F6 /* EditBc */,
 				4366F56815E20D15008E69F6 /* SelectBCTemplate */,
 				43F9428A15E1CFDF005893A9 /* FirstTabViewController.h */,
@@ -533,6 +553,7 @@
 				4399881C15E4C47300AA7483 /* Group_Menu.xib in Resources */,
 				4399882215E4E5B100AA7483 /* Msg_Cell.xib in Resources */,
 				4399882815E4E70200AA7483 /* Add_MsgViewController.xib in Resources */,
+				4399882E15E5C98500AA7483 /* BCViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +582,7 @@
 				4399881A15E4C46900AA7483 /* Group_Menu.m in Sources */,
 				4399882015E4E5A600AA7483 /* Msg_Cell.m in Sources */,
 				4399882715E4E70200AA7483 /* Add_MsgViewController.m in Sources */,
+				4399882D15E5C98500AA7483 /* BCViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

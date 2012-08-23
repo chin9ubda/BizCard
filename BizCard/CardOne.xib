@@ -39,7 +39,7 @@
 					<object class="IBUIImageView" id="387490231">
 						<reference key="NSNextResponder" ref="797099630"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{255, 125}</string>
+						<string key="NSFrameSize">{450, 250}</string>
 						<reference key="NSSuperview" ref="797099630"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="475188029"/>
@@ -81,6 +81,7 @@
 							<double key="NSSize">17</double>
 							<int key="NSfFlags">16</int>
 						</object>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 					<object class="IBUILabel" id="634716918">
 						<reference key="NSNextResponder" ref="797099630"/>
@@ -99,9 +100,10 @@
 						<reference key="IBUITextColor" ref="1071869397"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
-						<float key="IBUIMinimumFontSize">17</float>
+						<float key="IBUIMinimumFontSize">4</float>
 						<reference key="IBUIFontDescription" ref="1058221381"/>
 						<reference key="IBUIFont" ref="173740072"/>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 					<object class="IBUILabel" id="807621982">
 						<reference key="NSNextResponder" ref="797099630"/>
@@ -123,10 +125,11 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<reference key="IBUIFontDescription" ref="1058221381"/>
 						<reference key="IBUIFont" ref="173740072"/>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 					<object class="IBUILabel" id="164090628">
 						<reference key="NSNextResponder" ref="797099630"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{99, 60}, {114, 21}}</string>
 						<reference key="NSSuperview" ref="797099630"/>
 						<reference key="NSWindow"/>
@@ -144,6 +147,7 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<reference key="IBUIFontDescription" ref="1058221381"/>
 						<reference key="IBUIFont" ref="173740072"/>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 					<object class="IBUILabel" id="27076498">
 						<reference key="NSNextResponder" ref="797099630"/>
@@ -165,10 +169,11 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<reference key="IBUIFontDescription" ref="1058221381"/>
 						<reference key="IBUIFont" ref="173740072"/>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 					<object class="IBUILabel" id="851343175">
 						<reference key="NSNextResponder" ref="797099630"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{81, 87}, {140, 21}}</string>
 						<reference key="NSSuperview" ref="797099630"/>
 						<reference key="NSWindow"/>
@@ -185,9 +190,10 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<reference key="IBUIFontDescription" ref="1058221381"/>
 						<reference key="IBUIFont" ref="173740072"/>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 				</array>
-				<string key="NSFrameSize">{255, 125}</string>
+				<string key="NSFrameSize">{450, 250}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="387490231"/>
@@ -259,6 +265,30 @@
 						<reference key="destination" ref="851343175"/>
 					</object>
 					<int key="connectionID">15</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">nameTitleLabel</string>
+						<reference key="source" ref="797099630"/>
+						<reference key="destination" ref="475188029"/>
+					</object>
+					<int key="connectionID">18</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">numberTitleLabel</string>
+						<reference key="source" ref="797099630"/>
+						<reference key="destination" ref="807621982"/>
+					</object>
+					<int key="connectionID">19</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">emailTitleLabel</string>
+						<reference key="source" ref="797099630"/>
+						<reference key="destination" ref="27076498"/>
+					</object>
+					<int key="connectionID">20</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -364,7 +394,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">17</int>
+			<int key="maxID">20</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -373,20 +403,35 @@
 					<string key="superclassName">UIView</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="emailLabel">UILabel</string>
+						<string key="emailTitleLabel">UILabel</string>
 						<string key="nameLabel">UILabel</string>
+						<string key="nameTitleLabel">UILabel</string>
 						<string key="numberLabel">UILabel</string>
+						<string key="numberTitleLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="emailLabel">
 							<string key="name">emailLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="emailTitleLabel">
+							<string key="name">emailTitleLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="nameLabel">
 							<string key="name">nameLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="nameTitleLabel">
+							<string key="name">nameTitleLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="numberLabel">
 							<string key="name">numberLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="numberTitleLabel">
+							<string key="name">numberTitleLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 					</dictionary>

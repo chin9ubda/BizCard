@@ -64,20 +64,29 @@
         numberTextField.text = dStruct.number;
         emailTextField.text = dStruct.email;
         cardImage.image = cardImg;
+    } else {
+        [self setCardTemplate];
     }
 }
 
 
 
 // ---------------- SetCardImg ---------------- //
-// 이 함수에 사진찍은 이미지 & 데이터 전송
-// toSJ
 
+/* ------------------------------------------------
+     이 함수에 사진찍은 이미지 & 데이터 전송
+     이미지, 이름, 전화번호, 이메일, 이름X좌표, 이름Y좌표, 이름넓이, 
+     이름높이,번호X좌표, 번호Y좌표, 번호넓이, 번호높이,이메일X좌표, 
+     이메일Y좌표, 이메일넓이, 이메일높이
+
+    toSJ
+  ------------------------------------------------ */
+ 
 - (void)setCardImg:(UIImage *)img:(NSString *)_name:(NSString *)_number:(NSString *)_email:
 (float)_nameX:(float)_nameY:(float)_nameW:(float)_nameH:
 (float)_numberX:(float)_numberY:(float)_numberW:(float)_numberH:
 (float)_emailX:(float)_emailY:(float)_emailW:(float)_emailH{
-    
+        
     cardImg = img;
     
     dStruct.name = _name;
@@ -109,48 +118,63 @@
 // ---------------- SetCardView ---------------- //
 
 -(void)setCardNum:(int)num{
-    NSArray *xibs;
     nowCard = num;
+}
 
-//    UIView *captureView = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 450.0f, 250.0f)];
+
+
+// ---------------- Select Template Set ---------------- //
+
+- (void) setCardTemplate{
+    NSArray *xibs;
     
-    switch (num) {
+    switch (nowCard) {
         case 1:
             xibs = [[NSBundle mainBundle] loadNibNamed:@"CardOne" owner:self options:nil];
             _cardOne = (CardOne *)[xibs objectAtIndex:0];
             [_cardOne awakeFromNib];
-            _cardOne.frame = CGRectMake(0, 0, 240, 120);
+            loadCardView = [[UIView alloc]initWithFrame:CGRectMake(125, 57, 225, 125)];
+            
+            [self reSizeLabel:_cardOne.nameTitleLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
+            [self reSizeLabel:_cardOne.numberTitleLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
+            [self reSizeLabel:_cardOne.emailTitleLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
+            [self reSizeLabel:_cardOne.nameLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
+            [self reSizeLabel:_cardOne.numberLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
+            [self reSizeLabel:_cardOne.emailLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
+            
+            _cardOne.frame = CGRectMake(0, 0, loadCardView.frame.size.width, loadCardView.frame.size.height);
+            
             nameLabel = _cardOne.nameLabel;
             numberLabel = _cardOne.numberLabel;
             emailLabel = _cardOne.emailLabel;
-            loadCardView = [[UIView alloc]initWithFrame:CGRectMake(129, 57, 240, 120)];
             
             [loadCardView addSubview:_cardOne];
             [self.view addSubview:loadCardView];
-
-            
-//            _cardOne.frame = CGRectMake(0, 0, 450.0f, 250.0f);
-//            captureView = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, 450.0f, 250.0f)];
-//            
-//            [captureView addSubview:_cardOne];
-            
-            
+                        
             break;
         case 2:
             
             xibs = [[NSBundle mainBundle] loadNibNamed:@"CardTwo" owner:self options:nil];
             _cardTwo = (CardTwo *)[xibs objectAtIndex:0];
             [_cardTwo awakeFromNib];
-            _cardTwo.frame = CGRectMake(0, 0, 240, 120);
+            loadCardView = [[UIView alloc]initWithFrame:CGRectMake(129, 57, 225, 125)];
+            
+            [self reSizeLabel:_cardTwo.nameLabel:loadCardView.frame.size.width / _cardTwo.frame.size.width];
+            [self reSizeLabel:_cardTwo.numberLabel:loadCardView.frame.size.width / _cardTwo.frame.size.width];
+            [self reSizeLabel:_cardTwo.emailLabel:loadCardView.frame.size.width / _cardTwo.frame.size.width];
+            [self reSizeLabel:_cardTwo.nameTitleLabel:loadCardView.frame.size.width / _cardTwo.frame.size.width];
+            [self reSizeLabel:_cardTwo.numberTitleLabel:loadCardView.frame.size.width / _cardTwo.frame.size.width];
+            [self reSizeLabel:_cardTwo.emailTitleLabel:loadCardView.frame.size.width / _cardTwo.frame.size.width];
+            
+            _cardTwo.frame = CGRectMake(0, 0, loadCardView.frame.size.width, loadCardView.frame.size.height);
+            
             nameLabel = _cardTwo.nameLabel;
             numberLabel = _cardTwo.numberLabel;
             emailLabel = _cardTwo.emailLabel;
-            loadCardView = [[UIView alloc]initWithFrame:CGRectMake(129, 57, 240, 120)];
+            
             [loadCardView addSubview:_cardTwo];
-            
-            [captureView addSubview:_cardOne];
-            
             [self.view addSubview:loadCardView];
+
             
             break;
         default:
@@ -159,9 +183,27 @@
 }
 
 
+
+
+// ---------------- Label Resize ---------------- //
+
+-(void)reSizeLabel:(UILabel *)label:(float)resize{
+
+    label.frame = CGRectMake(label.frame.origin.x * resize, label.frame.origin.y * resize, label.frame.size.width * resize, label.frame.size.height * resize);
+
+    label.font = [UIFont systemFontOfSize:label.font.pointSize * resize];    
+    
+    [label sizeToFit];
+    
+}
+
 // ---------------- Back Btn Event ---------------- //
 
 - (IBAction)backBtn:(id)sender {
+    if (nowCard == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
+    }
+    
     [self.view removeFromSuperview];
     [self removeFromParentViewController];
 }
@@ -174,18 +216,46 @@
     int _id = [db bcInsert];
     NSString *fileName = [NSString stringWithFormat:@"%d",_id];
     
+    float tempSize = loadCardView.frame.size.width;
+
+    loadCardView.frame = CGRectMake(0.0f, 0.0f, 450.0f, 250.0f);
+    
     if (nowCard == 0) {
+        
+        cardImage.frame = CGRectMake(0.0f, 0.0f, 450.0f, 250.0f);
+        
         [db insertContents:_id :1 :dStruct.name :dStruct.nameX :dStruct.nameY :dStruct.nameH :dStruct.nameW];
         [db insertContents:_id :2 :dStruct.number :dStruct.numberX :dStruct.numberY :dStruct.numberH :dStruct.numberW];
         [db insertContents:_id :3 :dStruct.email :dStruct.emailX :dStruct.emailY :dStruct.emailH :dStruct.emailW];
+        
+        [self saveImg:fileName:[self captureView:cardImage]];
+        
+        NSLog(@"%@",fileName);
     }else{
+        
+        [self reSizeLabel:_cardOne.nameTitleLabel:loadCardView.frame.size.width / tempSize];
+        [self reSizeLabel:_cardOne.numberTitleLabel:loadCardView.frame.size.width / tempSize];
+        [self reSizeLabel:_cardOne.emailTitleLabel:loadCardView.frame.size.width / tempSize];
+        [self reSizeLabel:_cardOne.nameLabel:loadCardView.frame.size.width / tempSize];
+        [self reSizeLabel:_cardOne.numberLabel:loadCardView.frame.size.width / tempSize];
+        [self reSizeLabel:_cardOne.emailLabel:loadCardView.frame.size.width / tempSize];
+        
         [db insertContents:_id :1 :nameLabel.text :nameLabel.frame.origin.x :nameLabel.frame.origin.y :nameLabel.frame.size.height :nameLabel.frame.size.width];
         [db insertContents:_id :2 :numberLabel.text :numberLabel.frame.origin.x :numberLabel.frame.origin.y :numberLabel.frame.size.height :numberLabel.frame.size.width];
         [db insertContents:_id :3 :emailLabel.text :emailLabel.frame.origin.x :emailLabel.frame.origin.y :emailLabel.frame.size.height :emailLabel.frame.size.width];
+        [self saveImg:fileName:[self captureView:loadCardView]];
+//        
+//        [self saveImg:fileName:[self captureView:loadCardView]];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTableView" object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"select_remove" object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
+//        
+//        [self.view removeFromSuperview];
+//        [self removeFromParentViewController];
     }
     
-    [self saveImg:fileName:[self captureView:loadCardView]];
-//    [self saveImg:fileName:[self captureView:captureView]];
+    
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTableView" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"select_remove" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
@@ -203,7 +273,6 @@
 -(UIImage*)captureView:(UIView *)theView
 {
     UIGraphicsBeginImageContext(theView.frame.size);
-    //    UI
     [theView.layer renderInContext:UIGraphicsGetCurrentContext()];
     
     

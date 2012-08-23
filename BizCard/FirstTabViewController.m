@@ -89,12 +89,21 @@
 }
 
 
+// ---------------- Card Edit Btn Event ---------------- //
+
+/* -----------------------------------------------------
+     edit == true  :  현제 체크박스 노출 상태
+     edit == false  :  보통 상태
+     nowState == CardEdit  :  카드 편집 상태
+     nowState == MemberEdit  :  맴버 편집 상태
+ ------------------------------------------------------- */
+
 - (IBAction)editBCBtn:(id)sender{
     if (edit) {
         if (nowState == CardEdit) {
             for (int i = 0; i < bcCheckArray.count; i++) {
                 if ([[bcCheckArray objectAtIndex: i] integerValue] != 0) {
-                    NSLog(@"%d",[[bcArray objectAtIndex: i] integerValue]);
+//                    NSLog(@"%d",[[bcArray objectAtIndex: i] integerValue]);
                 }
             }
         }else if (nowState == MemberEdit){
@@ -129,11 +138,8 @@
 // ---------------- All Group Btn Event ---------------- //
 
 - (IBAction)allGroupBtn:(id)sender {
-//    nowGroup = 0;
     [sender setTag:0];
     [self groupBtnClickEvent:sender];
-//    
-//    [self reloadTableView];
 }
 
 
@@ -157,7 +163,12 @@
 
 
 
-// ---------------- Group Set ---------------- //
+// ------------------------------ Group Set ------------------------------ //
+
+/* -----------------------------------------------------------------------
+     Group ScrollView 에서 기존에 있는 '전체 보기' 추가하기 외의 버튼을 삭제하고
+     데이터 베이스에서 데이터를 불러와 새로 그룹을 만듬
+   ----------------------------------------------------------------------- */
 
 -(void)setGroup{
     // ScrollView Sub Button Remove
@@ -175,13 +186,19 @@
 }
 
 
-// ---------------- Add Group Btn ---------------- //
+// ------------------------------ Add Group ------------------------------ //
 
--(void)addGroup:(NSString *)folderName:(int)groupCount{
+/* -----------------------------------------------------------------------
+     groupName ( 그룹이름 ) 과 현재 몇번째 버튼을 추가 하고 있는지 ( groupCount )
+     입렵을 받아 groupCount 의 값만큼 계산을 하여 그룹 버튼의 위치를 잡고 생성,
+     기존에 AddGroupBtn 의 위치를 수정
+   ----------------------------------------------------------------------- */
+
+-(void)addGroup:(NSString *)groupName:(int)groupCount{
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:CGRectMake(5.0f, (groupCount + 1) * 50.0f + ( groupCount * 6.0f ) + 6.0f, 50.0f, 50.0f)];
-    [button setTitle:folderName forState:UIControlStateNormal];
+    [button setTitle:groupName forState:UIControlStateNormal];
     [button setTag:[[groupArray objectAtIndex:groupCount] intValue]];
     
     [button addTarget:self action:@selector(groupBtnClickEvent:) forControlEvents:UIControlEventTouchUpInside];
@@ -199,6 +216,10 @@
 
 // ---------------- Set Group Btn Style ---------------- //
 
+/* -----------------------------------------------------
+     그룹 버튼을 입력받아 그룹 버튼의 스타일을 적용한후 리턴
+   ----------------------------------------------------- */
+
 -(UIButton *)setBtnStyle:(UIButton *)btn{
     
     [btn setBackgroundImage:allGroupBtn.currentBackgroundImage forState:UIControlStateNormal];
@@ -212,7 +233,14 @@
 }
 
 
-// ---------------- Group Btn Event ---------------- //
+// ------------------ Group Btn Event ------------------ //
+
+/* -----------------------------------------------------
+     그룹 버튼이 테그로 구분이 되며, 해당 그룹을 클릭하였을 경우,
+     한번 클릭했을 경우 현제 그룹 상태를 나타내는 nowGroup 의
+     값을 현제 그룹의 _id 값으로 변경해주고, 그룹 메뉴를 없애고
+     테이블을 reload 한다.
+   ----------------------------------------------------- */
 
 - (void)groupBtnClickEvent:(UIButton *)btn{
 //    NSLog(@"%d",btn.tag);
@@ -305,22 +333,7 @@
         checkAr = nil;
         
         [businessCardTable reloadData];
-        
-//        [self initData:0];
-//        [self reloadTableView];
-//
-//        for (int i = 0; i < checkAr.count; i++) {
-//            int j = 0;
-//            while ([[checkAr objectAtIndex:i]integerValue] != [[bcArray objectAtIndex:j]integerValue]) {
-//                j++;
-//            }
-//            
-//            [checkArray replaceObjectAtIndex:j withObject:[NSNumber numberWithInteger: 1]];
-//        }
-//        
-//        
     }
-//    [businessCardTable reloadData];
     [gMenu removeFromSuperview];
 }
 
@@ -436,29 +449,6 @@
                 [bcTableCell.checkBox setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
             }
         }
-
-        
-        
-//        if (nowState == MemberEdit) {
-//            for (int i = 0; i < bcArray.count; i++) {
-//                if(index == i){
-//                    if([[bcCheckArray objectAtIndex: i] integerValue] == 1){
-//                        [bcTableCell.checkBox setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateNormal];
-//                    }else if([[bcCheckArray objectAtIndex: i] integerValue] == 0){
-//                        [bcTableCell.checkBox setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
-//                    }
-//                }
-//            }
-//        }
-                
-//                if([[checkArray objectAtIndex: i] integerValue] == 1){
-//                    [bcTableCell.cellBtn setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateNormal];
-//                }else if([[checkArray objectAtIndex: i] integerValue] == 0){
-//                    [bcTableCell.cellBtn setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
-//                    
-//                }
-//            }
-//        }
     }else {
         bcTableCell = [tableView dequeueReusableCellWithIdentifier:@"CELL_ID"];
         if(bcTableCell == nil){
@@ -536,16 +526,15 @@
                 [cell.checkBox setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
                 //                clickCount--;
             }
-//            if ([[checkArray objectAtIndex: index] integerValue] == 0) {
-//                [checkArray replaceObjectAtIndex:index withObject:[NSNumber numberWithInteger: 1]];
-//            }else{
-//                [checkArray replaceObjectAtIndex:index withObject:[NSNumber numberWithInteger: 0]];
-//            }
         }
-        
-//        [businessCardTable reloadData];
     }else{
-//        [self cardDetailView:[[bcArray objectAtIndex:index]integerValue]];
+//        NSLog(@"%d", [[bcArray objectAtIndex:index]integerValue]);
+        bcView = [[BCViewController alloc]init];
+        [bcView setImg:[[bcArray objectAtIndex:index]integerValue]];
+        
+        [gMenu removeFromSuperview];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarHide" object:nil];
+        [self.view insertSubview:bcView.view aboveSubview:self.view];
     }
     
 }

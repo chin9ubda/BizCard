@@ -12,6 +12,9 @@
 @synthesize nameLabel;
 @synthesize numberLabel;
 @synthesize emailLabel;
+@synthesize nameTitleLabel;
+@synthesize numberTitleLabel;
+@synthesize emailTitleLabel;
 
 - (id)initWithFrame:(CGRect)frame
 {
