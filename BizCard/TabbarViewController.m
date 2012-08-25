@@ -31,7 +31,6 @@
         UIViewController *thirdViewController = [[ThirdTabViewController alloc] initWithNibName:@"ThirdTabViewController" bundle:nil];
         
         self.viewControllers = @[firstTabController, secondTabController, thirdViewController];
-
     }
     return self;
 }
