@@ -11,4 +11,13 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
+
+#define AM_DEBUG_LOG_SJ 
+
+#ifdef AM_DEBUG_LOG_SJ 
+#define SJ_DEBUG_LOG NSLog
+#endif
+
+
 #endif
