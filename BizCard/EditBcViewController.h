@@ -11,7 +11,7 @@
 #import "CardTwo.h"
 #import "DataStruct.h"
 
-@interface EditBcViewController : UIViewController{
+@interface EditBcViewController : UIViewController<UITextFieldDelegate>{
     UILabel *nameLabel;
     UILabel *numberLabel;
     UILabel *emailLabel;
@@ -38,6 +38,7 @@
 (float)_numberX:(float)_numberY:(float)_numberW:(float)_numberH:
 (float)_emailX:(float)_emailY:(float)_emailW:(float)_emailH;
 
+- (IBAction)bgView:(id)sender;
 
 
 @property (strong, nonatomic) IBOutlet UIImageView *cardImage;
@@ -45,4 +46,5 @@
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *numberTextField;
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;
+@property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @end

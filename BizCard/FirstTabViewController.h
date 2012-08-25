@@ -12,6 +12,7 @@
 #import "SelectBCTemplateViewController.h"
 #import "EditBcViewController.h"
 #import "Group_Menu.h"
+#import "Card_Menu.h"
 #import "BCViewController.h"
 
 
@@ -30,9 +31,11 @@
     
     int nowGroup;
     int nowState;
+    int clickCount;
     Boolean edit;
     
     Group_Menu *gMenu;
+    Card_Menu *cMenu;
     
 }
 - (IBAction)addBCBtn:(id)sender;

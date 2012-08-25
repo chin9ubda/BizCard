@@ -52,6 +52,8 @@
     if ([self loginCheck]) {
         tabbarController = [[TabbarViewController alloc]init];
         [self.view insertSubview:tabbarController.view aboveSubview:self.view];
+//        [self.view removeFromSuperview];
+//        [self removeFromParentViewController];
     }else {
         NSLog(@"로그인 실패");
     }

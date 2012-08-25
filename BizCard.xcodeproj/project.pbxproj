@@ -51,6 +51,8 @@
 		4387204D15E62BBE00CC12B0 /* tabonebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4387204C15E62BBE00CC12B0 /* tabonebg.png */; };
 		4387206615E652DE00CC12B0 /* SelectBCTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4387206415E652DE00CC12B0 /* SelectBCTemplateViewController.m */; };
 		4387206715E652DE00CC12B0 /* SelectBCTemplateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4387206515E652DE00CC12B0 /* SelectBCTemplateViewController.xib */; };
+		4392074315E8DB8C008FDE68 /* Card_Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392074215E8DB8C008FDE68 /* Card_Menu.m */; };
+		4392074515E8DB97008FDE68 /* Card_Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4392074415E8DB97008FDE68 /* Card_Menu.xib */; };
 		4399881A15E4C46900AA7483 /* Group_Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399881915E4C46900AA7483 /* Group_Menu.m */; };
 		4399881C15E4C47300AA7483 /* Group_Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4399881B15E4C47300AA7483 /* Group_Menu.xib */; };
 		4399882015E4E5A600AA7483 /* Msg_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399881F15E4E5A600AA7483 /* Msg_Cell.m */; };
@@ -127,6 +129,9 @@
 		4387206315E652DE00CC12B0 /* SelectBCTemplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectBCTemplateViewController.h; path = BizCard/SelectBCTemplateViewController.h; sourceTree = "<group>"; };
 		4387206415E652DE00CC12B0 /* SelectBCTemplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectBCTemplateViewController.m; path = BizCard/SelectBCTemplateViewController.m; sourceTree = "<group>"; };
 		4387206515E652DE00CC12B0 /* SelectBCTemplateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectBCTemplateViewController.xib; path = BizCard/SelectBCTemplateViewController.xib; sourceTree = "<group>"; };
+		4392074115E8DB8C008FDE68 /* Card_Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card_Menu.h; sourceTree = "<group>"; };
+		4392074215E8DB8C008FDE68 /* Card_Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card_Menu.m; sourceTree = "<group>"; };
+		4392074415E8DB97008FDE68 /* Card_Menu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Card_Menu.xib; sourceTree = "<group>"; };
 		4399881815E4C46900AA7483 /* Group_Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group_Menu.h; sourceTree = "<group>"; };
 		4399881915E4C46900AA7483 /* Group_Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group_Menu.m; sourceTree = "<group>"; };
 		4399881B15E4C47300AA7483 /* Group_Menu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Group_Menu.xib; sourceTree = "<group>"; };
@@ -338,9 +343,20 @@
 			name = CardTwo;
 			sourceTree = "<group>";
 		};
+		4392073F15E8DB4A008FDE68 /* Card_Menu */ = {
+			isa = PBXGroup;
+			children = (
+				4392074115E8DB8C008FDE68 /* Card_Menu.h */,
+				4392074215E8DB8C008FDE68 /* Card_Menu.m */,
+				4392074415E8DB97008FDE68 /* Card_Menu.xib */,
+			);
+			name = Card_Menu;
+			sourceTree = "<group>";
+		};
 		4399881515E4C44F00AA7483 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				4392073F15E8DB4A008FDE68 /* Card_Menu */,
 				4399881715E4C45900AA7483 /* Group_Menu */,
 			);
 			name = Menu;
@@ -558,6 +574,7 @@
 				4399882E15E5C98500AA7483 /* BCViewController.xib in Resources */,
 				4387204D15E62BBE00CC12B0 /* tabonebg.png in Resources */,
 				4387206715E652DE00CC12B0 /* SelectBCTemplateViewController.xib in Resources */,
+				4392074515E8DB97008FDE68 /* Card_Menu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +604,7 @@
 				4399882715E4E70200AA7483 /* Add_MsgViewController.m in Sources */,
 				4399882D15E5C98500AA7483 /* BCViewController.m in Sources */,
 				4387206615E652DE00CC12B0 /* SelectBCTemplateViewController.m in Sources */,
+				4392074315E8DB8C008FDE68 /* Card_Menu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

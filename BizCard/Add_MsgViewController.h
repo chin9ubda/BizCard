@@ -15,7 +15,7 @@
 
     DataBase *db;
     
-    int nowType;
+    int nowId;
 
 }
 
@@ -23,7 +23,7 @@
 - (IBAction)okBtn:(id)sender;
 - (void)setTextView:(NSString *)msg;
 
-- (void)setType:(int)type;
+- (void)setId:(int)_id;
 - (IBAction)delMsg:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIButton *delBtn;

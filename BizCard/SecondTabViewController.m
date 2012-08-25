@@ -81,8 +81,8 @@
     int index = [indexPath row];
     //    NSLog(@"%@", [db getMsg:index + 1]);
     addMsgBtn = [[Add_MsgViewController alloc]init];
-    [addMsgBtn setType:index + 1];
-    [addMsgBtn setTextView:[db getMsg:index + 1]];
+    [addMsgBtn setId:[[msgArray objectAtIndex:index] integerValue]];
+    [addMsgBtn setTextView:[db getMsg:[[msgArray objectAtIndex:index] integerValue]]];
     [self.view insertSubview:addMsgBtn.view aboveSubview:self.view];
 }
 

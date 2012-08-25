@@ -18,6 +18,7 @@
 @synthesize nameTextField;
 @synthesize numberTextField;
 @synthesize emailTextField;
+@synthesize mainScrollView;
 @synthesize cardImage, nowCard;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,6 +43,7 @@
     [self setNameTextField:nil];
     [self setNumberTextField:nil];
     [self setEmailTextField:nil];
+    [self setMainScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -57,7 +59,7 @@
 
 // ---------------- 불러오기 , 촬영으로 적용시 or edit ---------------- //
 
--(void)viewWillLayoutSubviews{
+- (void)viewWillLayoutSubviews{
     if (nowCard == 0) {
         nameTextField.text = dStruct.name;
         numberTextField.text = dStruct.number;
@@ -109,6 +111,22 @@
 }
 
 
+// -------- View Click Event -------- //
+
+/* ----------------------------------
+   TextField 외의 부분을 클릭하였을 경우 
+   keybord Hide & ScrollView 위치 변경
+  ----------------------------------- */
+
+- (void)bgView:(id)sender {
+    
+    [self.nameTextField resignFirstResponder];
+    [self.numberTextField resignFirstResponder];
+    [self.emailTextField resignFirstResponder];
+    [mainScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+}
+
+
 
 
 
@@ -132,7 +150,7 @@
             xibs = [[NSBundle mainBundle] loadNibNamed:@"CardOne" owner:self options:nil];
             _cardOne = (CardOne *)[xibs objectAtIndex:0];
             [_cardOne awakeFromNib];
-            loadCardView = [[UIView alloc]initWithFrame:CGRectMake(125, 57, 225, 125)];
+            loadCardView = [[UIView alloc]initWithFrame:CGRectMake(125, 13, 225, 125)];
             
             [self reSizeLabel:_cardOne.nameTitleLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
             [self reSizeLabel:_cardOne.numberTitleLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
@@ -148,7 +166,7 @@
             emailLabel = _cardOne.emailLabel;
             
             [loadCardView addSubview:_cardOne];
-            [self.view addSubview:loadCardView];
+            [mainScrollView addSubview:loadCardView];
                         
             break;
         case 2:
@@ -156,7 +174,7 @@
             xibs = [[NSBundle mainBundle] loadNibNamed:@"CardTwo" owner:self options:nil];
             _cardTwo = (CardTwo *)[xibs objectAtIndex:0];
             [_cardTwo awakeFromNib];
-            loadCardView = [[UIView alloc]initWithFrame:CGRectMake(129, 57, 225, 125)];
+            loadCardView = [[UIView alloc]initWithFrame:CGRectMake(129, 13, 225, 125)];
             
             [self reSizeLabel:_cardTwo.nameLabel:loadCardView.frame.size.width / _cardTwo.frame.size.width];
             [self reSizeLabel:_cardTwo.numberLabel:loadCardView.frame.size.width / _cardTwo.frame.size.width];
@@ -172,7 +190,7 @@
             emailLabel = _cardTwo.emailLabel;
             
             [loadCardView addSubview:_cardTwo];
-            [self.view addSubview:loadCardView];
+            [mainScrollView addSubview:loadCardView];
 
             
             break;
@@ -293,4 +311,90 @@
     NSLog(@"Documents directory: %@", [fileMgr contentsOfDirectoryAtPath:documentsDirectory error:&error]);
     
 }
+
+
+
+
+// ------------------------ TextField Setting ------------------------ //
+
+
+// ------- TextField 'Retrun' Key Event ------- //
+
+/* --------------------------------------------
+   nameTextField return  - > numberTextField
+   numberTextField return  - > emailTextField
+   emailTextFiele return  - > Keyboard Hide
+                              ScrollView Set
+   -------------------------------------------- */
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if([textField isEqual:nameTextField]){
+        [numberTextField becomeFirstResponder];
+        
+    }else if([textField isEqual:numberTextField]){
+        [emailTextField becomeFirstResponder];
+                
+    }else{
+        [textField resignFirstResponder];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.3];
+        CGRect rect = self.view.frame;
+        
+        
+        [mainScrollView setContentOffset:CGPointMake(0,0) animated:YES];
+        self.view.frame = rect;
+        [UIView commitAnimations];
+    }
+    return true;
+}
+
+
+
+// --------- TextField BeginEditing --------- //
+
+/* ------------------------------------------
+   TextField Edit 실행시. 해당 TextField 값만큼 
+   ScrollView 위치 조정
+   ------------------------------------------ */
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    CGRect rect = self.view.frame;
+    
+    
+    [mainScrollView setContentOffset:CGPointMake(0, textField.frame.origin.y) animated:YES];
+    self.view.frame = rect;
+    [UIView commitAnimations];
+    
+    return YES;
+}
+
+
+
+// -------- TextField EndEditing -------- //
+
+/* --------------------------------------
+   TextField Edit 실행시. 각 Label 값 변경
+   -------------------------------------- */
+
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    if([textField isEqual:nameTextField]){
+        nameLabel.text = nameTextField.text;
+        [nameLabel sizeToFit];
+        
+    }else if([textField isEqual:numberTextField]){
+        numberLabel.text = numberTextField.text;
+        [numberLabel sizeToFit];
+        
+    }else{
+        emailLabel.text = emailTextField.text;
+        [emailLabel sizeToFit];
+    }
+    return YES;
+}
+
 @end

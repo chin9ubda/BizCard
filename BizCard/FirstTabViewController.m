@@ -106,6 +106,7 @@
 //                    NSLog(@"%d",[[bcArray objectAtIndex: i] integerValue]);
                 }
             }
+            [cMenu removeFromSuperview];
         }else if (nowState == MemberEdit){
             
             [db memberDel:nowGroup];
@@ -128,6 +129,7 @@
             edit = true;
             nowState = CardEdit;
             [self reloadTableView];
+            clickCount = 0;
 
         }
     }
@@ -368,6 +370,32 @@
 
 
 
+// ---------------- Card Menu Opne & setting ---------------- //
+
+-(void)cardMenu{
+    NSArray *xibs = [[NSBundle mainBundle] loadNibNamed:@"Card_Menu" owner:self options:nil];
+    cMenu = (Card_Menu *)[xibs objectAtIndex:0];
+    [cMenu awakeFromNib];
+    cMenu.frame = CGRectMake(68, 240, 372, 60);
+    [self.view addSubview:cMenu];
+    
+    [cMenu.smsBtn addTarget:self action:@selector(cardSms) forControlEvents:UIControlEventTouchUpInside];
+    [cMenu.emailBtn addTarget:self action:@selector(cardEmail) forControlEvents:UIControlEventTouchUpInside];
+    [cMenu.delBtn addTarget:self action:@selector(cardDel) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+-(void)cardSms{
+    NSLog(@"cardSms");
+}
+-(void)cardEmail{
+    NSLog(@"cardEmail");
+}
+-(void)cardDel{
+    NSLog(@"cardDelete");
+}
+
+
 // ---------------- BusinessCard Reload ---------------- //
 
 -(void)reloadTableView{
@@ -496,21 +524,21 @@
             if ([[bcCheckArray objectAtIndex: index] integerValue] == 0) {
                 [bcCheckArray replaceObjectAtIndex:index withObject:[NSNumber numberWithInteger: 1]];
                 [cell.checkBox setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateNormal];
-                //                clickCount++;
+                clickCount++;
             }else{
                 [bcCheckArray replaceObjectAtIndex:index withObject:[NSNumber numberWithInteger: 0]];
                 [cell.checkBox setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
-                //                clickCount--;
+                clickCount--;
             }
-
-
-//            if (clickCount > 0 && !cMenuOpen) {
-//                [self cardMenu];
-//                cMenuOpen = true;
-//            }else if(clickCount <= 0 && cMenuOpen){
-//                [cMenu01 removeFromSuperview];
-//                cMenuOpen = false;
-//            }
+            
+            if (clickCount > 0) {
+                [self cardMenu];
+            }else if(clickCount <= 0){
+                NSLog(@"들어와");
+                [cMenu removeFromSuperview];
+            }
+            
+    NSLog(@"%d",clickCount);
             
         }else if (nowState == MemberEdit){
             
