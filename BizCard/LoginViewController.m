@@ -199,16 +199,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
 - (void)viewDidUnload
 {
     [self setLoginBtn:nil];
@@ -222,34 +212,4 @@
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
-
-
-
-
-- (IBAction)loginBtn:(id)sender {
-    
-    if ([self loginCheck]) {
-        tabbarController = [[TabbarViewController alloc]init];
-        [self.view insertSubview:tabbarController.view aboveSubview:self.view];
-//        [self.view removeFromSuperview];
-//        [self removeFromParentViewController];
-    }else {
-        NSLog(@"로그인 실패");
-    }
-}
-
-
-
-
-// ---------------- LoginCheck ---------------- //
-// ------------- 로그인 성공 : true ------------- //
-// ------------- 로그인 실패 : false ------------ //
-// toSJ
-
-- (Boolean)loginCheck{
-    
-   
-    
-    return true;
-}
 @end

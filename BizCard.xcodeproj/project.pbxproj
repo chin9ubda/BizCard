@@ -53,6 +53,37 @@
 		4387206715E652DE00CC12B0 /* SelectBCTemplateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4387206515E652DE00CC12B0 /* SelectBCTemplateViewController.xib */; };
 		4392074315E8DB8C008FDE68 /* Card_Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392074215E8DB8C008FDE68 /* Card_Menu.m */; };
 		4392074515E8DB97008FDE68 /* Card_Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4392074415E8DB97008FDE68 /* Card_Menu.xib */; };
+		4392074A15E8EE18008FDE68 /* GCOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B4F215E933C0004646C6 /* GCOAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392074B15E8EE18008FDE68 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B4F515E933C0004646C6 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392074C15E8EE18008FDE68 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B4F915E933C0004646C6 /* NSString+URLEncoding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392074D15E8EE18008FDE68 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B4FD15E933C0004646C6 /* SSKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392074E15E8EE18008FDE68 /* TBinaryProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B50215E933C0004646C6 /* TBinaryProtocol.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392074F15E8EE18008FDE68 /* TProtocolException.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B50515E933C0004646C6 /* TProtocolException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075015E8EE18008FDE68 /* TProtocolUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B50815E933C0004646C6 /* TProtocolUtil.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075115E8EE18008FDE68 /* TApplicationException.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B50A15E933C0004646C6 /* TApplicationException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075215E8EE18008FDE68 /* TException.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B50C15E933C0004646C6 /* TException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075315E8EE18008FDE68 /* THTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B51215E933C0004646C6 /* THTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075415E8EE18008FDE68 /* TMemoryBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B51415E933C0004646C6 /* TMemoryBuffer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075515E8EE18008FDE68 /* TTransportException.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B51715E933C0004646C6 /* TTransportException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075615E8EE18008FDE68 /* EDAMErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B51B15E933C0004646C6 /* EDAMErrors.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075715E8EE18008FDE68 /* EDAMLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B51D15E933C0004646C6 /* EDAMLimits.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075815E8EE18008FDE68 /* EDAMNoteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B51F15E933C0004646C6 /* EDAMNoteStore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075915E8EE18008FDE68 /* EDAMTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52115E933C0004646C6 /* EDAMTypes.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075A15E8EE18008FDE68 /* EDAMUserStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52315E933C0004646C6 /* EDAMUserStore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075B15E8EE18008FDE68 /* EvernoteNoteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52615E933C0004646C6 /* EvernoteNoteStore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075C15E8EE18008FDE68 /* EvernoteSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52815E933C0004646C6 /* EvernoteSDK.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075D15E8EE18008FDE68 /* EvernoteSession.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52A15E933C0004646C6 /* EvernoteSession.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075E15E8EE18008FDE68 /* EvernoteUserStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52C15E933C0004646C6 /* EvernoteUserStore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392075F15E8EE18008FDE68 /* ENAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52F15E933C0004646C6 /* ENAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392076015E8EE18008FDE68 /* ENCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B53115E933C0004646C6 /* ENCredentials.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392076115E8EE18008FDE68 /* ENCredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B53315E933C0004646C6 /* ENCredentialStore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392076215E8EE18008FDE68 /* ENOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B53515E933C0004646C6 /* ENOAuthViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4392076315E8EE18008FDE68 /* PlistClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B4EC15E931B4004646C6 /* PlistClass.m */; };
+		4392076515E8EF78008FDE68 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = ACD5B4F315E933C0004646C6 /* LICENSE */; };
+		4392076615E8EF78008FDE68 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = ACD5B4F715E933C0004646C6 /* LICENSE */; };
+		4392076715E8EF78008FDE68 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = ACD5B4FB15E933C0004646C6 /* LICENSE */; };
+		4392076815E8EF78008FDE68 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = ACD5B4FF15E933C0004646C6 /* LICENSE */; };
+		4392076915E8EF78008FDE68 /* userData.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACE43B8415E941F400A10BB1 /* userData.plist */; };
 		4399881A15E4C46900AA7483 /* Group_Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399881915E4C46900AA7483 /* Group_Menu.m */; };
 		4399881C15E4C47300AA7483 /* Group_Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4399881B15E4C47300AA7483 /* Group_Menu.xib */; };
 		4399882015E4E5A600AA7483 /* Msg_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399881F15E4E5A600AA7483 /* Msg_Cell.m */; };
@@ -70,38 +101,7 @@
 		43F9427815E0CC1F005893A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F9427715E0CC1F005893A9 /* AppDelegate.m */; };
 		43F9428D15E1CFDF005893A9 /* FirstTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F9428B15E1CFDF005893A9 /* FirstTabViewController.m */; };
 		43F9428E15E1CFDF005893A9 /* FirstTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F9428C15E1CFDF005893A9 /* FirstTabViewController.xib */; };
-		ACD5B4ED15E931B4004646C6 /* PlistClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B4EC15E931B4004646C6 /* PlistClass.m */; };
-		ACD5B53615E933C0004646C6 /* GCOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B4F215E933C0004646C6 /* GCOAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B53715E933C0004646C6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = ACD5B4F315E933C0004646C6 /* LICENSE */; };
-		ACD5B53815E933C0004646C6 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B4F515E933C0004646C6 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B53915E933C0004646C6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = ACD5B4F715E933C0004646C6 /* LICENSE */; };
-		ACD5B53A15E933C0004646C6 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B4F915E933C0004646C6 /* NSString+URLEncoding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B53B15E933C0004646C6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = ACD5B4FB15E933C0004646C6 /* LICENSE */; };
-		ACD5B53C15E933C0004646C6 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B4FD15E933C0004646C6 /* SSKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B53D15E933C0004646C6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = ACD5B4FF15E933C0004646C6 /* LICENSE */; };
-		ACD5B53E15E933C0004646C6 /* TBinaryProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B50215E933C0004646C6 /* TBinaryProtocol.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B53F15E933C0004646C6 /* TProtocolException.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B50515E933C0004646C6 /* TProtocolException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54015E933C0004646C6 /* TProtocolUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B50815E933C0004646C6 /* TProtocolUtil.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54115E933C0004646C6 /* TApplicationException.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B50A15E933C0004646C6 /* TApplicationException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54215E933C0004646C6 /* TException.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B50C15E933C0004646C6 /* TException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54315E933C0004646C6 /* THTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B51215E933C0004646C6 /* THTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54415E933C0004646C6 /* TMemoryBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B51415E933C0004646C6 /* TMemoryBuffer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54515E933C0004646C6 /* TTransportException.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B51715E933C0004646C6 /* TTransportException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54615E933C0004646C6 /* EDAMErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B51B15E933C0004646C6 /* EDAMErrors.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54715E933C0004646C6 /* EDAMLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B51D15E933C0004646C6 /* EDAMLimits.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54815E933C0004646C6 /* EDAMNoteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B51F15E933C0004646C6 /* EDAMNoteStore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54915E933C0004646C6 /* EDAMTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52115E933C0004646C6 /* EDAMTypes.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54A15E933C0004646C6 /* EDAMUserStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52315E933C0004646C6 /* EDAMUserStore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54B15E933C0004646C6 /* EvernoteNoteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52615E933C0004646C6 /* EvernoteNoteStore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54C15E933C0004646C6 /* EvernoteSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52815E933C0004646C6 /* EvernoteSDK.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54D15E933C0004646C6 /* EvernoteSession.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52A15E933C0004646C6 /* EvernoteSession.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54E15E933C0004646C6 /* EvernoteUserStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52C15E933C0004646C6 /* EvernoteUserStore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B54F15E933C0004646C6 /* ENAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B52F15E933C0004646C6 /* ENAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B55015E933C0004646C6 /* ENCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B53115E933C0004646C6 /* ENCredentials.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B55115E933C0004646C6 /* ENCredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B53315E933C0004646C6 /* ENCredentialStore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ACD5B55215E933C0004646C6 /* ENOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5B53515E933C0004646C6 /* ENOAuthViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		ACE43B8215E93CF200A10BB1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE43B8115E93CF200A10BB1 /* Security.framework */; };
-		ACE43B8515E941F400A10BB1 /* userData.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACE43B8415E941F400A10BB1 /* userData.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -790,6 +790,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4392076515E8EF78008FDE68 /* LICENSE in Resources */,
+				4392076615E8EF78008FDE68 /* LICENSE in Resources */,
+				4392076715E8EF78008FDE68 /* LICENSE in Resources */,
+				4392076815E8EF78008FDE68 /* LICENSE in Resources */,
+				4392076915E8EF78008FDE68 /* userData.plist in Resources */,
 				43F9427215E0CC1F005893A9 /* InfoPlist.strings in Resources */,
 				43F9428E15E1CFDF005893A9 /* FirstTabViewController.xib in Resources */,
 				4366F50515E1D2B7008E69F6 /* LoginViewController.xib in Resources */,
@@ -838,6 +843,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4392074A15E8EE18008FDE68 /* GCOAuth.m in Sources */,
+				4392074B15E8EE18008FDE68 /* NSData+Base64.m in Sources */,
+				4392074C15E8EE18008FDE68 /* NSString+URLEncoding.m in Sources */,
+				4392074D15E8EE18008FDE68 /* SSKeychain.m in Sources */,
+				4392074E15E8EE18008FDE68 /* TBinaryProtocol.m in Sources */,
+				4392074F15E8EE18008FDE68 /* TProtocolException.m in Sources */,
+				4392075015E8EE18008FDE68 /* TProtocolUtil.m in Sources */,
+				4392075115E8EE18008FDE68 /* TApplicationException.m in Sources */,
+				4392075215E8EE18008FDE68 /* TException.m in Sources */,
+				4392075315E8EE18008FDE68 /* THTTPClient.m in Sources */,
+				4392075415E8EE18008FDE68 /* TMemoryBuffer.m in Sources */,
+				4392075515E8EE18008FDE68 /* TTransportException.m in Sources */,
+				4392075615E8EE18008FDE68 /* EDAMErrors.m in Sources */,
+				4392075715E8EE18008FDE68 /* EDAMLimits.m in Sources */,
+				4392075815E8EE18008FDE68 /* EDAMNoteStore.m in Sources */,
+				4392075915E8EE18008FDE68 /* EDAMTypes.m in Sources */,
+				4392075A15E8EE18008FDE68 /* EDAMUserStore.m in Sources */,
+				4392075B15E8EE18008FDE68 /* EvernoteNoteStore.m in Sources */,
+				4392075C15E8EE18008FDE68 /* EvernoteSDK.m in Sources */,
+				4392075D15E8EE18008FDE68 /* EvernoteSession.m in Sources */,
+				4392075E15E8EE18008FDE68 /* EvernoteUserStore.m in Sources */,
+				4392075F15E8EE18008FDE68 /* ENAPI.m in Sources */,
+				4392076015E8EE18008FDE68 /* ENCredentials.m in Sources */,
+				4392076115E8EE18008FDE68 /* ENCredentialStore.m in Sources */,
+				4392076215E8EE18008FDE68 /* ENOAuthViewController.m in Sources */,
+				4392076315E8EE18008FDE68 /* PlistClass.m in Sources */,
 				43F9427415E0CC1F005893A9 /* main.m in Sources */,
 				43F9427815E0CC1F005893A9 /* AppDelegate.m in Sources */,
 				43F9428D15E1CFDF005893A9 /* FirstTabViewController.m in Sources */,
