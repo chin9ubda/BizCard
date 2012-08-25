@@ -143,7 +143,9 @@
 //----------------------------------------------------------------------------------------
 -(void)gotoTabbarControllerView{
     tabbarController = [[TabbarViewController alloc]init];
-    [self.view insertSubview:tabbarController.view aboveSubview:self.view];
+    [self presentModalViewController:tabbarController animated:YES];
+    
+    
 }
 
 
@@ -197,6 +199,8 @@
         } 
     }];
 }
+
+
 
 
 - (void)viewDidUnload

@@ -83,7 +83,8 @@
     addMsgBtn = [[Add_MsgViewController alloc]init];
     [addMsgBtn setId:[[msgArray objectAtIndex:index] integerValue]];
     [addMsgBtn setTextView:[db getMsg:[[msgArray objectAtIndex:index] integerValue]]];
-    [self.view insertSubview:addMsgBtn.view aboveSubview:self.view];
+//    [self.view insertSubview:addMsgBtn.view aboveSubview:self.view];
+    [self presentModalViewController:addMsgBtn animated:YES];
 }
 
 

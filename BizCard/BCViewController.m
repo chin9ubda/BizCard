@@ -51,8 +51,9 @@
 }
 
 - (IBAction)backBtn:(id)sender {
-    [self.view removeFromSuperview];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
+//    [self.view removeFromSuperview];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 

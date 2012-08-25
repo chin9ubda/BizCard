@@ -447,6 +447,35 @@
 }
 
 
+-(void)bcDel:(int)_id{
+    NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE businessCardNumber = %d",BusinessCardTable_Name,_id];
+    
+    const char *delSql = [query UTF8String];
+    
+    
+    if (sqlite3_exec(database, delSql, nil,nil,nil) != SQLITE_OK) {
+        
+        NSLog(@"Error");
+    }else{
+        NSLog(@"OK");
+    }
+    
+    
+    query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE _id = %d",BusinessCardTable_Name,_id];
+    
+    delSql = [query UTF8String];
+    
+    
+    if (sqlite3_exec(database, delSql, nil,nil,nil) != SQLITE_OK) {
+        
+        NSLog(@"Error");
+    }else{
+        NSLog(@"OK");
+    }
+}
+
+
+
 
 
 // ---------------- ContentsTable Insert And _id Return ---------------- //

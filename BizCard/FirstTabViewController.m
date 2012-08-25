@@ -140,8 +140,19 @@
 // ---------------- All Group Btn Event ---------------- //
 
 - (IBAction)allGroupBtn:(id)sender {
-    [sender setTag:0];
-    [self groupBtnClickEvent:sender];
+//    [sender setTag:0];
+//    [self groupBtnClickEvent:sender];
+    
+    if (!edit) {
+        UIActionSheet *actionsheet = [[UIActionSheet alloc]
+                                      initWithTitle:nil
+                                      delegate:self
+                                      cancelButtonTitle:@"취소"
+                                      destructiveButtonTitle:@"사진 촬영"
+                                      otherButtonTitles:@"앨범에서 가져오기", @"주소록에서 가져오기", @"직접 입력하기", nil];
+        actionsheet.tag = CardAddTag;
+        [actionsheet showInView:self.view];
+    }
 }
 
 
@@ -392,7 +403,10 @@
     NSLog(@"cardEmail");
 }
 -(void)cardDel{
-    NSLog(@"cardDelete");
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"확  인" message:@"정말 삭제하시겠습니까?" delegate:self  cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    [alert show];
+    
+    alert.tag = CardDelTag;
 }
 
 
@@ -556,13 +570,12 @@
             }
         }
     }else{
-//        NSLog(@"%d", [[bcArray objectAtIndex:index]integerValue]);
         bcView = [[BCViewController alloc]init];
         [bcView setImg:[[bcArray objectAtIndex:index]integerValue]];
         
         [gMenu removeFromSuperview];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarHide" object:nil];
-        [self.view insertSubview:bcView.view aboveSubview:self.view];
+        [self presentModalViewController:bcView animated:YES];
     }
     
 }
@@ -607,14 +620,33 @@
         if (buttonIndex == 0) {
             NSLog(@"Cancel");
         }else{
-            NSLog(@"CardDelTag OK");
+            for(int i = 0; i < bcCheckArray.count; i++){
+                if([[bcCheckArray objectAtIndex: i] integerValue] == 1){
+                    [db bcDel: [[bcArray objectAtIndex:i]integerValue]];
+                }
+            }
+            [self reloadTableView];
+            [cMenu removeFromSuperview];
         }
         
     }
     
 }
 
-
+-(void)test{
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    
+    picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    picker.allowsEditing = NO;
+    picker.navigationBarHidden = YES;
+    picker.wantsFullScreenLayout = YES;
+    [picker setNavigationBarHidden:TRUE];
+    
+    [self presentModalViewController:picker animated:NO];
+//    NSLog(@"%@", self.view.subviews);
+}
 
 // ---------------- ActionSheet Event ---------------- //
 
@@ -628,21 +660,21 @@
             editBcViewController = [[EditBcViewController alloc]init];
             [editBcViewController setCardImg:[UIImage imageNamed:@"blue.png"]:@"이름":@"12345":@"email@email.com":0:0:0:0:0:0:0:0:0:0:0:0];
             
-            [self.view insertSubview:editBcViewController.view aboveSubview:self.view];
+            [self presentModalViewController:editBcViewController animated:YES];
         }else if(buttonIndex == 1){
             NSLog(@"앨범에서 불러오기");
-            
             editBcViewController = [[EditBcViewController alloc]init];
             [editBcViewController setCardImg:[UIImage imageNamed:@"blue.png"]:@"이름":@"12345":@"email@email.com":0:0:0:0:0:0:0:0:0:0:0:0];
             
-            [self.view insertSubview:editBcViewController.view aboveSubview:self.view];
+//            [self.view insertSubview:editBcViewController.view aboveSubview:self.view];
+            [self presentModalViewController:editBcViewController animated:YES];
 
         }else if(buttonIndex == 2){
             NSLog(@"주소록에서 가져오기");
         }else if(buttonIndex == 3){
           NSLog(@"직접 입력하기");
             selectView = [[SelectBCTemplateViewController alloc]init];
-            [self.view insertSubview:selectView.view aboveSubview:self.view];
+            [self presentModalViewController:selectView animated:YES];
         }
     }
 }

@@ -114,8 +114,12 @@
 
 - (IBAction)backBtn:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
-    [self.view removeFromSuperview];
-    [self removeFromParentViewController];
+    NSLog(@"%@",self);
+    [self dismissModalViewControllerAnimated:YES];
+    
+//    NSLog(@"this");
+//    [self.view removeFromSuperview];
+//    [self removeFromParentViewController];
 }
 
 
@@ -125,6 +129,7 @@
 - (IBAction)typeSetBtn:(UIButton *)btn{
     editBcViewController = [[EditBcViewController alloc]init];
     [editBcViewController setCardNum:btn.tag];
+//    [self presentModalViewController:editBcViewController animated:YES];
     [self.view insertSubview:editBcViewController.view aboveSubview:self.view];
 }
 @end

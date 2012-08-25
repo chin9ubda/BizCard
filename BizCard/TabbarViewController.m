@@ -125,8 +125,9 @@
 
 // ---------------- Tabbar Controller Remove ---------------- //
 -(void)tabbarControllerRemove{
-    [self.view removeFromSuperview];
-    [self removeFromParentViewController];
+//    [self.view removeFromSuperview];
+//    [self removeFromParentViewController];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 

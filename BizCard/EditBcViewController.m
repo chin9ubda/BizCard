@@ -51,7 +51,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 
@@ -219,10 +219,11 @@
 - (IBAction)backBtn:(id)sender {
     if (nowCard == 0) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
+        [self dismissModalViewControllerAnimated:YES];
+    }else{
+        [self.view removeFromSuperview];
+        [self removeFromParentViewController];
     }
-    
-    [self.view removeFromSuperview];
-    [self removeFromParentViewController];
 }
 
 
@@ -264,12 +265,13 @@
         
     }
     
-    
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTableView" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"select_remove" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
     
+//    [self dismissModalViewControllerAnimated:YES];
+
+
     [self.view removeFromSuperview];
     [self removeFromParentViewController];
 }

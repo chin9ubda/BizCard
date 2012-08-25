@@ -182,8 +182,11 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"msgTableReload" object:nil];
         
-        [self.view removeFromSuperview];
-        [self removeFromParentViewController];
+        [self dismissModalViewControllerAnimated:YES];
+
+        
+//        [self.view removeFromSuperview];
+//        [self removeFromParentViewController];
     }
 }
 
