@@ -129,10 +129,10 @@
    --------------------------------------- */
 
 - (IBAction)backBtn:(id)sender {
-    [self.view removeFromSuperview];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
-    [self removeFromParentViewController];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -158,8 +158,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"msgTableReload" object:nil];
     
-    [self.view removeFromSuperview];
-    [self removeFromParentViewController];
+    [self dismissModalViewControllerAnimated:YES];
     
 }
 

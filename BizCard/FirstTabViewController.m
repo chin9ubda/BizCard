@@ -550,9 +550,9 @@
             }
             
             if (clickCount > 0) {
+                [cMenu removeFromSuperview];
                 [self cardMenu];
             }else if(clickCount <= 0){
-                NSLog(@"들어와");
                 [cMenu removeFromSuperview];
             }
             
@@ -637,23 +637,8 @@
     
 }
 
--(void)test{
-    
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    
-    picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    picker.allowsEditing = NO;
-    picker.navigationBarHidden = YES;
-    picker.wantsFullScreenLayout = YES;
-    [picker setNavigationBarHidden:TRUE];
-    
-    [self presentModalViewController:picker animated:NO];
-//    NSLog(@"%@", self.view.subviews);
-}
-
 // ---------------- ActionSheet Event ---------------- //
-
+#pragma mark -
 #pragma mark UIActionSheet Delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -669,7 +654,7 @@
             pushData.number = @"123";
             pushData.email = @"123@123.com";
             
-            [editBcViewController setCardImg:[UIImage imageNamed:@"blue.png"]:pushData];
+            [editBcViewController setCardImg:0:[UIImage imageNamed:@"blue.png"]:pushData];
             
             pushData = nil;
             
@@ -684,7 +669,7 @@
             pushData.number = @"123";
             pushData.email = @"123@123.com";
             
-            [editBcViewController setCardImg:[UIImage imageNamed:@"blue.png"]:pushData];
+            [editBcViewController setCardImg:0:[UIImage imageNamed:@"blue.png"]:pushData];
             
             pushData = nil;
 

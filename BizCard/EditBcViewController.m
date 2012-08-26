@@ -86,60 +86,12 @@
     toSJ
   ------------------------------------------------ */
  
-- (void)setCardImg:(UIImage *)img:(DataStruct *)data{
-    
+- (void)setCardImg:(int)_id:(UIImage *)img:(DataStruct *)data{
+    nowId = _id;
     dStruct = data;
     cardImg = img;
     
-//    dStruct.name = _name;
-//    dStruct.number = _number;
-//    dStruct.email = _email;
-//    
-//    dStruct.nameX = _nameX;
-//    dStruct.nameY = _nameY;
-//    dStruct.nameH = _nameH;
-//    dStruct.nameW = _nameW;
-//    
-//    dStruct.numberX = _numberX;
-//    dStruct.numberY = _numberY;
-//    dStruct.numberH = _numberH;
-//    dStruct.numberW = _numberW;
-//    
-//    dStruct.emailX = _emailX;
-//    dStruct.emailY = _emailY;
-//    dStruct.emailH = _emailH;
-//    dStruct.emailW = _emailW;
 }
-
-
-
-//- (void)setCardImg:(UIImage *)img:(NSString *)_name:(NSString *)_number:(NSString *)_email:
-//(float)_nameX:(float)_nameY:(float)_nameW:(float)_nameH:
-//(float)_numberX:(float)_numberY:(float)_numberW:(float)_numberH:
-//(float)_emailX:(float)_emailY:(float)_emailW:(float)_emailH{
-//        
-//    cardImg = img;
-//    
-//    dStruct.name = _name;
-//    dStruct.number = _number;
-//    dStruct.email = _email;
-//    
-//    dStruct.nameX = _nameX;
-//    dStruct.nameY = _nameY;
-//    dStruct.nameH = _nameH;
-//    dStruct.nameW = _nameW;
-//    
-//    dStruct.numberX = _numberX;
-//    dStruct.numberY = _numberY;
-//    dStruct.numberH = _numberH;
-//    dStruct.numberW = _numberW;
-//    
-//    dStruct.emailX = _emailX;
-//    dStruct.emailY = _emailY;
-//    dStruct.emailH = _emailH;
-//    dStruct.emailW = _emailW;
-//}
-
 
 // -------- View Click Event -------- //
 
@@ -248,7 +200,9 @@
 
 - (IBAction)backBtn:(id)sender {
     if (nowCard == 0) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
+        if (nowId == 0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
+        }
         [self dismissModalViewControllerAnimated:YES];
     }else{
         [self.view removeFromSuperview];
@@ -261,49 +215,75 @@
 
 - (IBAction)okBtn:(id)sender {
     DataBase *db = [DataBase getInstance];
-    int _id = [db bcInsert];
-    NSString *fileName = [NSString stringWithFormat:@"%d",_id];
     
-    float tempSize = loadCardView.frame.size.width;
+    if (nowId != 0) {
+        
+        dStruct.name = nameTextField.text;
+        dStruct.number = numberTextField.text;
+        dStruct.email = emailTextField.text;
+        
+        [db bcUpdate:nowId :dStruct];
+        [self dismissModalViewControllerAnimated:YES];
+    }else {
+        int _id = [db bcInsert];
+        NSString *fileName = [NSString stringWithFormat:@"%d",_id];
+        
+        float tempSize = loadCardView.frame.size.width;
+        
+        loadCardView.frame = CGRectMake(0.0f, 0.0f, 450.0f, 250.0f);
+        
+        if (nowCard == 0) {
+            cardImage.frame = CGRectMake(0.0f, 0.0f, 450.0f, 250.0f);
+            
+            dStruct.name = nameTextField.text;
+            dStruct.number = numberTextField.text;
+            dStruct.email = emailTextField.text;
 
-    loadCardView.frame = CGRectMake(0.0f, 0.0f, 450.0f, 250.0f);
-    
-    if (nowCard == 0) {
-        
-        cardImage.frame = CGRectMake(0.0f, 0.0f, 450.0f, 250.0f);
-        
-        [db insertContents:_id :1 :dStruct.name :dStruct.nameX :dStruct.nameY :dStruct.nameH :dStruct.nameW];
-        [db insertContents:_id :2 :dStruct.number :dStruct.numberX :dStruct.numberY :dStruct.numberH :dStruct.numberW];
-        [db insertContents:_id :3 :dStruct.email :dStruct.emailX :dStruct.emailY :dStruct.emailH :dStruct.emailW];
-        
-        [self saveImg:fileName:[self captureView:cardImage]];
-        
-        NSLog(@"%@",fileName);
-    }else{
-        
-        [self reSizeLabel:_cardOne.nameTitleLabel:loadCardView.frame.size.width / tempSize];
-        [self reSizeLabel:_cardOne.numberTitleLabel:loadCardView.frame.size.width / tempSize];
-        [self reSizeLabel:_cardOne.emailTitleLabel:loadCardView.frame.size.width / tempSize];
-        [self reSizeLabel:_cardOne.nameLabel:loadCardView.frame.size.width / tempSize];
-        [self reSizeLabel:_cardOne.numberLabel:loadCardView.frame.size.width / tempSize];
-        [self reSizeLabel:_cardOne.emailLabel:loadCardView.frame.size.width / tempSize];
-        
-        [db insertContents:_id :1 :nameLabel.text :nameLabel.frame.origin.x :nameLabel.frame.origin.y :nameLabel.frame.size.height :nameLabel.frame.size.width];
-        [db insertContents:_id :2 :numberLabel.text :numberLabel.frame.origin.x :numberLabel.frame.origin.y :numberLabel.frame.size.height :numberLabel.frame.size.width];
-        [db insertContents:_id :3 :emailLabel.text :emailLabel.frame.origin.x :emailLabel.frame.origin.y :emailLabel.frame.size.height :emailLabel.frame.size.width];
-        [self saveImg:fileName:[self captureView:loadCardView]];
-        
+            
+            [db insertContents:_id :1 :dStruct.name :dStruct.nameX :dStruct.nameY :dStruct.nameH :dStruct.nameW];
+            [db insertContents:_id :2 :dStruct.number :dStruct.numberX :dStruct.numberY :dStruct.numberH :dStruct.numberW];
+            [db insertContents:_id :3 :dStruct.email :dStruct.emailX :dStruct.emailY :dStruct.emailH :dStruct.emailW];
+            
+            [self saveImg:fileName:[self captureView:cardImage]];
+            
+            [self dismissModalViewControllerAnimated:YES];
+        }else{
+            nameLabel.text = nameTextField.text;
+            [nameLabel sizeToFit];
+            numberLabel.text = numberTextField.text;
+            [numberLabel sizeToFit];
+            emailLabel.text = emailTextField.text;
+            [emailLabel sizeToFit];
+            
+            [self reSizeLabel:_cardOne.nameTitleLabel:loadCardView.frame.size.width / tempSize];
+            [self reSizeLabel:_cardOne.numberTitleLabel:loadCardView.frame.size.width / tempSize];
+            [self reSizeLabel:_cardOne.emailTitleLabel:loadCardView.frame.size.width / tempSize];
+            [self reSizeLabel:_cardOne.nameLabel:loadCardView.frame.size.width / tempSize];
+            [self reSizeLabel:_cardOne.numberLabel:loadCardView.frame.size.width / tempSize];
+            [self reSizeLabel:_cardOne.emailLabel:loadCardView.frame.size.width / tempSize];
+            
+            [db insertContents:_id :1 :nameLabel.text :nameLabel.frame.origin.x :nameLabel.frame.origin.y :nameLabel.frame.size.height :nameLabel.frame.size.width];
+            [db insertContents:_id :2 :numberLabel.text :numberLabel.frame.origin.x :numberLabel.frame.origin.y :numberLabel.frame.size.height :numberLabel.frame.size.width];
+            [db insertContents:_id :3 :emailLabel.text :emailLabel.frame.origin.x :emailLabel.frame.origin.y :emailLabel.frame.size.height :emailLabel.frame.size.width];
+            [self saveImg:fileName:[self captureView:loadCardView]];
+            
+            [self.view removeFromSuperview];
+            [self removeFromParentViewController];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"select_remove" object:nil];
+
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
     }
     
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTableView" object:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"select_remove" object:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
     
 //    [self dismissModalViewControllerAnimated:YES];
 
 
-    [self.view removeFromSuperview];
-    [self removeFromParentViewController];
+//    [self.view removeFromSuperview];
+//    [self removeFromParentViewController];
 }
 
 
@@ -414,18 +394,22 @@
 
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-    if([textField isEqual:nameTextField]){
-        nameLabel.text = nameTextField.text;
-        [nameLabel sizeToFit];
-        
-    }else if([textField isEqual:numberTextField]){
-        numberLabel.text = numberTextField.text;
-        [numberLabel sizeToFit];
-        
-    }else{
-        emailLabel.text = emailTextField.text;
-        [emailLabel sizeToFit];
+    if (nowCard != 0) {
+    
+        if([textField isEqual:nameTextField]){
+            nameLabel.text = nameTextField.text;
+            [nameLabel sizeToFit];
+            
+        }else if([textField isEqual:numberTextField]){
+            numberLabel.text = numberTextField.text;
+            [numberLabel sizeToFit];
+            
+        }else{
+            emailLabel.text = emailTextField.text;
+            [emailLabel sizeToFit];
+        }
     }
+
     return YES;
 }
 

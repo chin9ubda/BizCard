@@ -25,7 +25,7 @@
     UIImage *cardImg;
     
     int nowCard;
-    int nowState;
+    int nowId;
     
 }
 - (IBAction)backBtn:(id)sender;
@@ -36,7 +36,7 @@
 
 // Struct 로 보낼지 .. 전부 보낼지...
 
-- (void)setCardImg:(UIImage *)img:(DataStruct *)data;
+- (void)setCardImg:(int)state:(UIImage *)img:(DataStruct *)data;
 
 - (IBAction)bgView:(id)sender;
 

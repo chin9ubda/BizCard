@@ -52,15 +52,15 @@
 }
 
 - (IBAction)backBtn:(id)sender {
-//    [self.view removeFromSuperview];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
     [self dismissModalViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
 }
 
 - (IBAction)editCard:(id)sender {
     EditBcViewController *editView = [[EditBcViewController alloc]init];
-    
+    [editView setCardImg:getId:[self getImg] :dStruct];
     [self presentModalViewController:editView animated:YES];
+//    [self dismissModalViewControllerAnimated:NO];
 }
 
 
@@ -77,8 +77,13 @@
     
     bcImg.image = img;
     
-    NSLog(@"%f",reSize);
+}
+-(UIImage *)getImg{
+    NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:fileName];
+    UIImage *img = [UIImage imageWithContentsOfFile:imagePath];
     
+    return img;
 }
 
 
@@ -123,9 +128,11 @@
 
 -(void)call{
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",dStruct.number]]];
+
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:01063653524"]]];
+
     
-    NSLog(@"number    :     %@",dStruct.number);
-    
+    NSLog(@"number is == %@",dStruct.number);
 }
 
 // -------------------- Send Email -------------------- //
@@ -158,14 +165,6 @@
 -(void)nameClickEvent{
     NSLog(@"name : %@",dStruct.name);
 }
-
-
-// -------------------- Number Click -------------------- //
-
--(void)numberClickEvent{
-    NSLog(@"number : %@",dStruct.number);
-}
-
 
 
 // -------------------- Email Click -------------------- //

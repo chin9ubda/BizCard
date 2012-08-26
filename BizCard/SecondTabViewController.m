@@ -104,7 +104,8 @@
     addMsgBtn = [[Add_MsgViewController alloc]init];
     [addMsgBtn setTextView:@""];
     
-    [self.view insertSubview:addMsgBtn.view aboveSubview:self.view];
+    [self presentModalViewController:addMsgBtn animated:YES];
+//    [self.view insertSubview:addMsgBtn.view aboveSubview:self.view];
 }
 
 @end

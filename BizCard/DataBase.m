@@ -498,9 +498,22 @@
 //    
 //    sqlite3_finalize(updateStatement);
     
-    NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET contentsText = '%@'  WHERE bcid = %d and type = 1",ContentsTable_Name, data.name, _id ];
+    NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET contentsText = '%@' WHERE bcid = %d And contentsType = 1",ContentsTable_Name, data.name, _id ];
     
     const char *updateSql = [query UTF8String];
+    
+    NSLog(@"edit NAme is %@",data.name);
+    
+    if (sqlite3_exec(database, updateSql, nil,nil,nil) != SQLITE_OK) {
+        
+        NSLog(@"Error");
+    }else{
+        NSLog(@"OK");
+    }
+    
+    query = [NSString stringWithFormat:@"UPDATE %@ SET contentsText = '%@'  WHERE bcid = %d and contentsType = 2",ContentsTable_Name, data.number, _id ];
+    
+    updateSql = [query UTF8String];
     
     
     if (sqlite3_exec(database, updateSql, nil,nil,nil) != SQLITE_OK) {
@@ -509,6 +522,20 @@
     }else{
         NSLog(@"OK");
     }
+
+    
+    query = [NSString stringWithFormat:@"UPDATE %@ SET contentsText = '%@'  WHERE bcid = %d and contentsType = 3",ContentsTable_Name, data.email, _id ];
+    
+    updateSql = [query UTF8String];
+    
+    
+    if (sqlite3_exec(database, updateSql, nil,nil,nil) != SQLITE_OK) {
+        
+        NSLog(@"Error");
+    }else{
+        NSLog(@"OK");
+    }
+
 
 }
 
