@@ -407,6 +407,7 @@
     [alert show];
     
     alert.tag = CardDelTag;
+    [cMenu removeFromSuperview];
 }
 
 
