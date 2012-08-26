@@ -475,7 +475,42 @@
 }
 
 
+-(void)bcUpdate:(int)_id:(DataStruct *)data{
+//    sqlite3_stmt *updateStatement;
+//    NSString *query = [NSString stringWithFormat:@"REPLACE INTO %@ (bcid,contentsText, contentsX, contentsY, contentsH, contentsW ) VALUES(?,?)",ContentsTable_Name];
+//    
+//    const char *updateSql = [query UTF8String];
+//    
+//    //프리페어스테이트먼트를 사용
+//    if (sqlite3_prepare_v2(database, updateSql, -1, &updateStatement, NULL) == SQLITE_OK) {
+//        
+//        //?에 데이터를 바인드
+//        sqlite3_bind_int(updateStatement, 1, _id);
+//        sqlite3_bind_text(updateStatement, 2, [data.name UTF8String],  -1, SQLITE_TRANSIENT);
+//        
+//        // sql문 실행
+//        if (sqlite3_step(updateStatement) != SQLITE_DONE) {
+//            NSLog(@"Error");
+//            
+//        }
+//    }
+//    
+//    
+//    sqlite3_finalize(updateStatement);
+    
+    NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET contentsText = '%@'  WHERE bcid = %d and type = 1",ContentsTable_Name, data.name, _id ];
+    
+    const char *updateSql = [query UTF8String];
+    
+    
+    if (sqlite3_exec(database, updateSql, nil,nil,nil) != SQLITE_OK) {
+        
+        NSLog(@"Error");
+    }else{
+        NSLog(@"OK");
+    }
 
+}
 
 
 // ---------------- ContentsTable Insert And _id Return ---------------- //

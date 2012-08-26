@@ -10,6 +10,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DataBase.h"
 
+
+#define Insert 0
+#define Update 1
+
 @interface EditBcViewController ()
 
 @end
@@ -19,13 +23,12 @@
 @synthesize numberTextField;
 @synthesize emailTextField;
 @synthesize mainScrollView;
-@synthesize cardImage, nowCard;
+@synthesize cardImage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        dStruct = [DataStruct getInstance];
     }
     return self;
 }
@@ -83,32 +86,59 @@
     toSJ
   ------------------------------------------------ */
  
-- (void)setCardImg:(UIImage *)img:(NSString *)_name:(NSString *)_number:(NSString *)_email:
-(float)_nameX:(float)_nameY:(float)_nameW:(float)_nameH:
-(float)_numberX:(float)_numberY:(float)_numberW:(float)_numberH:
-(float)_emailX:(float)_emailY:(float)_emailW:(float)_emailH{
-        
+- (void)setCardImg:(UIImage *)img:(DataStruct *)data{
+    
+    dStruct = data;
     cardImg = img;
     
-    dStruct.name = _name;
-    dStruct.number = _number;
-    dStruct.email = _email;
-    
-    dStruct.nameX = _nameX;
-    dStruct.nameY = _nameY;
-    dStruct.nameH = _nameH;
-    dStruct.nameW = _nameW;
-    
-    dStruct.numberX = _numberX;
-    dStruct.numberY = _numberY;
-    dStruct.numberH = _numberH;
-    dStruct.numberW = _numberW;
-    
-    dStruct.emailX = _emailX;
-    dStruct.emailY = _emailY;
-    dStruct.emailH = _emailH;
-    dStruct.emailW = _emailW;
+//    dStruct.name = _name;
+//    dStruct.number = _number;
+//    dStruct.email = _email;
+//    
+//    dStruct.nameX = _nameX;
+//    dStruct.nameY = _nameY;
+//    dStruct.nameH = _nameH;
+//    dStruct.nameW = _nameW;
+//    
+//    dStruct.numberX = _numberX;
+//    dStruct.numberY = _numberY;
+//    dStruct.numberH = _numberH;
+//    dStruct.numberW = _numberW;
+//    
+//    dStruct.emailX = _emailX;
+//    dStruct.emailY = _emailY;
+//    dStruct.emailH = _emailH;
+//    dStruct.emailW = _emailW;
 }
+
+
+
+//- (void)setCardImg:(UIImage *)img:(NSString *)_name:(NSString *)_number:(NSString *)_email:
+//(float)_nameX:(float)_nameY:(float)_nameW:(float)_nameH:
+//(float)_numberX:(float)_numberY:(float)_numberW:(float)_numberH:
+//(float)_emailX:(float)_emailY:(float)_emailW:(float)_emailH{
+//        
+//    cardImg = img;
+//    
+//    dStruct.name = _name;
+//    dStruct.number = _number;
+//    dStruct.email = _email;
+//    
+//    dStruct.nameX = _nameX;
+//    dStruct.nameY = _nameY;
+//    dStruct.nameH = _nameH;
+//    dStruct.nameW = _nameW;
+//    
+//    dStruct.numberX = _numberX;
+//    dStruct.numberY = _numberY;
+//    dStruct.numberH = _numberH;
+//    dStruct.numberW = _numberW;
+//    
+//    dStruct.emailX = _emailX;
+//    dStruct.emailY = _emailY;
+//    dStruct.emailH = _emailH;
+//    dStruct.emailW = _emailW;
+//}
 
 
 // -------- View Click Event -------- //

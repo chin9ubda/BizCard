@@ -9,6 +9,7 @@
 #import "FirstTabViewController.h"
 #import "SelectBCTemplateViewController.h"
 #import "BcTableCell.h"
+#import "DataStruct.h"
 
 #define CardEdit 1
 #define MemberEdit 2
@@ -34,6 +35,7 @@
 @synthesize groupScrollView;
 @synthesize businessCardTable;
 @synthesize editBtn;
+@synthesize searchTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,6 +63,7 @@
     [self setAddGroupBtn:nil];
     [self setBusinessCardTable:nil];
     [self setEditBtn:nil];
+    [self setSearchTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -659,15 +662,32 @@
             NSLog(@"사진 찍기");
             
             editBcViewController = [[EditBcViewController alloc]init];
-            [editBcViewController setCardImg:[UIImage imageNamed:@"blue.png"]:@"이름":@"12345":@"email@email.com":0:0:0:0:0:0:0:0:0:0:0:0];
+            
+            DataStruct *pushData = [[DataStruct alloc]init];
+            
+            pushData.name = @"이름";
+            pushData.number = @"123";
+            pushData.email = @"123@123.com";
+            
+            [editBcViewController setCardImg:[UIImage imageNamed:@"blue.png"]:pushData];
+            
+            pushData = nil;
             
             [self presentModalViewController:editBcViewController animated:YES];
         }else if(buttonIndex == 1){
             NSLog(@"앨범에서 불러오기");
             editBcViewController = [[EditBcViewController alloc]init];
-            [editBcViewController setCardImg:[UIImage imageNamed:@"blue.png"]:@"이름":@"12345":@"email@email.com":0:0:0:0:0:0:0:0:0:0:0:0];
             
-//            [self.view insertSubview:editBcViewController.view aboveSubview:self.view];
+            DataStruct *pushData = [[DataStruct alloc]init];
+            
+            pushData.name = @"이름";
+            pushData.number = @"123";
+            pushData.email = @"123@123.com";
+            
+            [editBcViewController setCardImg:[UIImage imageNamed:@"blue.png"]:pushData];
+            
+            pushData = nil;
+
             [self presentModalViewController:editBcViewController animated:YES];
 
         }else if(buttonIndex == 2){

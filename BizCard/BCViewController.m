@@ -7,6 +7,7 @@
 //
 
 #import "BCViewController.h"
+#import "EditBcViewController.h"
 
 @interface BCViewController ()
 
@@ -56,6 +57,12 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+- (IBAction)editCard:(id)sender {
+    EditBcViewController *editView = [[EditBcViewController alloc]init];
+    
+    [self presentModalViewController:editView animated:YES];
+}
+
 
 // ---------------- Image Load ---------------- //
 
@@ -63,8 +70,8 @@
 -(void)loadImg{
     
     NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-    NSString *imagePath1 = [documentsDirectory stringByAppendingPathComponent:fileName];
-    UIImage *img = [UIImage imageWithContentsOfFile:imagePath1];
+    NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:fileName];
+    UIImage *img = [UIImage imageWithContentsOfFile:imagePath];
     
     reSize = bcImg.frame.size.width / img.size.width;
     

@@ -21,5 +21,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *bcImg;
 - (void)setImg:(int)_id;
 - (IBAction)backBtn:(id)sender;
+- (IBAction)editCard:(id)sender;
 
 @end

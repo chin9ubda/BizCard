@@ -24,6 +24,9 @@
     DataStruct *dStruct;
     UIImage *cardImg;
     
+    int nowCard;
+    int nowState;
+    
 }
 - (IBAction)backBtn:(id)sender;
 - (IBAction)okBtn:(id)sender;
@@ -33,16 +36,12 @@
 
 // Struct 로 보낼지 .. 전부 보낼지...
 
-- (void)setCardImg:(UIImage *)img:(NSString *)_name:(NSString *)_number:(NSString *)_email:
-(float)_nameX:(float)_nameY:(float)_nameW:(float)_nameH:
-(float)_numberX:(float)_numberY:(float)_numberW:(float)_numberH:
-(float)_emailX:(float)_emailY:(float)_emailW:(float)_emailH;
+- (void)setCardImg:(UIImage *)img:(DataStruct *)data;
 
 - (IBAction)bgView:(id)sender;
 
 
 @property (strong, nonatomic) IBOutlet UIImageView *cardImage;
-@property int nowCard;
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *numberTextField;
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;

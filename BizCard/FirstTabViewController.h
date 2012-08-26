@@ -48,5 +48,6 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *groupScrollView;
 @property (strong, nonatomic) IBOutlet UITableView *businessCardTable;
 @property (strong, nonatomic) IBOutlet UIButton *editBtn;
+@property (strong, nonatomic) IBOutlet UITextField *searchTextField;
 
 @end

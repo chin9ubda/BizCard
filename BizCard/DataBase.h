@@ -25,6 +25,7 @@
 
 -(NSMutableArray *)getBcIds;
 -(int)bcInsert;
+-(void)bcUpdate:(int)_id:(DataStruct *)data;
 -(void)insertContents:(int)_id:(int)type:(NSString *)text:
 (float)x:(float)y:(float)h:(float)w;
 -(DataStruct *)getData:(int)_id;
