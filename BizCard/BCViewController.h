@@ -11,7 +11,7 @@
 #import "DataStruct.h"
 #import "MessageUI/MessageUI.h"
 
-@interface BCViewController : UIViewController <MFMailComposeViewControllerDelegate>{
+@interface BCViewController : UIViewController <MFMailComposeViewControllerDelegate ,MFMessageComposeViewControllerDelegate>{
     NSString *fileName;
     DataBase *db;
     DataStruct *dStruct;

@@ -23,7 +23,7 @@
 -(void)groupUpdate:(int)_id:(NSString *)name;
 -(void)groupDel:(int)_id;
 
--(NSMutableArray *)getBcIds;
+-(NSMutableArray *)getBcIds:(int)type;
 -(int)bcInsert;
 -(void)bcUpdate:(int)_id:(DataStruct *)data;
 -(void)insertContents:(int)_id:(int)type:(NSString *)text:
@@ -31,9 +31,11 @@
 -(DataStruct *)getData:(int)_id;
 -(void)bcDel:(int)_id;
 
+-(NSMutableArray *)search:(NSString *)msg:(int)type;
+
 -(void)memberDel:(int)gruop_id;
 -(void)memberUpdate:(int)group_Number:(int)card_Number;
--(NSMutableArray *)getMemberIds:(int)group_id;
+-(NSMutableArray *)getMemberIds:(int)group_id:(int)type;
 
 
 -(NSArray *)getMsgIds;

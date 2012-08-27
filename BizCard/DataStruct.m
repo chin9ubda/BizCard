@@ -10,14 +10,4 @@
 
 @implementation DataStruct
 
-+(DataStruct *)getInstance{
-    static DataStruct *dataStruct;
-    
-    if (dataStruct == nil) {
-        dataStruct = [[DataStruct alloc]init];
-    }
-    
-    return dataStruct;
-}
-
 @end

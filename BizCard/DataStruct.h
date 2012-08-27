@@ -26,6 +26,4 @@
 @property float emailH;
 @property float emailW;
 
-
-+(DataStruct *)getInstance;
 @end

@@ -16,6 +16,9 @@
 #define GroupMemberTable_Name @"GroupMember"
 #define MsgTable_Name @"Msg"
 
+#define SortLastAdd 
+
+
 
 @implementation DataBase
 
@@ -25,7 +28,6 @@
     if (self) {
         [self createOrOpenDB];
         [self createTable];
-        dStruct = [DataStruct getInstance];
     }
     return self;
 }
@@ -177,7 +179,7 @@
         
         while (sqlite3_step(selectStatement) == SQLITE_ROW) {
             
-            [array insertObject: [NSNumber numberWithInteger: sqlite3_column_int(selectStatement, 0)] atIndex:count];
+            [array insertObject: [NSNumber numberWithInteger: sqlite3_column_int(selectStatement, 0)] atIndex:count];           
             count++;
         }
         
@@ -303,13 +305,25 @@
 
 // ---------------- BusinessCard Id Return ---------------- //
 
--(NSMutableArray *)getBcIds{
+
+/* --------------------------------------------------------
+   type == 0 등록순 정렬
+   type == 1 이름순 정렬
+   -------------------------------------------------------- */
+
+
+-(NSMutableArray *)getBcIds:(int)type{
     
     NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
     int count = 0;
+    NSString *query;
     
     sqlite3_stmt *selectStatement;
-    NSString *query = [NSString stringWithFormat:@"SELECT _id FROM %@",BusinessCardTable_Name];
+    if (type == 0) {
+        query = [NSString stringWithFormat:@"SELECT _id FROM %@ ORDER BY _id DESC",BusinessCardTable_Name];
+    }else if (type == 1){
+        query = [NSString stringWithFormat:@"SELECT bcid FROM %@ WHERE contentsType = 1 ORDER BY contentsText ASC",ContentsTable_Name];
+    }
     
     const char *selectSql = [query UTF8String];
     
@@ -336,6 +350,8 @@
 
 -(DataStruct *)getData:(int)_id{
     
+    dStruct = [[DataStruct alloc]init];
+
     sqlite3_stmt *selectStatement;
     
     NSString *query = [NSString stringWithFormat:@"SELECT contentsText, contentsX, contentsY, contentsH, contentsW FROM %@ WHERE bcid = %d and contentsType = 1",ContentsTable_Name,_id];
@@ -447,8 +463,15 @@
 }
 
 
+// ---------------- BusinessCard Delete ---------------- //
+/* -----------------------------------------------------
+   id값을 받아서 groupMemberTable 에서 삭제,
+   BusinnessCardTable 에서 삭제
+   ContentsTable 에서 삭제
+   ------------------------------------------------------- */
+
 -(void)bcDel:(int)_id{
-    NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE businessCardNumber = %d",BusinessCardTable_Name,_id];
+    NSString *query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE businessCardNumber = %d",GroupMemberTable_Name,_id];
     
     const char *delSql = [query UTF8String];
     
@@ -472,32 +495,69 @@
     }else{
         NSLog(@"OK");
     }
+    
+    query = [NSString stringWithFormat:@"DELETE FROM %@ WHERE bcid = %d",ContentsTable_Name, _id];
+    
+    delSql = [query UTF8String];
+    
+    
+    if (sqlite3_exec(database, delSql, nil,nil,nil) != SQLITE_OK) {
+        
+        NSLog(@"Error");
+    }else{
+        NSLog(@"OK");
+    }
+
 }
 
 
--(void)bcUpdate:(int)_id:(DataStruct *)data{
-//    sqlite3_stmt *updateStatement;
-//    NSString *query = [NSString stringWithFormat:@"REPLACE INTO %@ (bcid,contentsText, contentsX, contentsY, contentsH, contentsW ) VALUES(?,?)",ContentsTable_Name];
-//    
-//    const char *updateSql = [query UTF8String];
-//    
-//    //프리페어스테이트먼트를 사용
-//    if (sqlite3_prepare_v2(database, updateSql, -1, &updateStatement, NULL) == SQLITE_OK) {
-//        
-//        //?에 데이터를 바인드
-//        sqlite3_bind_int(updateStatement, 1, _id);
-//        sqlite3_bind_text(updateStatement, 2, [data.name UTF8String],  -1, SQLITE_TRANSIENT);
-//        
-//        // sql문 실행
-//        if (sqlite3_step(updateStatement) != SQLITE_DONE) {
-//            NSLog(@"Error");
-//            
-//        }
-//    }
-//    
-//    
-//    sqlite3_finalize(updateStatement);
+// ---------------- Card Search ---------------- //
+/* ---------------------------------------------
+   Search Msg 를 받아서 검색, 
+   type = 0 일때  등록순 type = 1 이름순
+   --------------------------------------------- */
+
+-(NSMutableArray *)search:(NSString *)msg:(int)type{
+    NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
+    int count = 0;
+    NSString *query;
     
+    sqlite3_stmt *selectStatement;
+    if (type == 0) {
+        query = [NSString stringWithFormat:@"SELECT bcid FROM %@ WHERE contentsText = '%@' ORDER BY bcid ASC",ContentsTable_Name,msg];
+    }else if (type == 1){
+        query = [NSString stringWithFormat:@"SELECT bcid FROM %@ WHERE contentsType = 1 contentsText = '%@' ORDER BY contentsText ASC",ContentsTable_Name,msg];
+    }
+    
+    const char *selectSql = [query UTF8String];
+    
+    
+    if (sqlite3_prepare_v2(database, selectSql, -1, &selectStatement, NULL) == SQLITE_OK) {
+        
+        while (sqlite3_step(selectStatement) == SQLITE_ROW) {
+            
+            [array insertObject: [NSNumber numberWithInteger: sqlite3_column_int(selectStatement, 0)] atIndex:count];
+            count++;
+        }
+        
+    }
+    
+    sqlite3_finalize(selectStatement);
+    
+    
+    
+    return array;
+}
+
+
+// ---------------- Card Update ---------------- //
+/* ---------------------------------------------
+   카드 id 값과 변경한 내용을 dataStruct 형태로 받아서
+   업데이트
+   --------------------------------------------- */
+
+
+-(void)bcUpdate:(int)_id:(DataStruct *)data{
     NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET contentsText = '%@' WHERE bcid = %d And contentsType = 1",ContentsTable_Name, data.name, _id ];
     
     const char *updateSql = [query UTF8String];
@@ -618,12 +678,26 @@
 
 // ---------------- Member Id Return ---------------- //
 
--(NSMutableArray *)getMemberIds:(int)group_id{
+/* --------------------------------------------------
+   type == 0 등록순 정렬
+   type == 1 이름순 정렬
+   -------------------------------------------------- */
+
+-(NSMutableArray *)getMemberIds:(int)group_id:(int)type{
     NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
     int count = 0;
     
     sqlite3_stmt *selectStatement;
-    NSString *query = [NSString stringWithFormat:@"SELECT businessCardNumber FROM %@ WHERE groupNumber = %d",GroupMemberTable_Name, group_id];
+    NSString *query;
+    
+    if (type == 0) {
+        query = [NSString stringWithFormat:@"SELECT businessCardNumber FROM %@ WHERE groupNumber = %d ORDER BY businessCardNumber DESC",GroupMemberTable_Name, group_id];
+    }else if (type == 1){
+//        query = [NSString stringWithFormat:@"SELECT GroupMember.businessCardNumber FROM GroupMember, Contents WHERE GroupMember.groupNumber = %d And GroupMember.businessCardNumber = Contents.bcid And Contents.contentsType = 1 ORDER BY Contents.contentsText ASC",group_id];
+        
+        query = [NSString stringWithFormat:@"SELECT %@.businessCardNumber FROM %@, %@ WHERE %@.groupNumber = %d And %@.businessCardNumber = %@.bcid And %@.contentsType = 1 ORDER BY %@.contentsText ASC",GroupMemberTable_Name,GroupMemberTable_Name,ContentsTable_Name,GroupMemberTable_Name,group_id,GroupMemberTable_Name,ContentsTable_Name, ContentsTable_Name,ContentsTable_Name];
+    }
+    
     
     const char *selectSql = [query UTF8String];
     
@@ -637,6 +711,8 @@
             count++;
         }
         
+    }else {
+        NSLog(@"error");
     }
     
     //statement close

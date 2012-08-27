@@ -10,6 +10,7 @@
 #import "SelectBCTemplateViewController.h"
 #import "BcTableCell.h"
 #import "DataStruct.h"
+#import "MsgLoadViewController.h"
 
 #define CardEdit 1
 #define MemberEdit 2
@@ -25,6 +26,11 @@
 #define CardSms 24
 #define CardEmail 25
 
+#define SortLastInsert 0
+#define SortName 1
+#define SortMostClick 0
+
+
 @interface FirstTabViewController ()
 
 @end
@@ -37,12 +43,20 @@
 @synthesize editBtn;
 @synthesize searchTextField;
 
+
+/* -----------------------------------------------------
+   DataBase Class getInstance;
+   edit == false  :  보통 상태
+   nowState == CardEdit  :  카드 편집 상태
+   nowState == MemberEdit  :  맴버 편집 상태
+   ------------------------------------------------------- */
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         db = [DataBase getInstance];
-        dStruct = [DataStruct getInstance];
+        dStruct = [[DataStruct alloc]init];
         [self reloadTableView];
     }
     return self;
@@ -51,6 +65,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self setGroup];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:@"reloadTableView" object:nil];
     // Do any additional setup after loading the view from its nib.
@@ -139,23 +154,25 @@
 }
 
 
+// ---------------- Sort Change ---------------- //
+
+- (IBAction)sortBtn:(id)sender {
+    if (sortType == SortLastInsert) {
+        sortType = SortName;
+    }else if (sortType == SortName) {
+        sortType = SortLastInsert;
+    }
+    
+    [self reloadTableView];
+}
+
+
 
 // ---------------- All Group Btn Event ---------------- //
 
 - (IBAction)allGroupBtn:(id)sender {
-//    [sender setTag:0];
-//    [self groupBtnClickEvent:sender];
-    
-    if (!edit) {
-        UIActionSheet *actionsheet = [[UIActionSheet alloc]
-                                      initWithTitle:nil
-                                      delegate:self
-                                      cancelButtonTitle:@"취소"
-                                      destructiveButtonTitle:@"사진 촬영"
-                                      otherButtonTitles:@"앨범에서 가져오기", @"주소록에서 가져오기", @"직접 입력하기", nil];
-        actionsheet.tag = CardAddTag;
-        [actionsheet showInView:self.view];
-    }
+    [sender setTag:0];
+    [self groupBtnClickEvent:sender];
 }
 
 
@@ -308,11 +325,46 @@
 // ---------------- Group Menu Opne & setting ---------------- //
 
 -(void)groupSms{
-    NSLog(@"groupSms");
+    
+    UIActionSheet *actionsheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:@"취소"
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:@"메시지 불러오기", @"새로쓰기", nil];
+    actionsheet.tag = GroupSms;
+    [actionsheet showInView:self.view];
+    
+    [gMenu removeFromSuperview];
+
+}
+
+
+-(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result{
+    [self dismissModalViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
 }
 
 -(void)groupEmail{
-    NSLog(@"groupEmail");
+    UIActionSheet *actionsheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:@"취소"
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:@"메시지 불러오기", @"새로쓰기", nil];
+    actionsheet.tag = GroupEmail;
+    [actionsheet showInView:self.view];
+    
+    [gMenu removeFromSuperview];
+
+}
+
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    
+    [self dismissModalViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
+
 }
 
 -(void)groupMember{
@@ -324,12 +376,12 @@
         
         NSArray *checkAr = bcArray;
         
-        bcArray = [db getBcIds];
+        bcArray = [db getBcIds:sortType];
         
         if (bcCheckArray != nil) {
             bcCheckArray = nil;
         }
-        
+
         
         bcCheckArray = [NSMutableArray arrayWithCapacity:0];
         
@@ -401,16 +453,34 @@
 
 -(void)cardSms{
     NSLog(@"cardSms");
+    UIActionSheet *actionsheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:@"취소"
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:@"메시지 불러오기", @"새로쓰기", nil];
+    actionsheet.tag = CardSms;
+    [actionsheet showInView:self.view];
+    
+    [cMenu removeFromSuperview];
 }
 -(void)cardEmail{
     NSLog(@"cardEmail");
+    UIActionSheet *actionsheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:@"취소"
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:@"메시지 불러오기", @"새로쓰기", nil];
+    actionsheet.tag = CardEmail;
+    [actionsheet showInView:self.view];
+    
 }
 -(void)cardDel{
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"확  인" message:@"정말 삭제하시겠습니까?" delegate:self  cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
     [alert show];
     
     alert.tag = CardDelTag;
-    [cMenu removeFromSuperview];
 }
 
 
@@ -419,9 +489,9 @@
 -(void)reloadTableView{
     
     if (nowGroup == 0) {
-        bcArray = [db getBcIds];
+        bcArray = [db getBcIds:sortType];
     }else {
-        bcArray = [db getMemberIds:nowGroup];
+        bcArray = [db getMemberIds:nowGroup:sortType];
     }
     
     if (bcCheckArray != nil) {
@@ -529,6 +599,15 @@
 
 // ---------------- Cell Select Event ---------------- //
 
+/* ---------------------------------------------------------------
+   edit == true 일경우 ( 체크박스 노출 상태 )
+     nowState == CardEdit 체크박스 이미지 변경, bcCheckArray 수정,
+               clickCout 1개 이상일경우 메뉴보임
+     nowState == MemberEdit 체크박스 이미지 변경, bcCheckArray 수정
+   edit == false 일경우 ( 체크박스 비노출 )
+     카드 자세히 보기 화면으로 이동
+  --------------------------------------------------------------- */
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     int index = [indexPath row];
@@ -556,8 +635,6 @@
                 [cMenu removeFromSuperview];
             }
             
-    NSLog(@"%d",clickCount);
-            
         }else if (nowState == MemberEdit){
             
             BcTableCell *cell = (BcTableCell *)[businessCardTable cellForRowAtIndexPath:indexPath];
@@ -566,11 +643,9 @@
             if ([[bcCheckArray objectAtIndex: index] integerValue] == 0) {
                 [bcCheckArray replaceObjectAtIndex:index withObject:[NSNumber numberWithInteger: 1]];
                 [cell.checkBox setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateNormal];
-                //                clickCount++;
             }else{
                 [bcCheckArray replaceObjectAtIndex:index withObject:[NSNumber numberWithInteger: 0]];
                 [cell.checkBox setImage:[UIImage imageNamed:@"checkbox.png"] forState:UIControlStateNormal];
-                //                clickCount--;
             }
         }
     }else{
@@ -585,7 +660,140 @@
 }
 
 
-// ---------------- Alert Event ---------------- //
+
+// ------------------------- Msg Load ------------------------- //
+
+/* ---------------------------------------------------------------
+   MsgLoadViewController presentModalView
+   Send Array;
+   SetType
+     - type = 0 : SMS
+     - type = 1 : EMAIL
+   --------------------------------------------------------------- */
+
+-(void)msgLoadView:(NSArray *)array:(int)type{
+    MsgLoadViewController *msgLoad = [[MsgLoadViewController alloc]init];
+    [msgLoad setArray:array];
+    [msgLoad setType:type];
+    
+    array = nil;
+    
+    [self presentModalViewController:msgLoad animated:YES];
+
+}
+
+
+// ------------------------- Sms Send ------------------------- //
+
+/* ---------------------------------------------------------------
+   Message Send
+   MFMessageComposeViewController presentModalView
+   --------------------------------------------------------------- */
+
+-(void)smsSend:(NSArray *)array{
+    MFMessageComposeViewController *smsController = [[MFMessageComposeViewController alloc] init];
+    smsController.messageComposeDelegate = self;
+    if([MFMessageComposeViewController canSendText])
+    {
+        smsController.body = nil;
+        [smsController setRecipients:array];
+        smsController.messageComposeDelegate = self;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarHide" object:nil];
+        [self presentModalViewController:smsController animated:YES];
+    }
+}
+
+
+// ------------------------- Email Send ------------------------- //
+
+/* ---------------------------------------------------------------
+   Message Send
+   MFMessageComposeViewController presentModalView
+   --------------------------------------------------------------- */
+
+-(void)emailSend:(NSArray *)array{
+    MFMailComposeViewController *mailsome = [[MFMailComposeViewController alloc] init];
+    mailsome.mailComposeDelegate=self;
+    if([MFMailComposeViewController canSendMail]){
+        [mailsome setToRecipients:array];
+        [mailsome setSubject:nil];
+        [mailsome setMessageBody:nil isHTML:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarHide" object:nil];
+        [self presentModalViewController:mailsome animated:YES];
+    }
+}
+
+
+
+// ------------------------ TextField Setting ------------------------ //
+
+
+// ------- TextField 'Retrun' Key Event ------- //
+
+/* --------------------------------------------
+   검색, 키보드 감추기
+   -------------------------------------------- */
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    searchTextField.text = @"";
+    [textField resignFirstResponder];
+    bcArray = [db search:textField.text :sortType];
+    
+    if (bcCheckArray != nil) {
+        bcCheckArray = nil;
+    }
+    
+    
+    bcCheckArray = [NSMutableArray arrayWithCapacity:0];
+    
+    
+    for (int i = 0; i < bcArray.count; i++) {
+        [bcCheckArray insertObject: [NSNumber numberWithInteger: 0] atIndex:i];
+    }
+    
+    [businessCardTable reloadData];
+    return true;
+}
+
+
+
+// --------- TextField BeginEditing --------- //
+
+/* ------------------------------------------
+   TextField Edit 실행시. searchTextField 공백
+   ------------------------------------------ */
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    searchTextField.text = @"";
+    
+    return YES;
+}
+
+
+
+// -------- TextField EndEditing -------- //
+
+/* --------------------------------------
+ TextField Edit 실행시. 각 Label 값 변경
+ -------------------------------------- */
+
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+//    searchTextField.text = @"";
+    
+    return YES;
+}
+
+
+// ------------------------- Alert Event ------------------------- //
+
+/* ---------------------------------------------------------------
+   tag == GroupAddTag  : 그룹 추가 - TextField 에 입력된 값으로 그룹 추가
+   tag == GroupEditTag : 그룹 편집 - TextField 에 입력된 값으로 그룹 변경
+   tag == GroupDelTag : 그룹 삭제 확인 Alert
+   tag == CardDelTag : 카드 삭제 확인 Alert
+   --------------------------------------------------------------- */
 
 #pragma mark UIAlertView Delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -627,6 +835,16 @@
             for(int i = 0; i < bcCheckArray.count; i++){
                 if([[bcCheckArray objectAtIndex: i] integerValue] == 1){
                     [db bcDel: [[bcArray objectAtIndex:i]integerValue]];
+                    
+                    
+                    NSString *file = [NSString stringWithFormat:@"%d.png",[[bcArray objectAtIndex:i]integerValue]];
+                    NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+                    
+                    NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:file];
+                    NSFileManager *fm = [NSFileManager defaultManager];
+                    
+                    [fm removeItemAtPath:imagePath error:nil];
+                    
                 }
             }
             [self reloadTableView];
@@ -638,6 +856,16 @@
 }
 
 // ---------------- ActionSheet Event ---------------- //
+
+/* -----------------------------------------------------
+   tag == CardAddTag  : 명함 추가 방법 선택
+   tag == GroupEmail : 그룹 이메일
+   tag == GroupSms : 그룹 SMS
+   tag == CardEmail : 선택된 명함 이메일
+   tag == CardSms : 선택된 명함 SMS
+                    - 메시지 불러오기 : 기존 메시지를 불러오기위한 MsgLoadViewController 호출
+                    - 새로쓰기 : 이메일 전송 ViewController 호출
+   ----------------------------------------------------- */
 #pragma mark -
 #pragma mark UIActionSheet Delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -682,6 +910,144 @@
             selectView = [[SelectBCTemplateViewController alloc]init];
             [self presentModalViewController:selectView animated:YES];
         }
+    }else if (actionSheet.tag == GroupEmail){
+        if (buttonIndex == 0) {
+            DataStruct *getData;
+            NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
+            
+            for (int i = 0; i < bcArray.count; i++) {
+                getData =[db getData:[[bcArray objectAtIndex:i]intValue]];
+                [array insertObject:getData.email  atIndex:i];
+            }
+            getData = nil;
+            
+            [self msgLoadView:array:1];
+            array = nil;
+            
+        }else{
+            DataStruct *getData;
+            NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
+            
+            for (int i = 0; i < bcArray.count; i++) {
+                getData =[db getData:[[bcArray objectAtIndex:i]intValue]];
+                [array insertObject:getData.email  atIndex:i];
+            }
+            getData = nil;
+            
+            [self emailSend:array];
+            
+            array = nil;
+        }
+    }else if (actionSheet.tag == GroupSms){
+        if (buttonIndex == 0) {
+            DataStruct *getData;
+            NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
+            
+            for (int i = 0; i < bcArray.count; i++) {
+                getData =[db getData:[[bcArray objectAtIndex:i]intValue]];
+                [array insertObject:getData.number  atIndex:i];
+            }
+            getData = nil;
+            
+            [self msgLoadView:array:0];
+
+            array = nil;
+        }else{
+            DataStruct *getData;
+            NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
+            
+            for (int i = 0; i < bcArray.count; i++) {
+                getData =[db getData:[[bcArray objectAtIndex:i]intValue]];
+                
+                [array insertObject:getData.number  atIndex:i];
+            }
+            getData = nil;
+            
+            [self smsSend:array];
+            
+            array = nil;
+        }
+
+    }else if (actionSheet.tag == CardEmail){
+        if (buttonIndex == 0) {
+            DataStruct *getData;
+            int count = 0;
+            NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
+            
+            for (int i = 0; i < bcArray.count; i++) {
+                if ([[bcCheckArray objectAtIndex: i] integerValue] != 0) {
+                    getData =[db getData:[[bcArray objectAtIndex:i]intValue]];
+                    [array insertObject:getData.email  atIndex:count];
+                    count++;
+                }
+            }
+            getData = nil;
+            
+            [self msgLoadView:array:1];
+            
+            array = nil;
+            
+        }else{
+            
+            DataStruct *getData;
+            int count = 0;
+            
+            NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
+            
+            for(int i = 0; i < bcCheckArray.count; i++){
+                if ([[bcCheckArray objectAtIndex: i] integerValue] != 0) {
+                    getData =[db getData:[[bcArray objectAtIndex:i]intValue]];
+                    [array insertObject:getData.email  atIndex:count];
+                    count++;
+                }
+            }
+            
+            getData = nil;
+
+            [self emailSend:array];
+
+            array = nil;
+        }
+        
+    }else if (actionSheet.tag == CardSms){
+        if (buttonIndex == 0) {
+            DataStruct *getData;
+            int count = 0;
+            NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
+            
+            for (int i = 0; i < bcArray.count; i++) {
+                if ([[bcCheckArray objectAtIndex: i] integerValue] != 0) {
+                    getData =[db getData:[[bcArray objectAtIndex:i]intValue]];
+                    [array insertObject:getData.number  atIndex:count];
+                    count++;
+                }
+            }
+            getData = nil;
+            
+            [self msgLoadView:array:0];
+            
+            array = nil;
+        }else{
+            DataStruct *getData;
+            int count = 0;
+            
+            NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
+            
+            for (int i = 0; i < bcArray.count; i++) {
+                if ([[bcCheckArray objectAtIndex: i] integerValue] != 0) {
+                    getData =[db getData:[[bcArray objectAtIndex:i]intValue]];
+                    [array insertObject:getData.number  atIndex:count];
+                    count++;
+                }
+            }
+            getData = nil;
+            
+            [self smsSend:array];
+            
+            array = nil;
+        }
+        
     }
+
 }
 @end

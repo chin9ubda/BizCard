@@ -135,22 +135,6 @@
     NSLog(@"number is == %@",dStruct.number);
 }
 
-// -------------------- Send Email -------------------- //
-
--(void)email{
-    
-    MFMailComposeViewController *mailsome=[[MFMailComposeViewController alloc] init];
-    mailsome.mailComposeDelegate=self;
-    if([MFMailComposeViewController canSendMail]){
-        //        [mailsome setToRecipients:[NSArray arrayWithObjects:@"bbseejh@gmail.com", nil]];
-        [mailsome setToRecipients:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%@",dStruct.email], nil]];
-        [mailsome setSubject:nil];
-        [mailsome setMessageBody:nil isHTML:NO];
-        [self presentModalViewController:mailsome animated:YES];
-    }
-    
-}
-
 // -------------------- Imgae Set -------------------- //
 
 -(void)setImg:(int)_id{
@@ -164,13 +148,55 @@
 
 -(void)nameClickEvent{
     NSLog(@"name : %@",dStruct.name);
+    
+    MFMessageComposeViewController *smsController = [[MFMessageComposeViewController alloc] init];
+    smsController.messageComposeDelegate = self;
+    if([MFMessageComposeViewController canSendText])
+    {
+        smsController.body = @"안녕하세요 SMS 테스트 입니다.";
+        smsController.recipients = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@",dStruct.number], nil];
+
+//        controller.recipients = [NSArray arrayWithObjects:@"01000000000", @"01011112222", nil];
+        smsController.messageComposeDelegate = self;
+        [self presentModalViewController:smsController animated:YES];
+    }
 }
 
+
+
+-(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result{
+    if (result == MessageComposeResultCancelled) {
+        [self dismissModalViewControllerAnimated:YES];
+    }else if (result == MessageComposeResultSent) {
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
 
 // -------------------- Email Click -------------------- //
 
 -(void)emailClickEvent{
+    MFMailComposeViewController *mailsome = [[MFMailComposeViewController alloc] init];
+    mailsome.mailComposeDelegate=self;
+    if([MFMailComposeViewController canSendMail]){
+//        [mailsome setToRecipients:[NSArray arrayWithObjects:@"chin9ubda@naver.com", nil]];
+        [mailsome setToRecipients:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%@",dStruct.email], nil]];
+        
+//        [mailsome setSubject:@"test"];
+//        [mailsome setMessageBody:@"test" isHTML:NO];
+
+        [mailsome setSubject:nil];
+        [mailsome setMessageBody:nil isHTML:NO];
+        [self presentModalViewController:mailsome animated:YES];
+    }
     NSLog(@"email : %@",dStruct.email);
+}
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    if (result == MFMailComposeResultCancelled) {
+        [self dismissModalViewControllerAnimated:YES];
+    }else if ( result == MFMailComposeResultSent) {
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 

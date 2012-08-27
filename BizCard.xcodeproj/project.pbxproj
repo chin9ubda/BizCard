@@ -93,6 +93,8 @@
 		4399882D15E5C98500AA7483 /* BCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4399882B15E5C98500AA7483 /* BCViewController.m */; };
 		4399882E15E5C98500AA7483 /* BCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4399882C15E5C98500AA7483 /* BCViewController.xib */; };
 		4399883015E5CDDF00AA7483 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4399882F15E5CDDF00AA7483 /* MessageUI.framework */; };
+		43A7B5F915EBC1200094E338 /* MsgLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A7B5F715EBC1200094E338 /* MsgLoadViewController.m */; };
+		43A7B5FA15EBC1200094E338 /* MsgLoadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A7B5F815EBC1200094E338 /* MsgLoadViewController.xib */; };
 		43F9426815E0CC1F005893A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426715E0CC1F005893A9 /* UIKit.framework */; };
 		43F9426A15E0CC1F005893A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426915E0CC1F005893A9 /* Foundation.framework */; };
 		43F9426C15E0CC1F005893A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F9426B15E0CC1F005893A9 /* CoreGraphics.framework */; };
@@ -177,6 +179,9 @@
 		4399882B15E5C98500AA7483 /* BCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCViewController.m; sourceTree = "<group>"; };
 		4399882C15E5C98500AA7483 /* BCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BCViewController.xib; sourceTree = "<group>"; };
 		4399882F15E5CDDF00AA7483 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		43A7B5F615EBC1200094E338 /* MsgLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgLoadViewController.h; sourceTree = "<group>"; };
+		43A7B5F715EBC1200094E338 /* MsgLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgLoadViewController.m; sourceTree = "<group>"; };
+		43A7B5F815EBC1200094E338 /* MsgLoadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgLoadViewController.xib; sourceTree = "<group>"; };
 		43F9426315E0CC1F005893A9 /* BizCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BizCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F9426715E0CC1F005893A9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		43F9426915E0CC1F005893A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -501,6 +506,16 @@
 			name = BCView;
 			sourceTree = "<group>";
 		};
+		43A7B5F415EBC0FC0094E338 /* MsgLoad */ = {
+			isa = PBXGroup;
+			children = (
+				43A7B5F615EBC1200094E338 /* MsgLoadViewController.h */,
+				43A7B5F715EBC1200094E338 /* MsgLoadViewController.m */,
+				43A7B5F815EBC1200094E338 /* MsgLoadViewController.xib */,
+			);
+			name = MsgLoad;
+			sourceTree = "<group>";
+		};
 		43F9425815E0CC1F005893A9 = {
 			isa = PBXGroup;
 			children = (
@@ -578,6 +593,7 @@
 		43F9428915E1CFBA005893A9 /* FirstTab */ = {
 			isa = PBXGroup;
 			children = (
+				43A7B5F415EBC0FC0094E338 /* MsgLoad */,
 				4399882915E5C95C00AA7483 /* BCView */,
 				4366F57A15E21AA9008E69F6 /* EditBc */,
 				4366F56815E20D15008E69F6 /* SelectBCTemplate */,
@@ -833,6 +849,7 @@
 				4387204D15E62BBE00CC12B0 /* tabonebg.png in Resources */,
 				4387206715E652DE00CC12B0 /* SelectBCTemplateViewController.xib in Resources */,
 				4392074515E8DB97008FDE68 /* Card_Menu.xib in Resources */,
+				43A7B5FA15EBC1200094E338 /* MsgLoadViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -889,6 +906,7 @@
 				4399882D15E5C98500AA7483 /* BCViewController.m in Sources */,
 				4387206615E652DE00CC12B0 /* SelectBCTemplateViewController.m in Sources */,
 				4392074315E8DB8C008FDE68 /* Card_Menu.m in Sources */,
+				43A7B5F915EBC1200094E338 /* MsgLoadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

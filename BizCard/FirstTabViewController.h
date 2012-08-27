@@ -17,7 +17,8 @@
 
 
 @interface FirstTabViewController : UIViewController
-<UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
+<UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
+MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate,UITextFieldDelegate>{
     DataBase *db;
     DataStruct *dStruct;
     
@@ -32,6 +33,7 @@
     int nowGroup;
     int nowState;
     int clickCount;
+    int sortType;
     Boolean edit;
     
     Group_Menu *gMenu;
@@ -42,6 +44,7 @@
 - (IBAction)allGroupBtn:(id)sender;
 - (IBAction)addGroupBtn:(id)sender;
 - (IBAction)editBCBtn:(id)sender;
+- (IBAction)sortBtn:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIButton *allGroupBtn;
 @property (strong, nonatomic) IBOutlet UIButton *addGroupBtn;
