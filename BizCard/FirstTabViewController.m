@@ -171,6 +171,7 @@
 // ---------------- All Group Btn Event ---------------- //
 
 - (IBAction)allGroupBtn:(id)sender {
+    search = false;
     [sender setTag:0];
     [self groupBtnClickEvent:sender];
 }
@@ -191,6 +192,8 @@
         
         [alert show];
     }
+    search = false;
+    [gMenu removeFromSuperview];
 }
 
 
@@ -276,13 +279,14 @@
    ----------------------------------------------------- */
 
 - (void)groupBtnClickEvent:(UIButton *)btn{
-//    NSLog(@"%d",btn.tag);
-    
     if (!edit) {
         if (nowGroup == btn.tag) {
             if (btn.tag != 0) {
                 [gMenu removeFromSuperview];
                 [self groupMenu];
+            }else {
+                [gMenu removeFromSuperview];
+                [self reloadTableView];
             }
         }else{
             
@@ -290,9 +294,8 @@
             [gMenu removeFromSuperview];
             [self reloadTableView];
         }
-    }else {
-        
     }
+    search = false;
 }
 
 
@@ -488,9 +491,9 @@
 
 -(void)reloadTableView{
     
-    if (nowGroup == 0) {
+    if (nowGroup == 0 && !search) {
         bcArray = [db getBcIds:sortType];
-    }else {
+    }else if (nowGroup != 0){
         bcArray = [db getMemberIds:nowGroup:sortType];
     }
     
@@ -573,6 +576,7 @@
             
             bcTableCell = [array objectAtIndex:0];
             bcTableCell.frame = CGRectMake(0, 0, 0, 0 );
+            bcTableCell.selectionStyle = UITableViewCellSelectionStyleNone;
             
         }
         
@@ -735,23 +739,26 @@
    -------------------------------------------- */
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    searchTextField.text = @"";
     [textField resignFirstResponder];
     bcArray = [db search:textField.text :sortType];
     
-    if (bcCheckArray != nil) {
-        bcCheckArray = nil;
-    }
+//    if (bcCheckArray != nil) {
+//        bcCheckArray = nil;
+//    }
+//    
+//    
+//    bcCheckArray = [NSMutableArray arrayWithCapacity:0];
+//    searchTextField.text = @"";
+//    
+//    
+//    for (int i = 0; i < bcArray.count; i++) {
+//        [bcCheckArray insertObject: [NSNumber numberWithInteger: 0] atIndex:i];
+//    }
     
+    search = true;
     
-    bcCheckArray = [NSMutableArray arrayWithCapacity:0];
-    
-    
-    for (int i = 0; i < bcArray.count; i++) {
-        [bcCheckArray insertObject: [NSNumber numberWithInteger: 0] atIndex:i];
-    }
-    
-    [businessCardTable reloadData];
+//    [businessCardTable reloadData];
+    [self reloadTableView];
     return true;
 }
 
@@ -766,6 +773,18 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
     searchTextField.text = @"";
+    
+    nowGroup = 0;
+    
+    if (edit) {
+        if (nowState == CardEdit) {
+            [cMenu removeFromSuperview];
+        }else{
+            
+            [gMenu removeFromSuperview];
+            gMenu = nil;
+        }
+    }
     
     return YES;
 }

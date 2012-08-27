@@ -32,6 +32,7 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate,UITe
     
     int nowGroup;
     int nowState;
+    Boolean search;
     int clickCount;
     int sortType;
     Boolean edit;
