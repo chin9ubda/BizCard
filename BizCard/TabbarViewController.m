@@ -42,6 +42,7 @@
     [self viewSizeSet:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabbarHide) name:@"tabbarHide" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabbarOpen) name:@"tabbarOpen" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabbarMake) name:@"tabbarMake" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabbarControllerRemove) name:@"removeTabbarController" object:nil];
 
 }
@@ -60,18 +61,6 @@
 
 // ---------------- Add TabbarView ---------------- //
 -(void)viewWillLayoutSubviews{
-    
-    NSArray *xibs = [[NSBundle mainBundle] loadNibNamed:@"TabbarView" owner:self options:nil];
-    tabbarView = (TabbarView *)[xibs objectAtIndex:0];
-        
-    tabbarView.frame = CGRectMake(0, 440, 300, 40);
-    
-    [tabbarView.bcTabBtn addTarget:self action:@selector(moveToFirstTab) forControlEvents:UIControlEventTouchUpInside];
-    [tabbarView.msgTabBtn addTarget:self action:@selector(moveToSecondTab) forControlEvents:UIControlEventTouchUpInside];
-    [tabbarView.settingTabBtn addTarget:self action:@selector(moveToThridTab) forControlEvents:UIControlEventTouchUpInside];
-
-    
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:tabbarView];
     
 }
 
@@ -110,6 +99,21 @@
     self.selectedIndex = 2;
 }
 
+// ---------------- Tabbar Make ---------------- //
+-(void)tabbarMake{
+    
+    NSArray *xibs = [[NSBundle mainBundle] loadNibNamed:@"TabbarView" owner:self options:nil];
+    tabbarView = (TabbarView *)[xibs objectAtIndex:0];
+    
+    tabbarView.frame = CGRectMake(0, 440, 300, 40);
+    
+    [tabbarView.bcTabBtn addTarget:self action:@selector(moveToFirstTab) forControlEvents:UIControlEventTouchUpInside];
+    [tabbarView.msgTabBtn addTarget:self action:@selector(moveToSecondTab) forControlEvents:UIControlEventTouchUpInside];
+    [tabbarView.settingTabBtn addTarget:self action:@selector(moveToThridTab) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:tabbarView];
+}
 
 // ---------------- Tabbar Hide ---------------- //
 -(void)tabbarHide{

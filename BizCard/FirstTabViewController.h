@@ -15,6 +15,11 @@
 #import "Card_Menu.h"
 #import "BCViewController.h"
 
+typedef enum {
+    IMAGEPICKER,
+    VIEW
+}DISMISS_TYPE;
+
 
 @interface FirstTabViewController : UIViewController
 <UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
@@ -40,6 +45,12 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate,UITe
     Group_Menu *gMenu;
     Card_Menu *cMenu;
     
+    // For Camera, Photo Album
+    UIImagePickerController *imagepickerController;
+    UIImage *scanImage;
+    DISMISS_TYPE dismiss_type;
+
+    
 }
 - (IBAction)addBCBtn:(id)sender;
 - (IBAction)allGroupBtn:(id)sender;
@@ -54,4 +65,5 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate,UITe
 @property (strong, nonatomic) IBOutlet UIButton *editBtn;
 @property (strong, nonatomic) IBOutlet UITextField *searchTextField;
 
+@property (strong, nonatomic) IBOutlet UIButton *tookPicture;
 @end
