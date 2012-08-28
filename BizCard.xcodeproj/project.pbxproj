@@ -103,6 +103,9 @@
 		43F9427815E0CC1F005893A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F9427715E0CC1F005893A9 /* AppDelegate.m */; };
 		43F9428D15E1CFDF005893A9 /* FirstTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F9428B15E1CFDF005893A9 /* FirstTabViewController.m */; };
 		43F9428E15E1CFDF005893A9 /* FirstTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F9428C15E1CFDF005893A9 /* FirstTabViewController.xib */; };
+		AC47488615ECB4960030FAB4 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC47488415ECB4960030FAB4 /* OverlayView.m */; };
+		AC47488715ECB4960030FAB4 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC47488515ECB4960030FAB4 /* OverlayView.xib */; };
+		AC47488915ECB4B20030FAB4 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = AC47488815ECB4B20030FAB4 /* test.png */; };
 		ACCB947A15ECB37400D2D3C3 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCB947815ECB37400D2D3C3 /* ScanViewController.m */; };
 		ACCB947B15ECB37400D2D3C3 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACCB947915ECB37400D2D3C3 /* ScanViewController.xib */; };
 		ACE43B8215E93CF200A10BB1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE43B8115E93CF200A10BB1 /* Security.framework */; };
@@ -197,6 +200,10 @@
 		43F9428A15E1CFDF005893A9 /* FirstTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTabViewController.h; sourceTree = "<group>"; };
 		43F9428B15E1CFDF005893A9 /* FirstTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTabViewController.m; sourceTree = "<group>"; };
 		43F9428C15E1CFDF005893A9 /* FirstTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstTabViewController.xib; sourceTree = "<group>"; };
+		AC47488315ECB4960030FAB4 /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
+		AC47488415ECB4960030FAB4 /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
+		AC47488515ECB4960030FAB4 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
+		AC47488815ECB4B20030FAB4 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		ACCB947715ECB37400D2D3C3 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		ACCB947815ECB37400D2D3C3 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		ACCB947915ECB37400D2D3C3 /* ScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
@@ -574,6 +581,7 @@
 		43F9426E15E0CC1F005893A9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AC47488815ECB4B20030FAB4 /* test.png */,
 				ACE43B8415E941F400A10BB1 /* userData.plist */,
 				43F9426F15E0CC1F005893A9 /* BizCard-Info.plist */,
 				43F9427015E0CC1F005893A9 /* InfoPlist.strings */,
@@ -598,6 +606,7 @@
 		43F9428915E1CFBA005893A9 /* FirstTab */ = {
 			isa = PBXGroup;
 			children = (
+				AC47488115ECB4850030FAB4 /* OverlayView */,
 				ACCB947515ECB36800D2D3C3 /* ScanView */,
 				43A7B5F415EBC0FC0094E338 /* MsgLoad */,
 				4399882915E5C95C00AA7483 /* BCView */,
@@ -608,6 +617,16 @@
 				43F9428C15E1CFDF005893A9 /* FirstTabViewController.xib */,
 			);
 			name = FirstTab;
+			sourceTree = "<group>";
+		};
+		AC47488115ECB4850030FAB4 /* OverlayView */ = {
+			isa = PBXGroup;
+			children = (
+				AC47488315ECB4960030FAB4 /* OverlayView.h */,
+				AC47488415ECB4960030FAB4 /* OverlayView.m */,
+				AC47488515ECB4960030FAB4 /* OverlayView.xib */,
+			);
+			name = OverlayView;
 			sourceTree = "<group>";
 		};
 		ACCB947515ECB36800D2D3C3 /* ScanView */ = {
@@ -867,6 +886,8 @@
 				4392074515E8DB97008FDE68 /* Card_Menu.xib in Resources */,
 				43A7B5FA15EBC1200094E338 /* MsgLoadViewController.xib in Resources */,
 				ACCB947B15ECB37400D2D3C3 /* ScanViewController.xib in Resources */,
+				AC47488715ECB4960030FAB4 /* OverlayView.xib in Resources */,
+				AC47488915ECB4B20030FAB4 /* test.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,6 +946,7 @@
 				4392074315E8DB8C008FDE68 /* Card_Menu.m in Sources */,
 				43A7B5F915EBC1200094E338 /* MsgLoadViewController.m in Sources */,
 				ACCB947A15ECB37400D2D3C3 /* ScanViewController.m in Sources */,
+				AC47488615ECB4960030FAB4 /* OverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

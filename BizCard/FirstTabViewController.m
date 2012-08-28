@@ -11,6 +11,8 @@
 #import "BcTableCell.h"
 #import "DataStruct.h"
 #import "MsgLoadViewController.h"
+#import "ScanViewController.h"
+#import "OverlayView.h"
 
 #define CardEdit 1
 #define MemberEdit 2
@@ -30,6 +32,15 @@
 #define SortName 1
 #define SortMostClick 0
 
+//----------------------------------------------------------------------------------------
+// Overlay View
+//----------------------------------------------------------------------------------------
+//transform values for full screen support
+#define CAMERA_TRANSFORM_X 1
+//#define CAMERA_TRANSFORM_Y 1.12412
+#define CAMERA_TRANSFORM_Y 1
+//----------------------------------------------------------------------------------------
+
 
 @interface FirstTabViewController ()
 
@@ -42,6 +53,7 @@
 @synthesize businessCardTable;
 @synthesize editBtn;
 @synthesize searchTextField;
+@synthesize tookPicture;
 
 
 /* -----------------------------------------------------
@@ -58,6 +70,9 @@
         db = [DataBase getInstance];
         dStruct = [[DataStruct alloc]init];
         [self reloadTableView];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarMake" object:nil];
+
     }
     return self;
 }
@@ -66,6 +81,7 @@
 {
     [super viewDidLoad];
     
+    dismiss_type = VIEW;
     [self setGroup];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:@"reloadTableView" object:nil];
     // Do any additional setup after loading the view from its nib.
@@ -79,6 +95,7 @@
     [self setBusinessCardTable:nil];
     [self setEditBtn:nil];
     [self setSearchTextField:nil];
+    [self setTookPicture:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -893,8 +910,8 @@
         if (buttonIndex == 0) {
             NSLog(@"사진 찍기");
             
+            /*
             editBcViewController = [[EditBcViewController alloc]init];
-            
             DataStruct *pushData = [[DataStruct alloc]init];
             
             pushData.name = @"이름";
@@ -902,12 +919,40 @@
             pushData.email = @"123@123.com";
             
             [editBcViewController setCardImg:0:[UIImage imageNamed:@"blue.png"]:pushData];
-            
             pushData = nil;
             
             [self presentModalViewController:editBcViewController animated:YES];
+            */
+            
+            imagepickerController = [[UIImagePickerController alloc] init];
+            [imagepickerController setDelegate:self];
+            
+            [imagepickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+            
+            NSArray *xibs = [[NSBundle mainBundle]  loadNibNamed:@"OverlayView" owner:self options:nil];
+            OverlayView *overlay = (OverlayView *)[xibs objectAtIndex:0];
+            
+            imagepickerController.allowsEditing=NO;
+            imagepickerController.showsCameraControls = NO;
+            imagepickerController.cameraViewTransform = CGAffineTransformScale(imagepickerController.cameraViewTransform,CAMERA_TRANSFORM_X, CAMERA_TRANSFORM_Y);
+            
+            imagepickerController.cameraOverlayView = overlay;
+            
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarHide" object:nil];
+            [self presentModalViewController:imagepickerController animated:YES];
+            
         }else if(buttonIndex == 1){
             NSLog(@"앨범에서 불러오기");
+           
+            imagepickerController = [[UIImagePickerController alloc] init];
+            [imagepickerController setDelegate:self];
+            [imagepickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarHide" object:nil];
+            [self presentModalViewController:imagepickerController animated:YES];
+
+            /*
             editBcViewController = [[EditBcViewController alloc]init];
             
             DataStruct *pushData = [[DataStruct alloc]init];
@@ -917,11 +962,11 @@
             pushData.email = @"123@123.com";
             
             [editBcViewController setCardImg:0:[UIImage imageNamed:@"blue.png"]:pushData];
-            
             pushData = nil;
 
             [self presentModalViewController:editBcViewController animated:YES];
-
+             */
+            
         }else if(buttonIndex == 2){
             NSLog(@"주소록에서 가져오기");
         }else if(buttonIndex == 3){
@@ -1067,6 +1112,50 @@
         }
         
     }
-
 }
+
+// 사진 고르기 취소
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissModalViewControllerAnimated:YES];
+}
+
+// 사진 찍기 버튼 눌렀을 때
+- (IBAction)tookPicture:(id)sender {
+    [imagepickerController takePicture];
+    SJ_DEBUG_LOG(@"Take Picture");
+}
+
+
+// 3. 가지고 온 사진을 편집한다 (crop, 회전 등)
+#pragma mark UIImagePickerContoller Delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+{
+    SJ_DEBUG_LOG(@"Image Selected");
+    scanImage = image;
+    dismiss_type = IMAGEPICKER;
+    [picker dismissModalViewControllerAnimated:NO];
+    
+    return;
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    //Scan 화면으로 갈때
+    if(dismiss_type == IMAGEPICKER){
+        dismiss_type = VIEW;
+        [self goScanView];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
+    }
+}
+
+-(void)goScanView {
+    
+    ScanViewController *scanViewCont = [ScanViewController new];
+    [self presentModalViewController:scanViewCont animated:YES];
+    [scanViewCont initView:scanImage];
+}
+
 @end
