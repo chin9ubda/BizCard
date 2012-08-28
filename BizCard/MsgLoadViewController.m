@@ -15,6 +15,14 @@
 
 @implementation MsgLoadViewController
 
+
+/* -----------------------------------------------------
+   DataBase Class getInstance;
+   Msg GetIds
+   nowType Init
+   nowType = 0 SMS
+   nowType = 1 Email
+   ----------------------------------------------------- */
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,6 +34,10 @@
     return self;
 }
 
+
+/* -----------------------------------------------------
+   Tabbar Hide
+   ----------------------------------------------------- */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,11 +58,27 @@
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
+
+
+//------------------ Cancel Btn Event ------------------//
+
+/* -----------------------------------------------------
+   Tabbar Show
+   NowViewController Dismiss
+   ----------------------------------------------------- */
+
 - (IBAction)cancelBtn:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
     [self dismissModalViewControllerAnimated:YES];
 }
 
+
+//------------------ Cancel Btn Event ------------------//
+
+/* -----------------------------------------------------
+ Tabbar Show
+ NowViewController Dismiss
+ ----------------------------------------------------- */
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -73,61 +101,86 @@
     
 }
 
+
+// ---------------- TableViewCell Select Event ---------------- //
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     int index = [indexPath row];
-    //    NSLog(@"%@", [db getMsg:index + 1]);
     [self sendMsg:[db getMsg:index + 1]];
 }
+
+
+// ---------------- set Number or Email Array ---------------- //
 
 -(void)setArray:(NSArray *)arry{
     bcArray = arry;
 }
 
 
+// ---------------- Set Type ---------------- //
+
+/* ------------------------------------------
+   nowType = 0 SMS
+   nowType = 1 Email
+   ------------------------------------------ */
 -(void)setType:(int)type{
     nowType = type;
 }
 
+
+
+// ---------------- Set Type ---------------- //
+
+/* ------------------------------------------
+   nowType = 0 SMS
+   nowType = 1 Email
+    
+   Body 에 입력된 Msg 를 넣고
+   Recipients 에 setArray의 bcArray 를활용
+   ------------------------------------------ */
+
 -(void)sendMsg:(NSString *)msg{
     if (nowType == 0) {
-        for (int i = 0; i < bcArray.count; i++) {
-            MFMessageComposeViewController *smsController = [[MFMessageComposeViewController alloc] init];
+        MFMessageComposeViewController *smsController = [[MFMessageComposeViewController alloc] init];
+        smsController.messageComposeDelegate = self;
+        if([MFMessageComposeViewController canSendText])
+        {
+            smsController.body = msg;
+            [smsController setRecipients:bcArray];
             smsController.messageComposeDelegate = self;
-            if([MFMessageComposeViewController canSendText])
-            {
-                smsController.body = msg;
-                [smsController setRecipients:bcArray];
-                smsController.messageComposeDelegate = self;
-                [self presentModalViewController:smsController animated:YES];
-            }
+            [self presentModalViewController:smsController animated:YES];
         }
     }else if (nowType == 1){
-        for (int i = 0; i < bcArray.count; i++) {
-            MFMailComposeViewController *mailsome = [[MFMailComposeViewController alloc] init];
-            mailsome.mailComposeDelegate=self;
-            if([MFMailComposeViewController canSendMail]){
-                [mailsome setToRecipients:bcArray];
-                [mailsome setSubject:nil];
-                [mailsome setMessageBody:msg isHTML:NO];
-                [self presentModalViewController:mailsome animated:YES];
-            }
+        MFMailComposeViewController *mailsome = [[MFMailComposeViewController alloc] init];
+        mailsome.mailComposeDelegate=self;
+        if([MFMailComposeViewController canSendMail]){
+            [mailsome setToRecipients:bcArray];
+            [mailsome setSubject:nil];
+            [mailsome setMessageBody:msg isHTML:NO];
+            [self presentModalViewController:mailsome animated:YES];
         }
     }
 }
 
+
+// ----------- Mail Result Event ----------- //
+
+/* -----------------------------------------
+   지금은 모두 dismiss
+   ----------------------------------------- */
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
     [self dismissModalViewControllerAnimated:YES];
 }
 
+
+// ----------- SMS Result Event ----------- //
+
+/* -----------------------------------------
+   지금은 모두 dismiss
+   ----------------------------------------- */
+
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result{
     [self dismissModalViewControllerAnimated:YES];
 }
-
-
-//-(NSString *)chagneString:(NSString *)msg{
-//    NSString *resultMsg = [msg stringByReplacingOccurrencesOfString :changeName withString:dStruct.name];
-//    
-//    return resultMsg;
-//}
 
 @end

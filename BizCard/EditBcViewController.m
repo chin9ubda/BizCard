@@ -278,12 +278,6 @@
     
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTableView" object:nil];
-    
-//    [self dismissModalViewControllerAnimated:YES];
-
-
-//    [self.view removeFromSuperview];
-//    [self removeFromParentViewController];
 }
 
 

@@ -60,7 +60,6 @@
     EditBcViewController *editView = [[EditBcViewController alloc]init];
     [editView setCardImg:getId:[self getImg] :dStruct];
     [self presentModalViewController:editView animated:YES];
-//    [self dismissModalViewControllerAnimated:NO];
 }
 
 
@@ -101,7 +100,7 @@
     [btn addTarget:self action:@selector(nameClickEvent) forControlEvents:UIControlEventTouchUpInside];
     
     [btn setBackgroundColor:[UIColor blackColor]];
-    [btn setAlpha:0.4f];
+    [btn setAlpha:0.1f];
     [self.view addSubview:btn];
     
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -109,7 +108,7 @@
     [btn2 addTarget:self action:@selector(call) forControlEvents:UIControlEventTouchUpInside];
     
     [btn2 setBackgroundColor:[UIColor blackColor]];
-    [btn2 setAlpha:0.4f];
+    [btn2 setAlpha:0.1f];
     [self.view addSubview:btn2];
     
     
@@ -118,7 +117,7 @@
     [btn3 addTarget:self action:@selector(emailClickEvent) forControlEvents:UIControlEventTouchUpInside];
     
     [btn3 setBackgroundColor:[UIColor blackColor]];
-    [btn3 setAlpha:0.4f];
+    [btn3 setAlpha:0.1f];
     [self.view addSubview:btn3];
 }
 
@@ -129,9 +128,6 @@
 -(void)call{
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",dStruct.number]]];
 
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:01063653524"]]];
-
-    
     NSLog(@"number is == %@",dStruct.number);
 }
 
@@ -155,8 +151,6 @@
     {
         smsController.body = @"안녕하세요 SMS 테스트 입니다.";
         smsController.recipients = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@",dStruct.number], nil];
-
-//        controller.recipients = [NSArray arrayWithObjects:@"01000000000", @"01011112222", nil];
         smsController.messageComposeDelegate = self;
         [self presentModalViewController:smsController animated:YES];
     }
@@ -178,11 +172,7 @@
     MFMailComposeViewController *mailsome = [[MFMailComposeViewController alloc] init];
     mailsome.mailComposeDelegate=self;
     if([MFMailComposeViewController canSendMail]){
-//        [mailsome setToRecipients:[NSArray arrayWithObjects:@"chin9ubda@naver.com", nil]];
         [mailsome setToRecipients:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%@",dStruct.email], nil]];
-        
-//        [mailsome setSubject:@"test"];
-//        [mailsome setMessageBody:@"test" isHTML:NO];
 
         [mailsome setSubject:nil];
         [mailsome setMessageBody:nil isHTML:NO];

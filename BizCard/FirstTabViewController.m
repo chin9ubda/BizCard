@@ -465,7 +465,7 @@
     actionsheet.tag = CardSms;
     [actionsheet showInView:self.view];
     
-    [cMenu removeFromSuperview];
+//    [cMenu removeFromSuperview];
 }
 -(void)cardEmail{
     NSLog(@"cardEmail");
