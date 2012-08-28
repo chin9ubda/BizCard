@@ -103,6 +103,8 @@
 		43F9427815E0CC1F005893A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F9427715E0CC1F005893A9 /* AppDelegate.m */; };
 		43F9428D15E1CFDF005893A9 /* FirstTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F9428B15E1CFDF005893A9 /* FirstTabViewController.m */; };
 		43F9428E15E1CFDF005893A9 /* FirstTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F9428C15E1CFDF005893A9 /* FirstTabViewController.xib */; };
+		ACCB947A15ECB37400D2D3C3 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCB947815ECB37400D2D3C3 /* ScanViewController.m */; };
+		ACCB947B15ECB37400D2D3C3 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACCB947915ECB37400D2D3C3 /* ScanViewController.xib */; };
 		ACE43B8215E93CF200A10BB1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE43B8115E93CF200A10BB1 /* Security.framework */; };
 /* End PBXBuildFile section */
 
@@ -195,6 +197,9 @@
 		43F9428A15E1CFDF005893A9 /* FirstTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTabViewController.h; sourceTree = "<group>"; };
 		43F9428B15E1CFDF005893A9 /* FirstTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTabViewController.m; sourceTree = "<group>"; };
 		43F9428C15E1CFDF005893A9 /* FirstTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstTabViewController.xib; sourceTree = "<group>"; };
+		ACCB947715ECB37400D2D3C3 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		ACCB947815ECB37400D2D3C3 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		ACCB947915ECB37400D2D3C3 /* ScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
 		ACD5B4EB15E931B4004646C6 /* PlistClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistClass.h; sourceTree = "<group>"; };
 		ACD5B4EC15E931B4004646C6 /* PlistClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistClass.m; sourceTree = "<group>"; };
 		ACD5B4F115E933C0004646C6 /* GCOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCOAuth.h; sourceTree = "<group>"; };
@@ -593,6 +598,7 @@
 		43F9428915E1CFBA005893A9 /* FirstTab */ = {
 			isa = PBXGroup;
 			children = (
+				ACCB947515ECB36800D2D3C3 /* ScanView */,
 				43A7B5F415EBC0FC0094E338 /* MsgLoad */,
 				4399882915E5C95C00AA7483 /* BCView */,
 				4366F57A15E21AA9008E69F6 /* EditBc */,
@@ -602,6 +608,16 @@
 				43F9428C15E1CFDF005893A9 /* FirstTabViewController.xib */,
 			);
 			name = FirstTab;
+			sourceTree = "<group>";
+		};
+		ACCB947515ECB36800D2D3C3 /* ScanView */ = {
+			isa = PBXGroup;
+			children = (
+				ACCB947715ECB37400D2D3C3 /* ScanViewController.h */,
+				ACCB947815ECB37400D2D3C3 /* ScanViewController.m */,
+				ACCB947915ECB37400D2D3C3 /* ScanViewController.xib */,
+			);
+			name = ScanView;
 			sourceTree = "<group>";
 		};
 		ACD5B4E915E931A4004646C6 /* Util */ = {
@@ -850,6 +866,7 @@
 				4387206715E652DE00CC12B0 /* SelectBCTemplateViewController.xib in Resources */,
 				4392074515E8DB97008FDE68 /* Card_Menu.xib in Resources */,
 				43A7B5FA15EBC1200094E338 /* MsgLoadViewController.xib in Resources */,
+				ACCB947B15ECB37400D2D3C3 /* ScanViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -907,6 +924,7 @@
 				4387206615E652DE00CC12B0 /* SelectBCTemplateViewController.m in Sources */,
 				4392074315E8DB8C008FDE68 /* Card_Menu.m in Sources */,
 				43A7B5F915EBC1200094E338 /* MsgLoadViewController.m in Sources */,
+				ACCB947A15ECB37400D2D3C3 /* ScanViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
