@@ -74,16 +74,33 @@
     
 }
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"확  인" message:@"정말 삭제하시겠습니까?" delegate:self  cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    [alert show];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
 
 // --------------- Cell Select Event --------------- //
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     int index = [indexPath row];
-    //    NSLog(@"%@", [db getMsg:index + 1]);
+    
+    nowId = [[msgArray objectAtIndex:index] integerValue];
+    
     addMsgBtn = [[Add_MsgViewController alloc]init];
-    [addMsgBtn setId:[[msgArray objectAtIndex:index] integerValue]];
+    [addMsgBtn setId:nowId];
     [addMsgBtn setTextView:[db getMsg:[[msgArray objectAtIndex:index] integerValue]]];
-//    [self.view insertSubview:addMsgBtn.view aboveSubview:self.view];
     [self presentModalViewController:addMsgBtn animated:YES];
 }
 
@@ -92,11 +109,19 @@
 // --------------- Msg TableView Reload --------------- //
 
 -(void)msgTableReload{
-    NSLog(@"msgTableReload");
     msgArray = [db getMsgIds];
     [msgTable reloadData];
 }
 
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        NSLog(@"Cancel");
+    }else {
+        [db deleteMsg:nowId];
+        [self msgTableReload];
+    }
+}
 
 // --------------- Msg Add Btn Event --------------- //
 
@@ -105,7 +130,6 @@
     [addMsgBtn setTextView:@""];
     
     [self presentModalViewController:addMsgBtn animated:YES];
-//    [self.view insertSubview:addMsgBtn.view aboveSubview:self.view];
 }
 
 @end

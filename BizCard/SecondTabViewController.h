@@ -11,12 +11,14 @@
 #import "Msg_Cell.h"
 #import "Add_MsgViewController.h"
 
-@interface SecondTabViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>{
+@interface SecondTabViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>{
     
     NSArray *msgArray;
     DataBase *db;
     Msg_Cell *msg_cell;
     Add_MsgViewController *addMsgBtn;
+    
+    int nowId;
 }
 @property (strong, nonatomic) IBOutlet UITableView *msgTable;
 @end

@@ -54,6 +54,7 @@
 						<bool key="IBUIAlwaysBounceVertical">YES</bool>
 						<int key="IBUISeparatorStyle">1</int>
 						<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
+						<bool key="IBUIAllowsSelectionDuringEditing">YES</bool>
 						<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
 						<float key="IBUIRowHeight">44</float>
 						<float key="IBUISectionHeaderHeight">22</float>
@@ -87,7 +88,6 @@
 				<string key="NSFrame">{{0, 20}, {480, 300}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<reference key="IBUIBackgroundColor" ref="1005008726"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
