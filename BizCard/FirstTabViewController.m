@@ -280,7 +280,10 @@
             [self addGroup:[db getGroupName:[[groupArray objectAtIndex: i] integerValue]]:i];
         }
     }
-
+    
+    [groupScrollView setContentSize:CGSizeMake(groupScrollView.frame.size.width, addGroupBtn.frame.origin.y + addGroupBtn.frame.size.height + 6.0f)];
+    
+    NSLog(@" now H == %f", groupScrollView.contentSize.height);
 }
 
 
@@ -297,8 +300,6 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:CGRectMake(5.0f,(groupCount + 1) * 40.0f + (groupCount + 1) * 6.0f, 75.0f, 40.0f)];
     [button setTitle:groupName forState:UIControlStateNormal];
-//    [button setTag:[[groupArray objectAtIndex:groupCount] intValue]];
-    
     [button setTag:groupCount + 1];
 
     
@@ -307,7 +308,9 @@
     button.titleLabel.lineBreakMode = UILineBreakModeCharacterWrap;
     [groupScrollView addSubview:[self setBtnStyle:button]];
     
+//    [groupScrollView setContentSize:CGSizeMake(groupScrollView.frame.size.width, (groupCount + 3) * 40.0f + (groupCount + 2) * 6.0f)];
     [addGroupBtn setFrame:CGRectMake(5.0f, (groupCount + 2) * 40.0f + (groupCount + 2) * 6.0f, 75.0f, 40.0f)];
+//    [groupScrollView setContentSize:CGSizeMake(groupScrollView.frame.size.width, addGroupBtn.frame.origin.y + addGroupBtn.frame.size.height * 2)];
     
     [groupBtnArray addObject:button];
 }
