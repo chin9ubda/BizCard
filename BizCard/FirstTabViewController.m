@@ -344,20 +344,20 @@
 
 - (void)groupBtnClickEvent:(UIButton *)btn{
     if (!edit) {                                                    // 체크박스 노출 상태일 경우
-        if (btn.tag == 0 && btn.tag == nowGroup) {                  // 지금 선택된 버튼의 테그가 0 번.. 즉 ALL 버튼이며 all버튼이 이미 한번이상 선택되어 있을 경우
-            [gMenu removeFromSuperview];
-            [self groupMenu];
-        }else if (btn.tag == 0){                                    // 지금 선택된 버튼의 테그가 0 번.. 즉 ALL 버튼일 경우
-            [allGroupBtn setBackgroundImage:[UIImage imageNamed:@"main_black_bar_select_white_164_84.png"] forState:UIControlStateNormal];
-            for (int i = 0; i < groupBtnArray.count; i++) {
-                [[groupBtnArray objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"main_black_bar_box_navy_152_84.png"] forState:UIControlStateNormal];
+        if (btn.tag == 0){                                    // 지금 선택된 버튼의 테그가 0 번.. 즉 ALL 버튼
+            if (btn.tag != nowGroup) {                        // 이며 이전에 선택되지 않았을 경우
+                [allGroupBtn setBackgroundImage:[UIImage imageNamed:@"main_black_bar_select_white_164_84.png"] forState:UIControlStateNormal];
+                for (int i = 0; i < groupBtnArray.count; i++) {
+                    [[groupBtnArray objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"main_black_bar_box_navy_152_84.png"] forState:UIControlStateNormal];
+                }
+                nowGroup = 0;
+                [gMenu removeFromSuperview];
+                [self reloadTableView];
             }
-            nowGroup = 0;
-
         }else if (nowGroup == [[groupArray objectAtIndex:btn.tag - 1] intValue]) {      // 이전에 선택된 그룹과 지금 클릭한 버튼의 _id 값이 같을경우
             [gMenu removeFromSuperview];
             [self groupMenu];
-        }else {                                                                         // 이전에 선택한 버튼과 다른 버튼을 선택했으며, 선택된 버튼이 ALL 버튼이 아닐경우
+        }else if (nowGroup != [[groupArray objectAtIndex:btn.tag - 1] intValue]){       // 이전에 선택한 버튼과 다른 버튼을 선택했으며, 선택된 버튼이 ALL 버튼이 아닐경우
             [allGroupBtn setBackgroundImage:[UIImage imageNamed:@"main_black_bar_box_navy_152_84.png"] forState:UIControlStateNormal];
             
             for (int i = 0; i < groupBtnArray.count; i++) {
@@ -406,17 +406,18 @@
 // ---------------- Group Menu Opne & setting ---------------- //
 
 -(void)groupSms{
-    
-    UIActionSheet *actionsheet = [[UIActionSheet alloc]
-                                  initWithTitle:nil
-                                  delegate:self
-                                  cancelButtonTitle:@"취소"
-                                  destructiveButtonTitle:nil
-                                  otherButtonTitles:@"메시지 불러오기", @"새로쓰기", nil];
-    actionsheet.tag = GroupSms;
-    [actionsheet showInView:self.view];
-    
-    [gMenu removeFromSuperview];
+    if (bcArray.count != 0) {
+        UIActionSheet *actionsheet = [[UIActionSheet alloc]
+                                      initWithTitle:nil
+                                      delegate:self
+                                      cancelButtonTitle:@"취소"
+                                      destructiveButtonTitle:nil
+                                      otherButtonTitles:@"메시지 불러오기", @"새로쓰기", nil];
+        actionsheet.tag = GroupSms;
+        [actionsheet showInView:self.view];
+        
+        [gMenu removeFromSuperview];
+    }
 
 }
 
@@ -427,17 +428,18 @@
 }
 
 -(void)groupEmail{
-    UIActionSheet *actionsheet = [[UIActionSheet alloc]
-                                  initWithTitle:nil
-                                  delegate:self
-                                  cancelButtonTitle:@"취소"
-                                  destructiveButtonTitle:nil
-                                  otherButtonTitles:@"메시지 불러오기", @"새로쓰기", nil];
-    actionsheet.tag = GroupEmail;
-    [actionsheet showInView:self.view];
-    
-    [gMenu removeFromSuperview];
-
+    if (bcArray.count != 0) {
+        UIActionSheet *actionsheet = [[UIActionSheet alloc]
+                                      initWithTitle:nil
+                                      delegate:self
+                                      cancelButtonTitle:@"취소"
+                                      destructiveButtonTitle:nil
+                                      otherButtonTitles:@"메시지 불러오기", @"새로쓰기", nil];
+        actionsheet.tag = GroupEmail;
+        [actionsheet showInView:self.view];
+        
+        [gMenu removeFromSuperview];
+    }
 }
 
 
