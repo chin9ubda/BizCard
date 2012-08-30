@@ -14,6 +14,8 @@
 #import "Group_Menu.h"
 #import "Card_Menu.h"
 #import "BCViewController.h"
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 typedef enum {
     IMAGEPICKER,
@@ -23,7 +25,8 @@ typedef enum {
 
 @interface FirstTabViewController : UIViewController
 <UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
-MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate,UITextFieldDelegate>{
+MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate,UITextFieldDelegate,
+ABPeoplePickerNavigationControllerDelegate, ABPersonViewControllerDelegate>{
     DataBase *db;
     DataStruct *dStruct;
     

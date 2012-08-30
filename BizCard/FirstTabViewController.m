@@ -11,6 +11,8 @@
 #import "BcTableCell.h"
 #import "DataStruct.h"
 #import "MsgLoadViewController.h"
+#import "OverlayView.h"
+#import "ScanViewController.h"
 #import <AddressBook/AddressBook.h>
 
 #define CardEdit 1
@@ -154,12 +156,15 @@
             gMenu = nil;
         }
         edit = false;
-        [editBtn setTitle:@"편집" forState:UIControlStateNormal];
+//        [editBtn setTitle:@"편집" forState:UIControlStateNormal];
+        [editBtn setBackgroundImage:[UIImage imageNamed:@"main_top_edit2_62_72.png"] forState:UIControlStateNormal];
+
         [self reloadTableView];
 
     }else{
         if (bcArray.count != 0) {
-            [editBtn setTitle:@"완료" forState:UIControlStateNormal];
+//            [editBtn setTitle:@"완료" forState:UIControlStateNormal];
+            [editBtn setBackgroundImage:[UIImage imageNamed:@"main_top_edit2_62_72.png"] forState:UIControlStateNormal];
             edit = true;
             nowState = CardEdit;
             [self reloadTableView];
@@ -214,72 +219,45 @@
 
 
 
-//-(void)addrLoad{
-//    //===================================================//
-//    // 주소록의 모든 정보를 구조체에 저장을 합니다.
-//    //===================================================//
-//    ABAddressBookRef addressBook = ABAddressBookCreate();
-//    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
-//    CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);
-//    
-//    
-//    //===================================================//
-//    // 저장된 구조체를 돌면서 해당 데이터를 추출해 옵니다.
-//    //===================================================//
-//    for (int i = 0; i < nPeople ; i++) {
-//        ABRecordRef ref = CFArrayGetValueAtIndex(allPeople, i);
-//        CFStringRef firstName = ABRecordCopyValue(ref, kABPersonFirstNameProperty);
-//        CFStringRef lastName = ABRecordCopyValue(ref, kABPersonLastNameProperty);
-//        NSNumber *recordId = [NSNumber numberWithInteger: ABRecordGetRecordID(ref)];
-//        
-//        NSLog(@"Name : %d-%@ %@", recordId, (firstName != nil) ? (NSString *)CFBridgingRelease(firstName) : @"",
-//              (lastName != nil) ? (NSString *)CFBridgingRelease(lastName) : @"");
-//        
-//        if (firstName != nil)
-//            CFRelease(firstName);
-//        if (lastName != nil)
-//            CFRelease(lastName);
-//        
-//        // 사진이미지는 여기에 넘어옵니다.
-//        if (ABPersonHasImageData(ref)) {
-//            // UIImage* image = [UIImage imageWithData:
-//            //        (NSData *)ABPersonCopyImageData(ref)];
-//            // image를 저장하는 펑션은 여기에 작성하시면 됩니다.
-//        }
-//        
-//        //========================================================//
-//        // 전화번호 구조체 및 카테고리 저장/추출
-//        // 전화번호 구조체에는 전화번호와 집전화, 핸드폰 이런 카테고리 구분이 있으며
-//        // 이것은 Label로 구별합니다.
-//        // Label : kABHomeLabel, kABPersonPhoneIPhoneLabel 등등...
-//        //=======================================================//
-//        ABMultiValueRef phoneNums =
-//        (ABMultiValueRef)ABRecordCopyValue(ref, kABPersonPhoneProperty);
-//        for (CFIndex j = 0; j < ABMultiValueGetCount(phoneNums); j++) {
-//            CFStringRef label = ABMultiValueCopyLabelAtIndex(phoneNums, j);
-//            CFStringRef tempRef = (CFStringRef)ABMultiValueCopyValueAtIndex(phoneNums, j);
-//            
-//            // 전화번호의 형태라벨별로 추출. 다른 형식도 이렇게 추출이 됩니다.
-//            if (CFStringCompare(label, kABPersonPhoneMobileLabel, 0) ==
-//                kCFCompareEqualTo) {
-//                if (tempRef != nil)
-//                    NSLog(@"Mobile: %@-%d", (NSString *)tempRef,i);
-//            } else if (CFStringCompare(label, kABPersonPhoneIPhoneLabel, 0) ==
-//                       kCFCompareEqualTo) {
-//                if (tempRef != nil)
-//                    NSLog(@"iPhone: %@-%d", (NSString *)tempRef,i);
-//            } else if (CFStringCompare(label, kABHomeLabel, 0) ==
-//                       kCFCompareEqualTo) {
-//                if (tempRef != nil)
-//                    NSLog(@"Home:  %@-%d", (NSString *)tempRef,i);
-//            }
-//            
-//            CFRelease(label);
-//            CFRelease(tempRef);
-//        }
-//    }
-//    CFRelease(allPeople);
-//}
+- (void)testSelectAllGroups
+{
+    ABPeoplePickerNavigationController* picker = [[ABPeoplePickerNavigationController alloc] init];
+    picker.peoplePickerDelegate = self;
+    [self presentModalViewController:picker animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarHide" object:nil];
+
+//    [picker release];
+}
+
+-(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
+    
+    
+    NSString *T = (NSString *)CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNamePhoneticProperty));
+    NSString *T2 = (NSString *)CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNamePhoneticProperty));
+    
+    ABMultiValueRef multi = ABRecordCopyValue(person, kABPersonPhoneProperty);
+    CFStringRef t3 = ABMultiValueCopyValueAtIndex(multi, 0);
+
+    
+    NSLog(@"%@ %@ %@",T,T2,t3);
+    
+    
+    SelectBCTemplateViewController *select = [[SelectBCTemplateViewController alloc]init];
+    
+    [self presentModalViewController:select animated:YES];
+    
+    [[self navigationController] presentModalViewController:select animated:YES];
+//    [controller release];
+
+//    [self dismissModalViewControllerAnimated:YES];
+
+
+    return NO;
+}
 
 
 // ------------------------------ Group Set ------------------------------ //
@@ -316,7 +294,9 @@
 -(void)addGroup:(NSString *)groupName:(int)groupCount{
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setFrame:CGRectMake(5.0f, (groupCount + 1) * 50.0f + ( groupCount * 6.0f ) + 6.0f, 50.0f, 50.0f)];
+//    [button setFrame:CGRectMake(5.0f, (groupCount + 1) * 75.0f + ( (groupCount + 1) * 6.0f ) + 6.0 + 6.0f, 75.0f, 40.0f)];
+    [button setFrame:CGRectMake(5.0f,(groupCount + 1) * 40.0f + (groupCount + 1) * 6.0f, 75.0f, 40.0f)];
+//    [button setFrame:CGRectMake(5.0f,37.5f, 75.0f, 40.0f)];
     [button setTitle:groupName forState:UIControlStateNormal];
     [button setTag:[[groupArray objectAtIndex:groupCount] intValue]];
     
@@ -325,10 +305,14 @@
     button.titleLabel.lineBreakMode = UILineBreakModeCharacterWrap;
     [groupScrollView addSubview:[self setBtnStyle:button]];
     
-    [groupScrollView setContentSize:CGSizeMake(70.0f, (groupCount + 1) * 50.0f + ( groupCount * 6.0f) + 6.0f + 6.0f + 50.0f)];
+//    [groupScrollView setContentSize:CGSizeMake(75.0f, (groupCount + 12) * 75.0f + ( groupCount * 6.0f) + 6.0f + 6.0f + 40.0f)];
     
     
-    [addGroupBtn setFrame:CGRectMake(5.0f, (groupCount + 2) * 50.0 + ( groupCount * 6.0) + 6.0f, 50.0f, 50.0f)];
+    [addGroupBtn setFrame:CGRectMake(5.0f, (groupCount + 2) * 40.0f + (groupCount + 2) * 6.0f, 75.0f, 40.0f)];
+    
+//    addGroupBtn.frame.origin.y = (groupCount + 2) * 75.0f + ( (groupCount + 2) * 6.0f ) + 6.0 + 6.0f;
+    
+    NSLog(@"group count === %d",groupCount);
 }
 
 
@@ -455,7 +439,8 @@
 
 -(void)groupMember{
     if (!edit) {
-        [editBtn setTitle:@"완료" forState:UIControlStateNormal];
+//        [editBtn setTitle:@"완료" forState:UIControlStateNormal];
+        [editBtn setBackgroundImage:[UIImage imageNamed:@"main_top_edit2_62_72.png"] forState:UIControlStateNormal];
 
         nowState = MemberEdit;
         edit = true;
@@ -1034,7 +1019,8 @@
              */
             
         }else if(buttonIndex == 2){
-            NSLog(@"주소록에서 가져오기");
+//            NSLog(@"주소록에서 가져오기");
+            [self testSelectAllGroups];
         }else if(buttonIndex == 3){
           NSLog(@"직접 입력하기");
             selectView = [[SelectBCTemplateViewController alloc]init];

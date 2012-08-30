@@ -87,17 +87,28 @@
 // ---------------- First Tab ---------------- //
 -(void)moveToFirstTab{
     self.selectedIndex = 0;
+    [self tabbarUp];
 }
 
 // ---------------- Second Tab ---------------- //
 -(void)moveToSecondTab{
     self.selectedIndex = 1;
+    [self tabbarUp];
 }
 
 // ---------------- Thrid Tab ---------------- //
 -(void)moveToThridTab{
     self.selectedIndex = 2;
+    [self tabbarUp];
 }
+
+// ---------------- tabbarUp ---------------- //
+-(void)tabbarUp{
+    nowUpDown = false;
+    tabbarView.frame = CGRectMake(250, 415, 190, 60);
+    [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap_rotate_bg_120_380"]];
+}
+
 
 // ---------------- Tabbar Make ---------------- //
 -(void)tabbarMake{
@@ -105,11 +116,12 @@
     NSArray *xibs = [[NSBundle mainBundle] loadNibNamed:@"TabbarView" owner:self options:nil];
     tabbarView = (TabbarView *)[xibs objectAtIndex:0];
     
-    tabbarView.frame = CGRectMake(0, 440, 300, 40);
+    tabbarView.frame = CGRectMake(250, 415, 190, 60);
     
     [tabbarView.bcTabBtn addTarget:self action:@selector(moveToFirstTab) forControlEvents:UIControlEventTouchUpInside];
     [tabbarView.msgTabBtn addTarget:self action:@selector(moveToSecondTab) forControlEvents:UIControlEventTouchUpInside];
     [tabbarView.settingTabBtn addTarget:self action:@selector(moveToThridTab) forControlEvents:UIControlEventTouchUpInside];
+    [tabbarView.menuBtn addTarget:self action:@selector(tabbarUpDown) forControlEvents:UIControlEventTouchUpInside];
     
     
     [[[[UIApplication sharedApplication] delegate] window] addSubview:tabbarView];
@@ -126,6 +138,20 @@
     tabbarView.hidden=NO;
 }
 
+// ---------------- Tabbar Open ---------------- //
+-(void)tabbarUpDown{
+    if (nowUpDown) {
+        nowUpDown = false;
+        tabbarView.frame = CGRectMake(250, 415, 190, 60);
+        [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap_rotate_bg_120_380"]];
+    }else{
+        nowUpDown = true;
+//        tabbarView.frame = CGRectMake(110, 415, 190, 60);
+        tabbarView.frame = CGRectMake(120, 415, 190, 60);
+
+        [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap1_rotate_120_380"]];
+    }
+}
 
 // ---------------- Tabbar Controller Remove ---------------- //
 -(void)tabbarControllerRemove{
