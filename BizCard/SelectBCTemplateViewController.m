@@ -58,9 +58,6 @@
     [self reSizeLabel:_cardOne.nameLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
     [self reSizeLabel:_cardOne.numberLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
     [self reSizeLabel:_cardOne.emailLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
-    [self reSizeLabel:_cardOne.nameTitleLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
-    [self reSizeLabel:_cardOne.numberTitleLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
-    [self reSizeLabel:_cardOne.emailTitleLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
     
     _cardOne.frame = CGRectMake(0, 0, bcTypeOne.frame.size.width, _cardOne.frame.size.height);
     
@@ -114,12 +111,7 @@
 
 - (IBAction)backBtn:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
-    NSLog(@"%@",self);
     [self dismissModalViewControllerAnimated:YES];
-    
-//    NSLog(@"this");
-//    [self.view removeFromSuperview];
-//    [self removeFromParentViewController];
 }
 
 
@@ -129,7 +121,17 @@
 - (IBAction)typeSetBtn:(UIButton *)btn{
     editBcViewController = [[EditBcViewController alloc]init];
     [editBcViewController setCardNum:btn.tag];
-//    [self presentModalViewController:editBcViewController animated:YES];
-    [self.view insertSubview:editBcViewController.view aboveSubview:self.view];
+    
+    if (_name != nil) {
+        [editBcViewController setData:_name :_number :_email];
+    }
+
+    [self presentModalViewController:editBcViewController animated:YES];
+}
+
+- (void)setData:(NSString *)name:(NSString *)number:(NSString *)email{
+    _name = name;
+    _number = number;
+    _email = email;
 }
 @end

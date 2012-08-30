@@ -12,8 +12,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *numberLabel;
 @property (strong, nonatomic) IBOutlet UILabel *emailLabel;
-@property (strong, nonatomic) IBOutlet UILabel *nameTitleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *numberTitleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *emailTitleLabel;
 
 @end
