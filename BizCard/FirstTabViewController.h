@@ -34,6 +34,7 @@ ABPeoplePickerNavigationControllerDelegate, ABPersonViewControllerDelegate>{
     NSMutableArray *groupArray;
     NSMutableArray *bcArray;
     NSMutableArray *bcCheckArray;
+    NSMutableArray *groupBtnArray;
     
     SelectBCTemplateViewController *selectView;
     EditBcViewController *editBcViewController;

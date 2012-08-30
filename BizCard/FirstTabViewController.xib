@@ -92,7 +92,7 @@
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<reference key="IBUINormalTitleColor" ref="302436160"/>
-								<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="401784128">
+								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">main_black_bar_select_white_164_84.png</string>
 								</object>
@@ -125,7 +125,10 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">main_ADDgroup_26_26.png</string>
 								</object>
-								<reference key="IBUINormalBackgroundImage" ref="401784128"/>
+								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">main_black_bar_box_navy_152_84.png</string>
+								</object>
 								<reference key="IBUIFontDescription" ref="174039076"/>
 								<reference key="IBUIFont" ref="699201422"/>
 							</object>
@@ -145,7 +148,6 @@
 						<string key="NSFrame">{{90, 43}, {385, 257}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -222,7 +224,7 @@
 						<reference key="IBUIFontDescription" ref="174039076"/>
 						<reference key="IBUIFont" ref="699201422"/>
 					</object>
-					<object class="IBUIImageView" id="579129902">
+					<object class="IBUIImageView" id="595233207">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{232, 16}, {180, 20}}</string>
@@ -279,7 +281,7 @@
 						<string key="NSFrame">{{166, 0}, {31, 36}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="579129902"/>
+						<reference key="NSNextKeyView" ref="595233207"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -468,7 +470,7 @@
 							<reference ref="956622725"/>
 							<reference ref="630681935"/>
 							<reference ref="840038594"/>
-							<reference ref="579129902"/>
+							<reference ref="595233207"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -539,7 +541,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">50</int>
-						<reference key="object" ref="579129902"/>
+						<reference key="object" ref="595233207"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -663,6 +665,7 @@
 			<string key="main_ADDgroup_26_26.png">{13, 13}</string>
 			<string key="main_background_960_600.png">{480, 300}</string>
 			<string key="main_black_bar_150_600.png">{75, 300}</string>
+			<string key="main_black_bar_box_navy_152_84.png">{76, 42}</string>
 			<string key="main_black_bar_select_white_164_84.png">{82, 42}</string>
 			<string key="main_search_box_360_40.png">{180, 20}</string>
 			<string key="main_top_add1_62_72.png">{31, 39}</string>

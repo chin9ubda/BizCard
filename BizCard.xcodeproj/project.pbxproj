@@ -51,6 +51,8 @@
 		43523A5815EF90CB00CA81F6 /* TAP_SETTING1@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 43523A4C15EF90CB00CA81F6 /* TAP_SETTING1@2X.png */; };
 		43523A5915EF90CB00CA81F6 /* TAP_SETTING2.png in Resources */ = {isa = PBXBuildFile; fileRef = 43523A4D15EF90CB00CA81F6 /* TAP_SETTING2.png */; };
 		43523A5A15EF90CB00CA81F6 /* TAP_SETTING2@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 43523A4E15EF90CB00CA81F6 /* TAP_SETTING2@2X.png */; };
+		43523A5D15EF92CF00CA81F6 /* main_black_bar_box_navy_152_84.png in Resources */ = {isa = PBXBuildFile; fileRef = 43523A5B15EF92CE00CA81F6 /* main_black_bar_box_navy_152_84.png */; };
+		43523A5E15EF92CF00CA81F6 /* main_black_bar_box_navy_152_84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43523A5C15EF92CE00CA81F6 /* main_black_bar_box_navy_152_84@2x.png */; };
 		4366F50415E1D2B7008E69F6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F50215E1D2B7008E69F6 /* LoginViewController.m */; };
 		4366F50515E1D2B7008E69F6 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4366F50315E1D2B7008E69F6 /* LoginViewController.xib */; };
 		4366F51515E1D444008E69F6 /* TabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4366F51315E1D444008E69F6 /* TabbarViewController.m */; };
@@ -196,6 +198,8 @@
 		43523A4C15EF90CB00CA81F6 /* TAP_SETTING1@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TAP_SETTING1@2X.png"; sourceTree = "<group>"; };
 		43523A4D15EF90CB00CA81F6 /* TAP_SETTING2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TAP_SETTING2.png; sourceTree = "<group>"; };
 		43523A4E15EF90CB00CA81F6 /* TAP_SETTING2@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TAP_SETTING2@2X.png"; sourceTree = "<group>"; };
+		43523A5B15EF92CE00CA81F6 /* main_black_bar_box_navy_152_84.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_black_bar_box_navy_152_84.png; sourceTree = "<group>"; };
+		43523A5C15EF92CE00CA81F6 /* main_black_bar_box_navy_152_84@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_black_bar_box_navy_152_84@2x.png"; sourceTree = "<group>"; };
 		4366F50115E1D2B7008E69F6 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4366F50215E1D2B7008E69F6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4366F50315E1D2B7008E69F6 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -378,6 +382,8 @@
 		435239B915EF3DF400CA81F6 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				43523A5B15EF92CE00CA81F6 /* main_black_bar_box_navy_152_84.png */,
+				43523A5C15EF92CE00CA81F6 /* main_black_bar_box_navy_152_84@2x.png */,
 				435239E115EF776A00CA81F6 /* main_ADDgroup_26_26@2x.png */,
 				435239E215EF776A00CA81F6 /* main_background_960_600@2x.png */,
 				435239E315EF776A00CA81F6 /* main_bizcard_image_260_145@2x.png */,
@@ -1073,6 +1079,8 @@
 				43523A5815EF90CB00CA81F6 /* TAP_SETTING1@2X.png in Resources */,
 				43523A5915EF90CB00CA81F6 /* TAP_SETTING2.png in Resources */,
 				43523A5A15EF90CB00CA81F6 /* TAP_SETTING2@2X.png in Resources */,
+				43523A5D15EF92CF00CA81F6 /* main_black_bar_box_navy_152_84.png in Resources */,
+				43523A5E15EF92CF00CA81F6 /* main_black_bar_box_navy_152_84@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

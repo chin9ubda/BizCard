@@ -81,7 +81,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     dismiss_type = VIEW;
     [self setGroup];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:@"reloadTableView" object:nil];
@@ -263,6 +262,13 @@
    ----------------------------------------------------------------------- */
 
 -(void)setGroup{
+    
+    if (groupBtnArray != nil) {
+        groupBtnArray = nil;
+    }
+    
+    groupBtnArray = [NSMutableArray arrayWithCapacity:0];
+    
     // ScrollView Sub Button Remove
     while ([groupScrollView.subviews count] > 2) {
         [[groupScrollView.subviews lastObject] removeFromSuperview];
@@ -289,25 +295,21 @@
 -(void)addGroup:(NSString *)groupName:(int)groupCount{
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [button setFrame:CGRectMake(5.0f, (groupCount + 1) * 75.0f + ( (groupCount + 1) * 6.0f ) + 6.0 + 6.0f, 75.0f, 40.0f)];
     [button setFrame:CGRectMake(5.0f,(groupCount + 1) * 40.0f + (groupCount + 1) * 6.0f, 75.0f, 40.0f)];
-//    [button setFrame:CGRectMake(5.0f,37.5f, 75.0f, 40.0f)];
     [button setTitle:groupName forState:UIControlStateNormal];
-    [button setTag:[[groupArray objectAtIndex:groupCount] intValue]];
+//    [button setTag:[[groupArray objectAtIndex:groupCount] intValue]];
+    
+    [button setTag:groupCount + 1];
+
     
     [button addTarget:self action:@selector(groupBtnClickEvent:) forControlEvents:UIControlEventTouchUpInside];
     
     button.titleLabel.lineBreakMode = UILineBreakModeCharacterWrap;
     [groupScrollView addSubview:[self setBtnStyle:button]];
     
-//    [groupScrollView setContentSize:CGSizeMake(75.0f, (groupCount + 12) * 75.0f + ( groupCount * 6.0f) + 6.0f + 6.0f + 40.0f)];
-    
-    
     [addGroupBtn setFrame:CGRectMake(5.0f, (groupCount + 2) * 40.0f + (groupCount + 2) * 6.0f, 75.0f, 40.0f)];
     
-//    addGroupBtn.frame.origin.y = (groupCount + 2) * 75.0f + ( (groupCount + 2) * 6.0f ) + 6.0 + 6.0f;
-    
-    NSLog(@"group count === %d",groupCount);
+    [groupBtnArray addObject:button];
 }
 
 
@@ -320,12 +322,9 @@
 
 -(UIButton *)setBtnStyle:(UIButton *)btn{
     
-    [btn setBackgroundImage:allGroupBtn.currentBackgroundImage forState:UIControlStateNormal];
-    [btn setTitleColor:allGroupBtn.currentTitleColor forState:UIControlStateNormal];
-    [btn setTitleShadowColor:allGroupBtn.currentTitleShadowColor forState:UIControlStateNormal];
-    [btn setTitleEdgeInsets:allGroupBtn.titleEdgeInsets];
-    btn.titleLabel.shadowOffset = allGroupBtn.titleLabel.shadowOffset;
-    btn.titleLabel.font = allGroupBtn.titleLabel.font;
+    [btn setBackgroundImage:addGroupBtn.currentBackgroundImage forState:UIControlStateNormal];
+    [btn setTitleColor:addGroupBtn.currentTitleColor forState:UIControlStateNormal];
+    btn.titleLabel.font = addGroupBtn.titleLabel.font;
     
     return btn;
 }
@@ -338,21 +337,38 @@
      한번 클릭했을 경우 현제 그룹 상태를 나타내는 nowGroup 의
      값을 현제 그룹의 _id 값으로 변경해주고, 그룹 메뉴를 없애고
      테이블을 reload 한다.
+     버튼의 테그와 테그번째의 그룹의 _id 값을 비교하여,
+     지금 선택된 그룹의 상태를 확인하고 선택된 이미지의 버튼과
+     다른 버튼의 이미지를 비교되도록 적용시킨다.
    ----------------------------------------------------- */
 
 - (void)groupBtnClickEvent:(UIButton *)btn{
-    if (!edit) {
-        if (nowGroup == btn.tag) {
-            if (btn.tag != 0) {
-                [gMenu removeFromSuperview];
-                [self groupMenu];
-            }else {
-                [gMenu removeFromSuperview];
-                [self reloadTableView];
+    if (!edit) {                                                    // 체크박스 노출 상태일 경우
+        if (btn.tag == 0 && btn.tag == nowGroup) {                  // 지금 선택된 버튼의 테그가 0 번.. 즉 ALL 버튼이며 all버튼이 이미 한번이상 선택되어 있을 경우
+            [gMenu removeFromSuperview];
+            [self groupMenu];
+        }else if (btn.tag == 0){                                    // 지금 선택된 버튼의 테그가 0 번.. 즉 ALL 버튼일 경우
+            [allGroupBtn setBackgroundImage:[UIImage imageNamed:@"main_black_bar_select_white_164_84.png"] forState:UIControlStateNormal];
+            for (int i = 0; i < groupBtnArray.count; i++) {
+                [[groupBtnArray objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"main_black_bar_box_navy_152_84.png"] forState:UIControlStateNormal];
             }
-        }else{
+            nowGroup = 0;
+
+        }else if (nowGroup == [[groupArray objectAtIndex:btn.tag - 1] intValue]) {      // 이전에 선택된 그룹과 지금 클릭한 버튼의 _id 값이 같을경우
+            [gMenu removeFromSuperview];
+            [self groupMenu];
+        }else {                                                                         // 이전에 선택한 버튼과 다른 버튼을 선택했으며, 선택된 버튼이 ALL 버튼이 아닐경우
+            [allGroupBtn setBackgroundImage:[UIImage imageNamed:@"main_black_bar_box_navy_152_84.png"] forState:UIControlStateNormal];
             
-            nowGroup = btn.tag;
+            for (int i = 0; i < groupBtnArray.count; i++) {
+                if ((btn.tag - 1) == i)
+                    [[groupBtnArray objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"main_black_bar_select_white_164_84.png"] forState:UIControlStateNormal];
+                else
+                    [[groupBtnArray objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"main_black_bar_box_navy_152_84.png"] forState:UIControlStateNormal];
+
+            }
+            
+            nowGroup = [[groupArray objectAtIndex:btn.tag - 1] intValue];
             [gMenu removeFromSuperview];
             [self reloadTableView];
         }
