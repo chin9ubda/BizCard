@@ -93,6 +93,14 @@
     
 }
 
+
+
+- (void)setData:(NSString *)name:(NSString *)number:(NSString *)email{
+    _name = name;
+    _number = number;
+    _email = email;
+}
+
 // -------- View Click Event -------- //
 
 /* ----------------------------------
@@ -134,6 +142,16 @@
             [_cardOne awakeFromNib];
             loadCardView = [[UIView alloc]initWithFrame:CGRectMake(125, 13, 225, 125)];
             
+            if (_name != nil) {
+                nameTextField.text = _name;
+                numberTextField.text = _number;
+                emailTextField.text = _email;
+                _cardOne.nameLabel.text = _name;
+                _cardOne.numberLabel.text = _number;
+                _cardOne.emailLabel.text =_email;
+            }
+
+            
             [self reSizeLabel:_cardOne.nameTitleLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
             [self reSizeLabel:_cardOne.numberTitleLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
             [self reSizeLabel:_cardOne.emailTitleLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
@@ -157,6 +175,15 @@
             _cardTwo = (CardTwo *)[xibs objectAtIndex:0];
             [_cardTwo awakeFromNib];
             loadCardView = [[UIView alloc]initWithFrame:CGRectMake(129, 13, 225, 125)];
+            
+            if (_name != nil) {
+                nameTextField.text = _name;
+                numberTextField.text = _number;
+                emailTextField.text = _email;
+                _cardTwo.nameLabel.text = _name;
+                _cardTwo.numberLabel.text = _number;
+                _cardTwo.emailLabel.text =_email;
+            }
             
             [self reSizeLabel:_cardTwo.nameLabel:loadCardView.frame.size.width / _cardTwo.frame.size.width];
             [self reSizeLabel:_cardTwo.numberLabel:loadCardView.frame.size.width / _cardTwo.frame.size.width];
@@ -199,15 +226,10 @@
 // ---------------- Back Btn Event ---------------- //
 
 - (IBAction)backBtn:(id)sender {
-    if (nowCard == 0) {
-        if (nowId == 0) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
-        }
-        [self dismissModalViewControllerAnimated:YES];
-    }else{
-        [self.view removeFromSuperview];
-        [self removeFromParentViewController];
+    if (nowId == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
     }
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -266,9 +288,7 @@
             [db insertContents:_id :2 :numberLabel.text :numberLabel.frame.origin.x :numberLabel.frame.origin.y :numberLabel.frame.size.height :numberLabel.frame.size.width];
             [db insertContents:_id :3 :emailLabel.text :emailLabel.frame.origin.x :emailLabel.frame.origin.y :emailLabel.frame.size.height :emailLabel.frame.size.width];
             [self saveImg:fileName:[self captureView:loadCardView]];
-            
-            [self.view removeFromSuperview];
-            [self removeFromParentViewController];
+            [self dismissModalViewControllerAnimated:NO];
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"select_remove" object:nil];
 

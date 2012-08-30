@@ -27,6 +27,10 @@
     int nowCard;
     int nowId;
     
+    NSString *_name;
+    NSString *_number;
+    NSString *_email;
+    
 }
 - (IBAction)backBtn:(id)sender;
 - (IBAction)okBtn:(id)sender;
@@ -37,6 +41,7 @@
 // Struct 로 보낼지 .. 전부 보낼지...
 
 - (void)setCardImg:(int)state:(UIImage *)img:(DataStruct *)data;
+- (void)setData:(NSString *)name:(NSString *)number:(NSString *)email;
 
 - (IBAction)bgView:(id)sender;
 

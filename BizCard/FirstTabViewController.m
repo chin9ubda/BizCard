@@ -219,14 +219,13 @@
 
 
 
-- (void)testSelectAllGroups
+- (void)peoplePickerShow
 {
     ABPeoplePickerNavigationController* picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
     [self presentModalViewController:picker animated:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarHide" object:nil];
 
-//    [picker release];
 }
 
 -(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
@@ -236,26 +235,22 @@
 -(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
     
     
-    NSString *T = (NSString *)CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNamePhoneticProperty));
-    NSString *T2 = (NSString *)CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNamePhoneticProperty));
+    NSString *firstName = (NSString *)CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNamePhoneticProperty));
+    NSString *secondName = (NSString *)CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNamePhoneticProperty));
     
-    ABMultiValueRef multi = ABRecordCopyValue(person, kABPersonPhoneProperty);
-    CFStringRef t3 = ABMultiValueCopyValueAtIndex(multi, 0);
+    ABMultiValueRef numberValue = ABRecordCopyValue(person, kABPersonPhoneProperty);
+    CFStringRef number = ABMultiValueCopyValueAtIndex(numberValue, 0);
+    
+    ABMultiValueRef emailValue = ABRecordCopyValue(person, kABPersonEmailProperty);
+    CFStringRef email = ABMultiValueCopyValueAtIndex(emailValue, 0);
 
-    
-    NSLog(@"%@ %@ %@",T,T2,t3);
-    
     
     SelectBCTemplateViewController *select = [[SelectBCTemplateViewController alloc]init];
     
+    [self dismissModalViewControllerAnimated:NO];
     [self presentModalViewController:select animated:YES];
+    [select setData:(NSString *) [NSString stringWithFormat:@"%@ %@",firstName,secondName] :[NSString stringWithFormat:@"%@",number] :[NSString stringWithFormat:@"%@",email]];
     
-    [[self navigationController] presentModalViewController:select animated:YES];
-//    [controller release];
-
-//    [self dismissModalViewControllerAnimated:YES];
-
-
     return NO;
 }
 
@@ -809,26 +804,17 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
-    bcArray = [db search:textField.text :sortType];
     
-//    if (bcCheckArray != nil) {
-//        bcCheckArray = nil;
-//    }
-//    
-//    
-//    bcCheckArray = [NSMutableArray arrayWithCapacity:0];
-//    searchTextField.text = @"";
-//    
-//    
-//    for (int i = 0; i < bcArray.count; i++) {
-//        [bcCheckArray insertObject: [NSNumber numberWithInteger: 0] atIndex:i];
-//    }
-    
-    search = true;
-    
-//    [businessCardTable reloadData];
-    [self reloadTableView];
-    return true;
+    if ([textField.text isEqualToString:@""]) {
+        [self allGroupBtn:allGroupBtn];
+    }else {
+        bcArray = [db search:textField.text :sortType];
+        
+        search = true;
+        
+        [self reloadTableView];
+    }
+    return NO;
 }
 
 
@@ -841,7 +827,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
-    searchTextField.text = @"";
+//    searchTextField.text = @"";
     
     nowGroup = 0;
     
@@ -1021,7 +1007,7 @@
             
         }else if(buttonIndex == 2){
 //            NSLog(@"주소록에서 가져오기");
-            [self testSelectAllGroups];
+            [self peoplePickerShow];
         }else if(buttonIndex == 3){
           NSLog(@"직접 입력하기");
             selectView = [[SelectBCTemplateViewController alloc]init];
