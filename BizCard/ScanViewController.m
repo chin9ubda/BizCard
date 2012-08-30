@@ -155,9 +155,6 @@
 //----------------------------------------------------------------
 -(void)createEvernoteNote{
     
-    //---------------------------------------------------------------------------------
-    // Evernote Note만들기
-    //---------------------------------------------------------------------------------
     EvernoteNoteStore *noteStore = [EvernoteNoteStore noteStore];
     
     // note 구성하기  - Resource 설정
@@ -223,7 +220,6 @@
         [timer invalidate];
         timer = 0;
     }];
-    //---------------------------------------------------------------------------------
 }
 
 //---------------------------------------------------------------
@@ -248,9 +244,9 @@
         timer = 0;
         
     } failure:^(NSError *error) {
-        NSLog(@"failed to check imageRecognition with error: %@",error);
+        //NSLog(@"failed to check imageRecognition with error: %@",error);
         
-        //5. 실패하면 다시 시도
+        // 실패하면 다시 시도
         [self findRecognition:Resource_guid];
         
     }];
@@ -352,7 +348,6 @@
                     nameW = xmlParsingW;
                     nameH = xmlParsingH;
                 }
-                
             }
             
             xmlParsingText = [NSMutableString string];
@@ -368,7 +363,6 @@
         //Merge Text 중 제일 큰 Height 및 총 width 구하기
         xmlParsingW += currentxmlParsingW;
         xmlParsingH = MAX(xmlParsingH, currentxmlParsingH);
-
     }
 }
 
@@ -432,6 +426,24 @@
     
     DataStruct *pushData = [[DataStruct alloc]init];
     
+    NSLog(@"%@",name);
+    NSLog(@"%f",nameX);
+    NSLog(@"%f",nameY);
+    NSLog(@"%f",nameW);
+    NSLog(@"%f",nameH);
+
+    NSLog(@"%@",phoneNumber);
+    NSLog(@"%f",phoneNumberX);
+    NSLog(@"%f",phoneNumberY);
+    NSLog(@"%f",phoneNumberW);
+    NSLog(@"%f",phoneNumberH);
+    
+    NSLog(@"%@",email);
+    NSLog(@"%f",emailX);
+    NSLog(@"%f",emailY);
+    NSLog(@"%f",emailW);
+    NSLog(@"%f",emailH);
+
     pushData.name = name;
     pushData.number = phoneNumber;
     pushData.email = email;
