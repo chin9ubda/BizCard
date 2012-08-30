@@ -41,7 +41,8 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{190, 60}</string>
 						<reference key="NSSuperview" ref="197592129"/>
-						<reference key="NSNextKeyView" ref="692672310"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="609465407"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -53,8 +54,10 @@
 					<object class="IBUIButton" id="482783232">
 						<reference key="NSNextResponder" ref="197592129"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{142, 8}, {50, 44}}</string>
+						<string key="NSFrame">{{144, 10}, {35, 40}}</string>
 						<reference key="NSSuperview" ref="197592129"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -78,6 +81,14 @@
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
+						<object class="NSCustomResource" key="IBUIHighlightedImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">TAP_BIZCARD1.png</string>
+						</object>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">TAP_BIZCARD2.png</string>
+						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="617918105">
 							<int key="type">2</int>
 							<double key="pointSize">15</double>
@@ -92,8 +103,9 @@
 						<reference key="NSNextResponder" ref="197592129"/>
 						<int key="NSvFlags">1316</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{96, 8}, {38, 44}}</string>
+						<string key="NSFrame">{{96, 10}, {35, 40}}</string>
 						<reference key="NSSuperview" ref="197592129"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="482783232"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -107,14 +119,23 @@
 							<bytes key="NSRGB">MSAwLjk4ODIzNTM1NDQgMC45ODgyMzUzNTQ0AA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="769548978"/>
+						<object class="NSCustomResource" key="IBUIHighlightedImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">TAP_MESSAGE1.png</string>
+						</object>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">TAP_MESSAGE2.png</string>
+						</object>
 						<reference key="IBUIFontDescription" ref="617918105"/>
 						<reference key="IBUIFont" ref="209044712"/>
 					</object>
 					<object class="IBUIButton" id="692672310">
 						<reference key="NSNextResponder" ref="197592129"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{50, 8}, {38, 44}}</string>
+						<string key="NSFrame">{{53, 10}, {35, 40}}</string>
 						<reference key="NSSuperview" ref="197592129"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="12188120"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -126,14 +147,24 @@
 						<reference key="IBUIHighlightedTitleColor" ref="896475239"/>
 						<reference key="IBUINormalTitleColor" ref="896475239"/>
 						<reference key="IBUINormalTitleShadowColor" ref="769548978"/>
+						<object class="NSCustomResource" key="IBUIHighlightedImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">TAP_SETTING1.png</string>
+						</object>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">TAP_SETTING2.png</string>
+						</object>
 						<reference key="IBUIFontDescription" ref="617918105"/>
 						<reference key="IBUIFont" ref="209044712"/>
 					</object>
-					<object class="IBUIButton" id="53520018">
+					<object class="IBUIButton" id="609465407">
 						<reference key="NSNextResponder" ref="197592129"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 8}, {31, 45}}</string>
 						<reference key="NSSuperview" ref="197592129"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="692672310"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -151,6 +182,7 @@
 				</array>
 				<string key="NSFrameSize">{190, 60}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="284174113"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -186,7 +218,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">menuBtn</string>
 						<reference key="source" ref="197592129"/>
-						<reference key="destination" ref="53520018"/>
+						<reference key="destination" ref="609465407"/>
 					</object>
 					<int key="connectionID">47</int>
 				</object>
@@ -223,10 +255,10 @@
 						<reference key="object" ref="197592129"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="284174113"/>
-							<reference ref="482783232"/>
-							<reference ref="12188120"/>
+							<reference ref="609465407"/>
 							<reference ref="692672310"/>
-							<reference ref="53520018"/>
+							<reference ref="12188120"/>
+							<reference ref="482783232"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -252,7 +284,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">46</int>
-						<reference key="object" ref="53520018"/>
+						<reference key="object" ref="609465407"/>
 						<reference key="parent" ref="197592129"/>
 					</object>
 				</array>
@@ -264,15 +296,16 @@
 				<string key="13.CustomClassName">TabbarView</string>
 				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="0.0" key="14.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="2" key="14.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="0.0" key="15.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="1" key="15.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<object class="NSMutableAttributedString" key="15.notes">
 					<object class="NSMutableString" key="NSString">
 						<characters key="NS.bytes"/>
 					</object>
 				</object>
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="1" key="16.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<reference key="16.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="16.showNotes"/>
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -284,7 +317,47 @@
 			<nil key="sourceID"/>
 			<int key="maxID">49</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">TabbarView</string>
+					<string key="superclassName">UIView</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="bcTabBtn">UIButton</string>
+						<string key="menuBtn">UIButton</string>
+						<string key="msgTabBtn">UIButton</string>
+						<string key="settingTabBtn">UIButton</string>
+						<string key="tabbar_bg_img">UIImageView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="bcTabBtn">
+							<string key="name">bcTabBtn</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="menuBtn">
+							<string key="name">menuBtn</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="msgTabBtn">
+							<string key="name">msgTabBtn</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="settingTabBtn">
+							<string key="name">settingTabBtn</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tabbar_bg_img">
+							<string key="name">tabbar_bg_img</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TabbarView.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
@@ -293,10 +366,15 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">main_tap_rotate_bg_120_380.png</string>
-			<string key="NS.object.0">{190, 59}</string>
-		</object>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="TAP_BIZCARD1.png">{35, 40}</string>
+			<string key="TAP_BIZCARD2.png">{35, 40}</string>
+			<string key="TAP_MESSAGE1.png">{35, 40}</string>
+			<string key="TAP_MESSAGE2.png">{35, 40}</string>
+			<string key="TAP_SETTING1.png">{35, 40}</string>
+			<string key="TAP_SETTING2.png">{35, 40}</string>
+			<string key="main_tap_rotate_bg_120_380.png">{190, 59}</string>
+		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1498</string>
 	</data>
 </archive>

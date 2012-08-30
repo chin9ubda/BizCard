@@ -106,7 +106,7 @@
 -(void)tabbarUp{
     nowUpDown = false;
     [self moveView:tabbarView duration:0.1 curve:UIViewAnimationCurveLinear x:0 y:0];
-    [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap_rotate_bg_120_380"]];
+//    [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap_rotate_bg_120_380"]];
 }
 
 
@@ -146,7 +146,7 @@
         nowUpDown = true;
         [self moveView:tabbarView duration:0.3 curve:UIViewAnimationCurveLinear x:-130 y:0];
 
-        [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap1_rotate_120_380"]];
+//        [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap1_rotate_120_380"]];
     }
 }
 
