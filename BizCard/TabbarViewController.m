@@ -87,17 +87,28 @@
 // ---------------- First Tab ---------------- //
 -(void)moveToFirstTab{
     self.selectedIndex = 0;
+    [self tabbarUp];
 }
 
 // ---------------- Second Tab ---------------- //
 -(void)moveToSecondTab{
     self.selectedIndex = 1;
+    [self tabbarUp];
 }
 
 // ---------------- Thrid Tab ---------------- //
 -(void)moveToThridTab{
     self.selectedIndex = 2;
+    [self tabbarUp];
 }
+
+// ---------------- tabbarUp ---------------- //
+-(void)tabbarUp{
+    nowUpDown = false;
+    [self moveView:tabbarView duration:0.1 curve:UIViewAnimationCurveLinear x:0 y:0];
+    [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap_rotate_bg_120_380"]];
+}
+
 
 // ---------------- Tabbar Make ---------------- //
 -(void)tabbarMake{
@@ -105,11 +116,12 @@
     NSArray *xibs = [[NSBundle mainBundle] loadNibNamed:@"TabbarView" owner:self options:nil];
     tabbarView = (TabbarView *)[xibs objectAtIndex:0];
     
-    tabbarView.frame = CGRectMake(0, 440, 300, 40);
+    tabbarView.frame = CGRectMake(250, 415, 190, 60);
     
     [tabbarView.bcTabBtn addTarget:self action:@selector(moveToFirstTab) forControlEvents:UIControlEventTouchUpInside];
     [tabbarView.msgTabBtn addTarget:self action:@selector(moveToSecondTab) forControlEvents:UIControlEventTouchUpInside];
     [tabbarView.settingTabBtn addTarget:self action:@selector(moveToThridTab) forControlEvents:UIControlEventTouchUpInside];
+    [tabbarView.menuBtn addTarget:self action:@selector(tabbarUpDown) forControlEvents:UIControlEventTouchUpInside];
     
     
     [[[[UIApplication sharedApplication] delegate] window] addSubview:tabbarView];
@@ -126,12 +138,43 @@
     tabbarView.hidden=NO;
 }
 
+// ---------------- Tabbar Open ---------------- //
+-(void)tabbarUpDown{
+    if (nowUpDown) {
+        [self tabbarUp];
+    }else{
+        nowUpDown = true;
+        [self moveView:tabbarView duration:0.3 curve:UIViewAnimationCurveLinear x:-130 y:0];
+
+        [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap1_rotate_120_380"]];
+    }
+}
 
 // ---------------- Tabbar Controller Remove ---------------- //
 -(void)tabbarControllerRemove{
 //    [self.view removeFromSuperview];
 //    [self removeFromParentViewController];
     [self dismissModalViewControllerAnimated:YES];
+}
+
+
+// ---------------- MoveView ---------------- //
+- (void)moveView:(UIView *)view duration:(NSTimeInterval)duration
+            curve:(int)curve x:(CGFloat)x y:(CGFloat)y
+{
+    // Setup the animation
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:duration];
+    [UIView setAnimationCurve:curve];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    
+    // The transform matrix
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(x, y);
+    view.transform = transform;
+    
+    // Commit the changes
+    [UIView commitAnimations];
+    
 }
 
 

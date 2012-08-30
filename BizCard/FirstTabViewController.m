@@ -11,8 +11,9 @@
 #import "BcTableCell.h"
 #import "DataStruct.h"
 #import "MsgLoadViewController.h"
-#import "ScanViewController.h"
 #import "OverlayView.h"
+#import "ScanViewController.h"
+#import <AddressBook/AddressBook.h>
 
 #define CardEdit 1
 #define MemberEdit 2
@@ -155,12 +156,15 @@
             gMenu = nil;
         }
         edit = false;
-        [editBtn setTitle:@"편집" forState:UIControlStateNormal];
+//        [editBtn setTitle:@"편집" forState:UIControlStateNormal];
+        [editBtn setBackgroundImage:[UIImage imageNamed:@"main_top_edit1_62_72.png"] forState:UIControlStateNormal];
+
         [self reloadTableView];
 
     }else{
         if (bcArray.count != 0) {
-            [editBtn setTitle:@"완료" forState:UIControlStateNormal];
+//            [editBtn setTitle:@"완료" forState:UIControlStateNormal];
+            [editBtn setBackgroundImage:[UIImage imageNamed:@"main_top_edit2_62_72.png"] forState:UIControlStateNormal];
             edit = true;
             nowState = CardEdit;
             [self reloadTableView];
@@ -215,6 +219,46 @@
 
 
 
+- (void)testSelectAllGroups
+{
+    ABPeoplePickerNavigationController* picker = [[ABPeoplePickerNavigationController alloc] init];
+    picker.peoplePickerDelegate = self;
+    [self presentModalViewController:picker animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarHide" object:nil];
+
+//    [picker release];
+}
+
+-(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
+    
+    
+    NSString *T = (NSString *)CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNamePhoneticProperty));
+    NSString *T2 = (NSString *)CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNamePhoneticProperty));
+    
+    ABMultiValueRef multi = ABRecordCopyValue(person, kABPersonPhoneProperty);
+    CFStringRef t3 = ABMultiValueCopyValueAtIndex(multi, 0);
+
+    
+    NSLog(@"%@ %@ %@",T,T2,t3);
+    
+    
+    SelectBCTemplateViewController *select = [[SelectBCTemplateViewController alloc]init];
+    
+    [self presentModalViewController:select animated:YES];
+    
+    [[self navigationController] presentModalViewController:select animated:YES];
+//    [controller release];
+
+//    [self dismissModalViewControllerAnimated:YES];
+
+
+    return NO;
+}
+
 
 // ------------------------------ Group Set ------------------------------ //
 
@@ -250,7 +294,9 @@
 -(void)addGroup:(NSString *)groupName:(int)groupCount{
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setFrame:CGRectMake(5.0f, (groupCount + 1) * 50.0f + ( groupCount * 6.0f ) + 6.0f, 50.0f, 50.0f)];
+//    [button setFrame:CGRectMake(5.0f, (groupCount + 1) * 75.0f + ( (groupCount + 1) * 6.0f ) + 6.0 + 6.0f, 75.0f, 40.0f)];
+    [button setFrame:CGRectMake(5.0f,(groupCount + 1) * 40.0f + (groupCount + 1) * 6.0f, 75.0f, 40.0f)];
+//    [button setFrame:CGRectMake(5.0f,37.5f, 75.0f, 40.0f)];
     [button setTitle:groupName forState:UIControlStateNormal];
     [button setTag:[[groupArray objectAtIndex:groupCount] intValue]];
     
@@ -259,10 +305,14 @@
     button.titleLabel.lineBreakMode = UILineBreakModeCharacterWrap;
     [groupScrollView addSubview:[self setBtnStyle:button]];
     
-    [groupScrollView setContentSize:CGSizeMake(70.0f, (groupCount + 1) * 50.0f + ( groupCount * 6.0f) + 6.0f + 6.0f + 50.0f)];
+//    [groupScrollView setContentSize:CGSizeMake(75.0f, (groupCount + 12) * 75.0f + ( groupCount * 6.0f) + 6.0f + 6.0f + 40.0f)];
     
     
-    [addGroupBtn setFrame:CGRectMake(5.0f, (groupCount + 2) * 50.0 + ( groupCount * 6.0) + 6.0f, 50.0f, 50.0f)];
+    [addGroupBtn setFrame:CGRectMake(5.0f, (groupCount + 2) * 40.0f + (groupCount + 2) * 6.0f, 75.0f, 40.0f)];
+    
+//    addGroupBtn.frame.origin.y = (groupCount + 2) * 75.0f + ( (groupCount + 2) * 6.0f ) + 6.0 + 6.0f;
+    
+    NSLog(@"group count === %d",groupCount);
 }
 
 
@@ -389,7 +439,8 @@
 
 -(void)groupMember{
     if (!edit) {
-        [editBtn setTitle:@"완료" forState:UIControlStateNormal];
+//        [editBtn setTitle:@"완료" forState:UIControlStateNormal];
+        [editBtn setBackgroundImage:[UIImage imageNamed:@"main_top_edit2_62_72.png"] forState:UIControlStateNormal];
 
         nowState = MemberEdit;
         edit = true;
@@ -568,6 +619,7 @@
             NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"BcTableCell" owner:nil options:nil];
             
             bcTableCell = [array objectAtIndex:0];
+//            [self moveView:bcTableCell.cardView duration:0.3 curve:UIViewAnimationCurveLinear x:40 y:0];
             bcTableCell.cardView.frame = CGRectMake(40, 0, bcTableCell.frame.size.width, bcTableCell.frame.size.height);
             bcTableCell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -968,7 +1020,8 @@
              */
             
         }else if(buttonIndex == 2){
-            NSLog(@"주소록에서 가져오기");
+//            NSLog(@"주소록에서 가져오기");
+            [self testSelectAllGroups];
         }else if(buttonIndex == 3){
           NSLog(@"직접 입력하기");
             selectView = [[SelectBCTemplateViewController alloc]init];

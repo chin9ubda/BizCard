@@ -12,4 +12,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *bcTabBtn;
 @property (strong, nonatomic) IBOutlet UIButton *msgTabBtn;
 @property (strong, nonatomic) IBOutlet UIButton *settingTabBtn;
+@property (strong, nonatomic) IBOutlet UIButton *menuBtn;
+@property (strong, nonatomic) IBOutlet UIImageView *tabbar_bg_img;
 @end
