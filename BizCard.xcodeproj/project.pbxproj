@@ -119,6 +119,7 @@
 		43F9427815E0CC1F005893A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F9427715E0CC1F005893A9 /* AppDelegate.m */; };
 		43F9428D15E1CFDF005893A9 /* FirstTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F9428B15E1CFDF005893A9 /* FirstTabViewController.m */; };
 		43F9428E15E1CFDF005893A9 /* FirstTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F9428C15E1CFDF005893A9 /* FirstTabViewController.xib */; };
+		AC31358315EF69A900AD9DA7 /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = AC31358215EF69A900AD9DA7 /* NSData+MD5.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AC47488615ECB4960030FAB4 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC47488415ECB4960030FAB4 /* OverlayView.m */; };
 		AC47488715ECB4960030FAB4 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC47488515ECB4960030FAB4 /* OverlayView.xib */; };
 		AC47488915ECB4B20030FAB4 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = AC47488815ECB4B20030FAB4 /* test.png */; };
@@ -232,6 +233,8 @@
 		43F9428A15E1CFDF005893A9 /* FirstTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTabViewController.h; sourceTree = "<group>"; };
 		43F9428B15E1CFDF005893A9 /* FirstTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTabViewController.m; sourceTree = "<group>"; };
 		43F9428C15E1CFDF005893A9 /* FirstTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstTabViewController.xib; sourceTree = "<group>"; };
+		AC31358115EF69A900AD9DA7 /* NSData+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5.h"; sourceTree = "<group>"; };
+		AC31358215EF69A900AD9DA7 /* NSData+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MD5.m"; sourceTree = "<group>"; };
 		AC47488315ECB4960030FAB4 /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
 		AC47488415ECB4960030FAB4 /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
 		AC47488515ECB4960030FAB4 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
@@ -703,6 +706,8 @@
 				ACD5B4EE15E933C0004646C6 /* evernote-sdk-ios */,
 				ACD5B4EB15E931B4004646C6 /* PlistClass.h */,
 				ACD5B4EC15E931B4004646C6 /* PlistClass.m */,
+				AC31358115EF69A900AD9DA7 /* NSData+MD5.h */,
+				AC31358215EF69A900AD9DA7 /* NSData+MD5.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -1019,6 +1024,7 @@
 				43A7B5F915EBC1200094E338 /* MsgLoadViewController.m in Sources */,
 				ACCB947A15ECB37400D2D3C3 /* ScanViewController.m in Sources */,
 				AC47488615ECB4960030FAB4 /* OverlayView.m in Sources */,
+				AC31358315EF69A900AD9DA7 /* NSData+MD5.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

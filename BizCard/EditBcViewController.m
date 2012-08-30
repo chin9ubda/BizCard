@@ -291,11 +291,9 @@
             [self dismissModalViewControllerAnimated:NO];
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"select_remove" object:nil];
-
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
     }
-    
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTableView" object:nil];
 }

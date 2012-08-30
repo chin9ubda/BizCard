@@ -18,7 +18,8 @@
 #import <AddressBookUI/AddressBookUI.h>
 
 typedef enum {
-    IMAGEPICKER,
+    IMAGEPICKER_CAMERA,
+    IMAGEPICKER_PHOTO_ALBUM,
     VIEW
 }DISMISS_TYPE;
 

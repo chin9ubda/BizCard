@@ -104,7 +104,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 
@@ -1171,8 +1171,13 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
     SJ_DEBUG_LOG(@"Image Selected");
+    if(imagepickerController.sourceType == UIImagePickerControllerSourceTypeCamera){
+        dismiss_type = IMAGEPICKER_CAMERA;
+    }else{
+        dismiss_type = IMAGEPICKER_PHOTO_ALBUM;
+    }
+    
     scanImage = image;
-    dismiss_type = IMAGEPICKER;
     [picker dismissModalViewControllerAnimated:NO];
     
     return;
@@ -1182,38 +1187,20 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     //Scan 화면으로 갈때
-    if(dismiss_type == IMAGEPICKER){
+    if(dismiss_type == IMAGEPICKER_PHOTO_ALBUM || dismiss_type == IMAGEPICKER_CAMERA){
+        [self goScanView:dismiss_type];
         dismiss_type = VIEW;
-        [self goScanView];
     }else{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
     }
 }
 
-// ---------------- MoveView ---------------- //
-- (void)moveView:(UIView *)view duration:(NSTimeInterval)duration
-           curve:(int)curve x:(CGFloat)x y:(CGFloat)y
-{
-    // Setup the animation
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:duration];
-    [UIView setAnimationCurve:curve];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    
-    // The transform matrix
-    CGAffineTransform transform = CGAffineTransformMakeTranslation(x, y);
-    view.transform = transform;
-    
-    // Commit the changes
-    [UIView commitAnimations];
-    
-}
-
--(void)goScanView {
+-(void)goScanView:(int)type{
     
     ScanViewController *scanViewCont = [ScanViewController new];
     [self presentModalViewController:scanViewCont animated:YES];
-    [scanViewCont initView:scanImage];
+    //[self.view insertSubview:scanViewCont.view aboveSubview:self.view];
+    [scanViewCont initView:scanImage type:type];
 }
 
 @end
