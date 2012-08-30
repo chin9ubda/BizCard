@@ -13,6 +13,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 
--(void)initView:(UIImage *)image;
+-(void)initView:(UIImage *)image type:(int)type;
 
 @end

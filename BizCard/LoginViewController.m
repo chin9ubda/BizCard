@@ -75,8 +75,8 @@
     SJ_DEBUG_LOG(@"Notebook이 있는지 확인");
     
     NSString *notebook_Guid = [PlistClass read_notebook_guid];
-    
-    // 새 사용자이면 이 앱을 위한 notebook을 생성한다 
+
+    // 새 사용자이면 이 앱을 위한 notebook을 생성한다
     if([notebook_Guid isEqualToString:@"0"]){
         
         SJ_DEBUG_LOG(@"Notebook이 없음");
@@ -85,14 +85,37 @@
     // 기존 사용자면 해당 guid
     else{
         SJ_DEBUG_LOG(@"Notebook이 있음");
+       
         SJ_DEBUG_LOG(@"해당 Notebook이 유효한지 체크");
-
-        [self gotoTabbarControllerView];
+        EvernoteNoteStore *noteStore = [EvernoteNoteStore noteStore];
+        [noteStore listNotebooksWithSuccess:^(NSArray *notebooks) {
+            
+            BOOL isAvaible = NO;
+            
+            for(int i=0; i < [notebooks count]; i++){
+               
+                // 해당 노트북이 유효하면
+                if([[[notebooks objectAtIndex:i]guid] isEqualToString:notebook_Guid]){
+                    SJ_DEBUG_LOG(@"Notebook이 유효");
+                    isAvaible = YES;
+                    
+                // 해당 노프북이 유효하지 않으면 새로 노트북을 만든다
+                }else{
+                    SJ_DEBUG_LOG(@"Notebook이 유효하지 않음");
+                }
+            }
+            
+            if(isAvaible){
+                [self gotoTabbarControllerView];
+            }else{
+                [self createNotebook:@"BizCard"];
+            }
+            
+        } failure:^(NSError *error) {
+            [self loginFailAlert];
+        }];
+        
     }
-    
-    // ****************************************************************
-    // 0은 아니지만 사용자가 evernote에서 notebook을 지웠을 경우 체크 필요
-    // ****************************************************************
 }
 
 
@@ -121,7 +144,6 @@
         SJ_DEBUG_LOG(@"Notebook 생성 실패");
         SJ_DEBUG_LOG(@"기본 노트북으로 설정하겠음");
 
-        
         // Notebook 생성에 실패하면 기본 Notebook에 추가한다.
         [noteStore listNotebooksWithSuccess:^(NSArray *notebooks) {
 
@@ -132,7 +154,6 @@
             SJ_DEBUG_LOG(@"Notebook 설정 실패 로그인부터 재시도");
             loginBtn.hidden=NO;
         }];
-
     }];
     
 }
@@ -181,13 +202,7 @@
                 SJ_DEBUG_LOG(@"User could not be authenticated.");
             }
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
-                                                            message:@"로그인 실패. 다시 시도해주세요" 
-                                                           delegate:nil 
-                                                  cancelButtonTitle:@"OK" 
-                                                  otherButtonTitles:nil];
-            [alert show];
-            
+            [self loginFailAlert];
         } 
         
         // 로그인 성공하면 앱을 들어간다
@@ -202,6 +217,15 @@
 
 
 
+
+-(void)loginFailAlert{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:@"로그인 실패. 다시 시도해주세요"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
 
 - (void)viewDidUnload
 {

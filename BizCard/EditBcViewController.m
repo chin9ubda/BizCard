@@ -199,6 +199,7 @@
 // ---------------- Back Btn Event ---------------- //
 
 - (IBAction)backBtn:(id)sender {
+   
     if (nowCard == 0) {
         if (nowId == 0) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
@@ -271,11 +272,9 @@
             [self removeFromParentViewController];
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"select_remove" object:nil];
-
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
     }
-    
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTableView" object:nil];
 }
