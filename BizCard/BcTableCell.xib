@@ -61,7 +61,7 @@
 											<string key="NSResourceName">blue.png</string>
 										</object>
 									</object>
-									<object class="IBUIImageView" id="943895277">
+									<object class="IBUIImageView" id="80013123">
 										<reference key="NSNextResponder" ref="205555946"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{138, 7}, {254, 73}}</string>
@@ -192,7 +192,6 @@
 										<string key="NSFrame">{{215, 56}, {151, 21}}</string>
 										<reference key="NSSuperview" ref="205555946"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -212,7 +211,7 @@
 										<string key="NSFrame">{{-40, 24}, {40, 40}}</string>
 										<reference key="NSSuperview" ref="205555946"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="943895277"/>
+										<reference key="NSNextKeyView" ref="80013123"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -247,7 +246,6 @@
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="535182052"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<reference key="IBUIBackgroundColor" ref="12705170"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 						</array>
@@ -360,7 +358,7 @@
 						<reference key="object" ref="205555946"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="535182052"/>
-							<reference ref="943895277"/>
+							<reference ref="80013123"/>
 							<reference ref="775219537"/>
 							<reference ref="365573719"/>
 							<reference ref="59362567"/>
@@ -413,7 +411,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
-						<reference key="object" ref="943895277"/>
+						<reference key="object" ref="80013123"/>
 						<reference key="parent" ref="205555946"/>
 					</object>
 				</array>

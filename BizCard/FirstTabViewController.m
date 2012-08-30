@@ -157,7 +157,7 @@
         }
         edit = false;
 //        [editBtn setTitle:@"편집" forState:UIControlStateNormal];
-        [editBtn setBackgroundImage:[UIImage imageNamed:@"main_top_edit2_62_72.png"] forState:UIControlStateNormal];
+        [editBtn setBackgroundImage:[UIImage imageNamed:@"main_top_edit1_62_72.png"] forState:UIControlStateNormal];
 
         [self reloadTableView];
 
@@ -619,6 +619,7 @@
             NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"BcTableCell" owner:nil options:nil];
             
             bcTableCell = [array objectAtIndex:0];
+//            [self moveView:bcTableCell.cardView duration:0.3 curve:UIViewAnimationCurveLinear x:40 y:0];
             bcTableCell.cardView.frame = CGRectMake(40, 0, bcTableCell.frame.size.width, bcTableCell.frame.size.height);
             bcTableCell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -1201,6 +1202,25 @@
     }else{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarOpen" object:nil];
     }
+}
+
+// ---------------- MoveView ---------------- //
+- (void)moveView:(UIView *)view duration:(NSTimeInterval)duration
+           curve:(int)curve x:(CGFloat)x y:(CGFloat)y
+{
+    // Setup the animation
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:duration];
+    [UIView setAnimationCurve:curve];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    
+    // The transform matrix
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(x, y);
+    view.transform = transform;
+    
+    // Commit the changes
+    [UIView commitAnimations];
+    
 }
 
 -(void)goScanView {

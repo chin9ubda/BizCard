@@ -92,7 +92,7 @@
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<reference key="IBUINormalTitleColor" ref="302436160"/>
-								<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="363629934">
+								<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="694063608">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">main_black_bar_select_white_164_84.png</string>
 								</object>
@@ -119,10 +119,13 @@
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<int key="IBUILineBreakMode">1</int>
-								<string key="IBUINormalTitle">+</string>
 								<reference key="IBUIHighlightedTitleColor" ref="302436160"/>
 								<reference key="IBUINormalTitleColor" ref="302436160"/>
-								<reference key="IBUINormalBackgroundImage" ref="363629934"/>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">main_ADDgroup_26_26.png</string>
+								</object>
+								<reference key="IBUINormalBackgroundImage" ref="694063608"/>
 								<reference key="IBUIFontDescription" ref="174039076"/>
 								<reference key="IBUIFont" ref="699201422"/>
 							</object>
@@ -139,12 +142,14 @@
 					<object class="IBUITableView" id="284945094">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{90, 50}, {385, 250}}</string>
+						<string key="NSFrame">{{90, 43}, {385, 257}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<reference key="IBUIBackgroundColor" ref="302436160"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MCAwAA</bytes>
+						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIAlwaysBounceVertical">YES</bool>
@@ -531,7 +536,7 @@
 				<string key="40.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="1" key="40.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="41.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="1" key="41.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="0.0" key="41.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="45.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="47.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="1" key="47.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
@@ -635,6 +640,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="main_ADDgroup_26_26.png">{13, 13}</string>
 			<string key="main_background_960_600.png">{480, 300}</string>
 			<string key="main_black_bar_150_600.png">{75, 300}</string>
 			<string key="main_black_bar_select_white_164_84.png">{82, 42}</string>

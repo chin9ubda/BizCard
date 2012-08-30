@@ -105,7 +105,7 @@
 // ---------------- tabbarUp ---------------- //
 -(void)tabbarUp{
     nowUpDown = false;
-    tabbarView.frame = CGRectMake(250, 415, 190, 60);
+    [self moveView:tabbarView duration:0.1 curve:UIViewAnimationCurveLinear x:0 y:0];
     [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap_rotate_bg_120_380"]];
 }
 
@@ -141,13 +141,10 @@
 // ---------------- Tabbar Open ---------------- //
 -(void)tabbarUpDown{
     if (nowUpDown) {
-        nowUpDown = false;
-        tabbarView.frame = CGRectMake(250, 415, 190, 60);
-        [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap_rotate_bg_120_380"]];
+        [self tabbarUp];
     }else{
         nowUpDown = true;
-//        tabbarView.frame = CGRectMake(110, 415, 190, 60);
-        tabbarView.frame = CGRectMake(120, 415, 190, 60);
+        [self moveView:tabbarView duration:0.3 curve:UIViewAnimationCurveLinear x:-130 y:0];
 
         [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap1_rotate_120_380"]];
     }
@@ -158,6 +155,26 @@
 //    [self.view removeFromSuperview];
 //    [self removeFromParentViewController];
     [self dismissModalViewControllerAnimated:YES];
+}
+
+
+// ---------------- MoveView ---------------- //
+- (void)moveView:(UIView *)view duration:(NSTimeInterval)duration
+            curve:(int)curve x:(CGFloat)x y:(CGFloat)y
+{
+    // Setup the animation
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:duration];
+    [UIView setAnimationCurve:curve];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    
+    // The transform matrix
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(x, y);
+    view.transform = transform;
+    
+    // Commit the changes
+    [UIView commitAnimations];
+    
 }
 
 
