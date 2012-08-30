@@ -324,6 +324,10 @@
                     NSTextCheckingResult *match = [regexp firstMatchInString:xmlParsingText options:0 range:NSMakeRange(0, xmlParsingText.length)];
                     if(match.numberOfRanges!=0){
                         email = [xmlParsingText substringWithRange:[match rangeAtIndex:0]];
+                        emailX = xmlParsingX;
+                        emailY = xmlParsingY;
+                        emailW = xmlParsingW;
+                        emailH = xmlParsingH;
                     }
                 }
                 
@@ -333,12 +337,20 @@
                 NSString *filtered = [[xmlParsingText componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
                 if(filtered.length > 7 && filtered.length < 13 ){
                     phoneNumber = filtered;
+                    phoneNumberX = xmlParsingX;
+                    phoneNumberY = xmlParsingY;
+                    phoneNumberW = xmlParsingW;
+                    phoneNumberH = xmlParsingH;
                 }
                 
                 //-------------------------------------------------------------------------------------------------------
                 // 3. 이름 확인
                 if(biggest_h < xmlParsingH){
                     name = xmlParsingText;
+                    nameX = xmlParsingX;
+                    nameY = xmlParsingY;
+                    nameW = xmlParsingW;
+                    nameH = xmlParsingH;
                 }
                 
             }
@@ -379,9 +391,7 @@
     
     [self goEditBcView];
     
-    
 }
-
 //---------------------------------------------------------------
 
 
@@ -425,6 +435,18 @@
     pushData.name = name;
     pushData.number = phoneNumber;
     pushData.email = email;
+    pushData.nameX = nameX;
+    pushData.nameY = nameY;
+    pushData.nameW = nameW;
+    pushData.nameH = nameH;
+    pushData.emailX = emailX;
+    pushData.emailY = emailY;
+    pushData.emailW = emailW;
+    pushData.emailH = emailH;
+    pushData.numberX = phoneNumberX;
+    pushData.numberY = phoneNumberY;
+    pushData.numberW = phoneNumberW;
+    pushData.numberH = phoneNumberH;
     
     [editBcViewCont setCardImg:0 :imageView.image :pushData];
     pushData = nil;

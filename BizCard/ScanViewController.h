@@ -40,8 +40,23 @@ typedef enum {
     
     
     NSString *name;
+    float nameX;
+    float nameY;
+    float nameW;
+    float nameH;
+    
     NSString *phoneNumber;
+    float phoneNumberX;
+    float phoneNumberY;
+    float phoneNumberW;
+    float phoneNumberH;
+    
     NSString *email;
+    float emailX;
+    float emailY;
+    float emailW;
+    float emailH;
+
 }
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
