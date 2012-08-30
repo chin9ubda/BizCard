@@ -152,9 +152,6 @@
             }
 
             
-            [self reSizeLabel:_cardOne.nameTitleLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
-            [self reSizeLabel:_cardOne.numberTitleLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
-            [self reSizeLabel:_cardOne.emailTitleLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
             [self reSizeLabel:_cardOne.nameLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
             [self reSizeLabel:_cardOne.numberLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
             [self reSizeLabel:_cardOne.emailLabel:loadCardView.frame.size.width / _cardOne.frame.size.width];
@@ -277,9 +274,6 @@
             emailLabel.text = emailTextField.text;
             [emailLabel sizeToFit];
             
-            [self reSizeLabel:_cardOne.nameTitleLabel:loadCardView.frame.size.width / tempSize];
-            [self reSizeLabel:_cardOne.numberTitleLabel:loadCardView.frame.size.width / tempSize];
-            [self reSizeLabel:_cardOne.emailTitleLabel:loadCardView.frame.size.width / tempSize];
             [self reSizeLabel:_cardOne.nameLabel:loadCardView.frame.size.width / tempSize];
             [self reSizeLabel:_cardOne.numberLabel:loadCardView.frame.size.width / tempSize];
             [self reSizeLabel:_cardOne.emailLabel:loadCardView.frame.size.width / tempSize];

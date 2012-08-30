@@ -58,9 +58,6 @@
     [self reSizeLabel:_cardOne.nameLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
     [self reSizeLabel:_cardOne.numberLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
     [self reSizeLabel:_cardOne.emailLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
-    [self reSizeLabel:_cardOne.nameTitleLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
-    [self reSizeLabel:_cardOne.numberTitleLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
-    [self reSizeLabel:_cardOne.emailTitleLabel:bcTypeOne.frame.size.width / _cardOne.frame.size.width];
     
     _cardOne.frame = CGRectMake(0, 0, bcTypeOne.frame.size.width, _cardOne.frame.size.height);
     
