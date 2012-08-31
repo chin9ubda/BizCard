@@ -39,25 +39,23 @@
 					<object class="IBUIImageView" id="249282091">
 						<reference key="NSNextResponder" ref="489059520"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 24}, {372, 40}}</string>
+						<string key="NSFrame">{{0, 20}, {260, 30}}</string>
 						<reference key="NSSuperview" ref="489059520"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="900948994"/>
+						<reference key="NSNextKeyView" ref="5424436"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">groupmenubg.png</string>
+							<string key="NSResourceName">main_under_tap_bg@2x.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="5424436">
 						<reference key="NSNextResponder" ref="489059520"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, -5}, {93, 60}}</string>
+						<string key="NSFrame">{{32, 0}, {45, 40}}</string>
 						<reference key="NSSuperview" ref="489059520"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="249282091"/>
+						<reference key="NSNextKeyView" ref="900948994"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -77,7 +75,7 @@
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">gsms.png</string>
+							<string key="NSResourceName">main_under_tap_mms.png</string>
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="937028493">
 							<int key="type">2</int>
@@ -92,9 +90,9 @@
 					<object class="IBUIButton" id="831925810">
 						<reference key="NSNextResponder" ref="489059520"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{281, -3}, {86, 55}}</string>
+						<string key="NSFrame">{{182, 0}, {45, 40}}</string>
 						<reference key="NSSuperview" ref="489059520"/>
-						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -108,7 +106,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="52390885"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">gdel.png</string>
+							<string key="NSResourceName">main_under_tap_delete.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="937028493"/>
 						<reference key="IBUIFont" ref="874278446"/>
@@ -116,9 +114,9 @@
 					<object class="IBUIButton" id="900948994">
 						<reference key="NSNextResponder" ref="489059520"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{140, -5}, {93, 60}}</string>
+						<string key="NSFrame">{{108, 0}, {45, 40}}</string>
 						<reference key="NSSuperview" ref="489059520"/>
-						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="831925810"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -132,16 +130,15 @@
 						<reference key="IBUINormalTitleShadowColor" ref="52390885"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">gemail.png</string>
+							<string key="NSResourceName">main_under_tap_email.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="937028493"/>
 						<reference key="IBUIFont" ref="874278446"/>
 					</object>
 				</array>
-				<string key="NSFrameSize">{372, 60}</string>
+				<string key="NSFrameSize">{260, 50}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="5424436"/>
+				<reference key="NSNextKeyView" ref="249282091"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
@@ -197,9 +194,9 @@
 						<reference key="object" ref="489059520"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="249282091"/>
-							<reference ref="831925810"/>
-							<reference ref="5424436"/>
 							<reference ref="900948994"/>
+							<reference ref="5424436"/>
+							<reference ref="831925810"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -242,37 +239,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">16</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">Card_Menu</string>
-					<string key="superclassName">UIView</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="delBtn">UIButton</string>
-						<string key="emailBtn">UIButton</string>
-						<string key="smsBtn">UIButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="delBtn">
-							<string key="name">delBtn</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="emailBtn">
-							<string key="name">emailBtn</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="smsBtn">
-							<string key="name">smsBtn</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/Card_Menu.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
@@ -282,10 +249,10 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="gdel.png">{64, 40}</string>
-			<string key="gemail.png">{62, 40}</string>
-			<string key="groupmenubg.png">{364, 45}</string>
-			<string key="gsms.png">{64, 46}</string>
+			<string key="main_under_tap_bg@2x.png">{520, 60}</string>
+			<string key="main_under_tap_delete.png">{45, 35}</string>
+			<string key="main_under_tap_email.png">{45, 35}</string>
+			<string key="main_under_tap_mms.png">{45, 40}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1498</string>
 	</data>

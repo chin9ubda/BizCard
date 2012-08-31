@@ -526,7 +526,7 @@
     NSArray *xibs = [[NSBundle mainBundle] loadNibNamed:@"Card_Menu" owner:self options:nil];
     cMenu = (Card_Menu *)[xibs objectAtIndex:0];
     [cMenu awakeFromNib];
-    cMenu.frame = CGRectMake(68, 240, 372, 60);
+    cMenu.frame = CGRectMake(145, 250, 260 , 50);
     [self.view addSubview:cMenu];
     
     [cMenu.smsBtn addTarget:self action:@selector(cardSms) forControlEvents:UIControlEventTouchUpInside];
@@ -1045,7 +1045,7 @@
             [self msgLoadView:array:1];
             array = nil;
             
-        }else{
+        }else if (buttonIndex == 1) {
             DataStruct *getData;
             NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
             
@@ -1073,7 +1073,7 @@
             [self msgLoadView:array:0];
 
             array = nil;
-        }else{
+        }else if (buttonIndex == 1) {
             DataStruct *getData;
             NSMutableArray *array =[NSMutableArray arrayWithCapacity:0];
             
@@ -1108,7 +1108,7 @@
             
             array = nil;
             
-        }else{
+        }else if (buttonIndex == 1) {
             
             DataStruct *getData;
             int count = 0;
@@ -1148,7 +1148,7 @@
             [self msgLoadView:array:0];
             
             array = nil;
-        }else{
+        }else if (buttonIndex == 1) {
             DataStruct *getData;
             int count = 0;
             

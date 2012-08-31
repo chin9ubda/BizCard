@@ -12,6 +12,7 @@
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
+			<string>IBUIImageView</string>
 			<string>IBUILabel</string>
 			<string>IBUITableViewCell</string>
 		</array>
@@ -42,10 +43,10 @@
 							<object class="IBUILabel" id="862690441">
 								<reference key="NSNextResponder" ref="506392000"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{7, 11}, {306, 21}}</string>
+								<string key="NSFrame">{{10, 9}, {460, 21}}</string>
 								<reference key="NSSuperview" ref="506392000"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="913852913"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -73,8 +74,23 @@
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
+							<object class="IBUIImageView" id="913852913">
+								<reference key="NSNextResponder" ref="506392000"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{10, 38}, {460, 1}}</string>
+								<reference key="NSSuperview" ref="506392000"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">memo_line.png</string>
+								</object>
+							</object>
 						</array>
-						<string key="NSFrameSize">{320, 43}</string>
+						<string key="NSFrameSize">{480, 39}</string>
 						<reference key="NSSuperview" ref="875020385"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="862690441"/>
@@ -90,7 +106,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{320, 44}</string>
+				<string key="NSFrameSize">{480, 40}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="506392000"/>
@@ -133,6 +149,7 @@
 						<int key="objectID">2</int>
 						<reference key="object" ref="875020385"/>
 						<array class="NSMutableArray" key="children">
+							<reference ref="913852913"/>
 							<reference ref="862690441"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -140,6 +157,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">3</int>
 						<reference key="object" ref="862690441"/>
+						<reference key="parent" ref="875020385"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">7</int>
+						<reference key="object" ref="913852913"/>
 						<reference key="parent" ref="875020385"/>
 					</object>
 				</array>
@@ -151,12 +173,13 @@
 				<string key="2.CustomClassName">Msg_Cell</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">6</int>
+			<int key="maxID">7</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -189,6 +212,10 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">memo_line.png</string>
+			<string key="NS.object.0">{460, 1}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">1498</string>
 	</data>
 </archive>
