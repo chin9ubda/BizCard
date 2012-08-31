@@ -71,9 +71,8 @@
         db = [DataBase getInstance];
         dStruct = [[DataStruct alloc]init];
         [self reloadTableView];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarMake" object:nil];
 
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"tabbarMake" object:nil];
     }
     return self;
 }
@@ -282,8 +281,6 @@
     }
     
     [groupScrollView setContentSize:CGSizeMake(groupScrollView.frame.size.width, addGroupBtn.frame.origin.y + addGroupBtn.frame.size.height + 6.0f)];
-    
-    NSLog(@" now H == %f", groupScrollView.contentSize.height);
 }
 
 

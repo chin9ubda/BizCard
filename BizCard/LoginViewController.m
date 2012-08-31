@@ -164,6 +164,7 @@
 //----------------------------------------------------------------------------------------
 -(void)gotoTabbarControllerView{
     tabbarController = [[TabbarViewController alloc]init];
+    [self dismissModalViewControllerAnimated:NO];
     [self presentModalViewController:tabbarController animated:YES];
     
     

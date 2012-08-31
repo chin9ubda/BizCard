@@ -12,6 +12,7 @@
 @interface TabbarViewController : UITabBarController{
     TabbarView *tabbarView;
     Boolean nowUpDown;
+    Boolean createTabbar;
 }
 
 @end

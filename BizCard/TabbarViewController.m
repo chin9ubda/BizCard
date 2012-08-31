@@ -10,6 +10,7 @@
 #import "FirstTabViewController.h"
 #import "SecondTabViewController.h"
 #import "ThirdTabViewController.h"
+#import "LoginViewController.h"
 
 
 @interface TabbarViewController ()
@@ -50,7 +51,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -63,7 +63,6 @@
 -(void)viewWillLayoutSubviews{
     
 }
-
 
 // ---------------- View Size Set ---------------- //
 - (void) viewSizeSet:(UITabBarController *) tabbarcontroller {
@@ -106,25 +105,34 @@
 -(void)tabbarUp{
     nowUpDown = false;
     [self moveView:tabbarView duration:0.1 curve:UIViewAnimationCurveLinear x:0 y:0];
-//    [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap_rotate_bg_120_380"]];
 }
 
 
 // ---------------- Tabbar Make ---------------- //
 -(void)tabbarMake{
+    if (!createTabbar) {
+        NSArray *xibs = [[NSBundle mainBundle] loadNibNamed:@"TabbarView" owner:self options:nil];
+        tabbarView = (TabbarView *)[xibs objectAtIndex:0];
+        
+        tabbarView.frame = CGRectMake(250, 415, 190, 60);
+        
+        [tabbarView.bcTabBtn addTarget:self action:@selector(moveToFirstTab) forControlEvents:UIControlEventTouchUpInside];
+        [tabbarView.msgTabBtn addTarget:self action:@selector(moveToSecondTab) forControlEvents:UIControlEventTouchUpInside];
+        [tabbarView.settingTabBtn addTarget:self action:@selector(moveToThridTab) forControlEvents:UIControlEventTouchUpInside];
+        [tabbarView.menuBtn addTarget:self action:@selector(tabbarUpDown) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        [[[[UIApplication sharedApplication] delegate] window] addSubview:tabbarView];
+        
+        createTabbar = true;
+    }
     
-    NSArray *xibs = [[NSBundle mainBundle] loadNibNamed:@"TabbarView" owner:self options:nil];
-    tabbarView = (TabbarView *)[xibs objectAtIndex:0];
     
-    tabbarView.frame = CGRectMake(250, 415, 190, 60);
+    //로그아웃하면.. 두번 불릴까...;; 
     
-    [tabbarView.bcTabBtn addTarget:self action:@selector(moveToFirstTab) forControlEvents:UIControlEventTouchUpInside];
-    [tabbarView.msgTabBtn addTarget:self action:@selector(moveToSecondTab) forControlEvents:UIControlEventTouchUpInside];
-    [tabbarView.settingTabBtn addTarget:self action:@selector(moveToThridTab) forControlEvents:UIControlEventTouchUpInside];
-    [tabbarView.menuBtn addTarget:self action:@selector(tabbarUpDown) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:tabbarView];
+    NSLog(@"tabbar Make");
+
+
 }
 
 // ---------------- Tabbar Hide ---------------- //
@@ -145,16 +153,16 @@
     }else{
         nowUpDown = true;
         [self moveView:tabbarView duration:0.3 curve:UIViewAnimationCurveLinear x:-130 y:0];
-
-//        [tabbarView.tabbar_bg_img setImage:[UIImage imageNamed:@"main_tap1_rotate_120_380"]];
     }
 }
 
 // ---------------- Tabbar Controller Remove ---------------- //
 -(void)tabbarControllerRemove{
-//    [self.view removeFromSuperview];
-//    [self removeFromParentViewController];
-    [self dismissModalViewControllerAnimated:YES];
+    LoginViewController *login = [[LoginViewController alloc]init];
+        
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self presentModalViewController:login animated:YES];
+    }];
 }
 
 
